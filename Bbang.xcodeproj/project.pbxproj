@@ -17,6 +17,12 @@
 		A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D250265D0DA500243B61 /* BbangstagramViewController.swift */; };
 		A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D259265D376200243B61 /* Bbangtour.storyboard */; };
 		A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D25C265D379100243B61 /* BbangtourViewController.swift */; };
+		A540D260265D38FF00243B61 /* Bbangmain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D25F265D38FF00243B61 /* Bbangmain.storyboard */; };
+		A540D263265D392A00243B61 /* BbangmainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D262265D392A00243B61 /* BbangmainViewController.swift */; };
+		A540D266265D398900243B61 /* Bbangsearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D265265D398900243B61 /* Bbangsearch.storyboard */; };
+		A540D269265D399500243B61 /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D268265D399500243B61 /* BbangsearchViewController.swift */; };
+		A540D26C265D3A3500243B61 /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D26B265D3A3500243B61 /* Bbangset.storyboard */; };
+		A540D26F265D3A4000243B61 /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D26E265D3A4000243B61 /* BbangsetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		A540D250265D0DA500243B61 /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
 		A540D259265D376200243B61 /* Bbangtour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangtour.storyboard; path = ../../../../../Documents/Bbangtour.storyboard; sourceTree = "<group>"; };
 		A540D25C265D379100243B61 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangtourViewController.swift; path = ../../../../../Documents/BbangtourViewController.swift; sourceTree = "<group>"; };
+		A540D25F265D38FF00243B61 /* Bbangmain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangmain.storyboard; path = ../../../../../Documents/Bbangmain.storyboard; sourceTree = "<group>"; };
+		A540D262265D392A00243B61 /* BbangmainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangmainViewController.swift; path = ../../../../../Documents/BbangmainViewController.swift; sourceTree = "<group>"; };
+		A540D265265D398900243B61 /* Bbangsearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangsearch.storyboard; path = ../../../../../Documents/Bbangsearch.storyboard; sourceTree = "<group>"; };
+		A540D268265D399500243B61 /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangsearchViewController.swift; path = ../../../../../Documents/BbangsearchViewController.swift; sourceTree = "<group>"; };
+		A540D26B265D3A3500243B61 /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangset.storyboard; path = ../../../../../Documents/Bbangset.storyboard; sourceTree = "<group>"; };
+		A540D26E265D3A4000243B61 /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangsetViewController.swift; path = ../../../../../Documents/BbangsetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,8 @@
 		A540D254265D36A500243B61 /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
+				A540D25F265D38FF00243B61 /* Bbangmain.storyboard */,
+				A540D262265D392A00243B61 /* BbangmainViewController.swift */,
 			);
 			name = "메인";
 			path = "메인";
@@ -112,6 +126,8 @@
 		A540D256265D36BA00243B61 /* 설정 */ = {
 			isa = PBXGroup;
 			children = (
+				A540D26B265D3A3500243B61 /* Bbangset.storyboard */,
+				A540D26E265D3A4000243B61 /* BbangsetViewController.swift */,
 			);
 			name = "설정";
 			path = "설정";
@@ -120,6 +136,8 @@
 		A540D257265D36C000243B61 /* 주변빵집검색 */ = {
 			isa = PBXGroup;
 			children = (
+				A540D265265D398900243B61 /* Bbangsearch.storyboard */,
+				A540D268265D399500243B61 /* BbangsearchViewController.swift */,
 			);
 			name = "주변빵집검색";
 			path = "주변빵집검색";
@@ -190,11 +208,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540D26C265D3A3500243B61 /* Bbangset.storyboard in Resources */,
 				A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */,
 				A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */,
+				A540D260265D38FF00243B61 /* Bbangmain.storyboard in Resources */,
 				A540D218265CEB1000243B61 /* Assets.xcassets in Resources */,
 				A540D216265CEB0F00243B61 /* Main.storyboard in Resources */,
 				A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */,
+				A540D266265D398900243B61 /* Bbangsearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,8 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540D269265D399500243B61 /* BbangsearchViewController.swift in Sources */,
+				A540D263265D392A00243B61 /* BbangmainViewController.swift in Sources */,
 				A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */,
 				A540D213265CEB0F00243B61 /* ViewController.swift in Sources */,
+				A540D26F265D3A4000243B61 /* BbangsetViewController.swift in Sources */,
 				A540D20F265CEB0F00243B61 /* AppDelegate.swift in Sources */,
 				A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */,
 				A540D211265CEB0F00243B61 /* SceneDelegate.swift in Sources */,
