@@ -16,6 +16,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="YGF-ZI-mUG" kind="relationship" relationship="viewControllers" id="pa6-QI-Aep"/>
                         <segue destination="rjm-HY-cZO" kind="relationship" relationship="viewControllers" id="7TJ-cy-tZt"/>
                     </connections>
                 </tabBarController>
@@ -31,7 +32,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XrS-aq-AFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="-145"/>
+            <point key="canvasLocation" x="799" y="-66"/>
+        </scene>
+        <!--BbangtourViewController-->
+        <scene sceneID="sZu-la-v8Q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Bbangtour" referencedIdentifier="BbangtourViewController" id="YGF-ZI-mUG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="99e-xl-56R"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eby-QN-HoD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="-200"/>
         </scene>
     </scenes>
 </document>

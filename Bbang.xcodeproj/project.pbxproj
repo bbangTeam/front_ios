@@ -15,6 +15,8 @@
 		A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D219265CEB1000243B61 /* LaunchScreen.storyboard */; };
 		A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */; };
 		A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D250265D0DA500243B61 /* BbangstagramViewController.swift */; };
+		A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D259265D376200243B61 /* Bbangtour.storyboard */; };
+		A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D25C265D379100243B61 /* BbangtourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A540D21C265CEB1000243B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangstagram.storyboard; sourceTree = "<group>"; };
 		A540D250265D0DA500243B61 /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
+		A540D259265D376200243B61 /* Bbangtour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangtour.storyboard; path = ../../../../../Documents/Bbangtour.storyboard; sourceTree = "<group>"; };
+		A540D25C265D379100243B61 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangtourViewController.swift; path = ../../../../../Documents/BbangtourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,12 @@
 				A540D217265CEB1000243B61 /* Assets.xcassets */,
 				A540D219265CEB1000243B61 /* LaunchScreen.storyboard */,
 				A540D21C265CEB1000243B61 /* Info.plist */,
+				A540D258265D36C600243B61 /* 로그인 화면 */,
+				A540D254265D36A500243B61 /* 메인 */,
+				A540D255265D36B200243B61 /* 빵지순례 */,
 				A540D24C265D0D6500243B61 /* 빵스타그램 */,
+				A540D257265D36C000243B61 /* 주변빵집검색 */,
+				A540D256265D36BA00243B61 /* 설정 */,
 			);
 			path = Bbang;
 			sourceTree = "<group>";
@@ -80,6 +89,48 @@
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
+			sourceTree = "<group>";
+		};
+		A540D254265D36A500243B61 /* 메인 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "메인";
+			path = "메인";
+			sourceTree = "<group>";
+		};
+		A540D255265D36B200243B61 /* 빵지순례 */ = {
+			isa = PBXGroup;
+			children = (
+				A540D259265D376200243B61 /* Bbangtour.storyboard */,
+				A540D25C265D379100243B61 /* BbangtourViewController.swift */,
+			);
+			name = "빵지순례";
+			path = "빵지순례";
+			sourceTree = "<group>";
+		};
+		A540D256265D36BA00243B61 /* 설정 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "설정";
+			path = "설정";
+			sourceTree = "<group>";
+		};
+		A540D257265D36C000243B61 /* 주변빵집검색 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "주변빵집검색";
+			path = "주변빵집검색";
+			sourceTree = "<group>";
+		};
+		A540D258265D36C600243B61 /* 로그인 화면 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "로그인 화면";
+			path = "로그인 화면";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */,
 				A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */,
 				A540D218265CEB1000243B61 /* Assets.xcassets in Resources */,
 				A540D216265CEB0F00243B61 /* Main.storyboard in Resources */,
@@ -153,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */,
 				A540D213265CEB0F00243B61 /* ViewController.swift in Sources */,
 				A540D20F265CEB0F00243B61 /* AppDelegate.swift in Sources */,
 				A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */,
