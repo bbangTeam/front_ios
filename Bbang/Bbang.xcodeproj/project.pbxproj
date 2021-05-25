@@ -13,6 +13,8 @@
 		A540D216265CEB0F00243B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D214265CEB0F00243B61 /* Main.storyboard */; };
 		A540D218265CEB1000243B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A540D217265CEB1000243B61 /* Assets.xcassets */; };
 		A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D219265CEB1000243B61 /* LaunchScreen.storyboard */; };
+		A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */; };
+		A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D250265D0DA500243B61 /* BbangstagramViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A540D217265CEB1000243B61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A540D21A265CEB1000243B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A540D21C265CEB1000243B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangstagram.storyboard; sourceTree = "<group>"; };
+		A540D250265D0DA500243B61 /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,19 @@
 				A540D217265CEB1000243B61 /* Assets.xcassets */,
 				A540D219265CEB1000243B61 /* LaunchScreen.storyboard */,
 				A540D21C265CEB1000243B61 /* Info.plist */,
+				A540D24C265D0D6500243B61 /* 빵스타그램 */,
 			);
 			path = Bbang;
+			sourceTree = "<group>";
+		};
+		A540D24C265D0D6500243B61 /* 빵스타그램 */ = {
+			isa = PBXGroup;
+			children = (
+				A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */,
+				A540D250265D0DA500243B61 /* BbangstagramViewController.swift */,
+			);
+			name = "빵스타그램";
+			path = "빵스타그램";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +142,7 @@
 				A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */,
 				A540D218265CEB1000243B61 /* Assets.xcassets in Resources */,
 				A540D216265CEB0F00243B61 /* Main.storyboard in Resources */,
+				A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +155,7 @@
 			files = (
 				A540D213265CEB0F00243B61 /* ViewController.swift in Sources */,
 				A540D20F265CEB0F00243B61 /* AppDelegate.swift in Sources */,
+				A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */,
 				A540D211265CEB0F00243B61 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
