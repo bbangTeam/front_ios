@@ -8,22 +8,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--빵스타그램-->
-        <scene sceneID="0l4-tP-2n2">
+        <!--설정-->
+        <scene sceneID="JDR-dm-DIQ">
             <objects>
-                <viewController storyboardIdentifier="BbangstagramViewController" id="7lh-VD-Bhz" customClass="BbangstagramViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cf0-ph-MpR">
+                <viewController storyboardIdentifier="BbangsetViewController" id="cUg-m2-cjZ" customClass="BbangsetViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HYd-CQ-Kss">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="g3R-gl-jPI"/>
+                        <viewLayoutGuide key="safeArea" id="SD1-1o-zK4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="빵스타그램" id="fmd-cJ-4Pu"/>
+                    <tabBarItem key="tabBarItem" title="설정" id="7cy-o7-0aL"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hU8-Mm-CgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="694-UN-CeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="72"/>
+            <point key="canvasLocation" x="139" y="72"/>
         </scene>
     </scenes>
     <resources>

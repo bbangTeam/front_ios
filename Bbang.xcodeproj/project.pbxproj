@@ -7,47 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A540D20F265CEB0F00243B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D20E265CEB0F00243B61 /* AppDelegate.swift */; };
-		A540D211265CEB0F00243B61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D210265CEB0F00243B61 /* SceneDelegate.swift */; };
-		A540D213265CEB0F00243B61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D212265CEB0F00243B61 /* ViewController.swift */; };
-		A540D216265CEB0F00243B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D214265CEB0F00243B61 /* Main.storyboard */; };
-		A540D218265CEB1000243B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A540D217265CEB1000243B61 /* Assets.xcassets */; };
-		A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D219265CEB1000243B61 /* LaunchScreen.storyboard */; };
-		A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */; };
-		A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D250265D0DA500243B61 /* BbangstagramViewController.swift */; };
-		A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D259265D376200243B61 /* Bbangtour.storyboard */; };
-		A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D25C265D379100243B61 /* BbangtourViewController.swift */; };
-		A540D260265D38FF00243B61 /* Bbangmain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D25F265D38FF00243B61 /* Bbangmain.storyboard */; };
-		A540D263265D392A00243B61 /* BbangmainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D262265D392A00243B61 /* BbangmainViewController.swift */; };
-		A540D266265D398900243B61 /* Bbangsearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D265265D398900243B61 /* Bbangsearch.storyboard */; };
-		A540D269265D399500243B61 /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D268265D399500243B61 /* BbangsearchViewController.swift */; };
-		A540D26C265D3A3500243B61 /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A540D26B265D3A3500243B61 /* Bbangset.storyboard */; };
-		A540D26F265D3A4000243B61 /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540D26E265D3A4000243B61 /* BbangsetViewController.swift */; };
+		A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277E9E265E1A6000D4122A /* AppDelegate.swift */; };
+		A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA0265E1A6000D4122A /* SceneDelegate.swift */; };
+		A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA2265E1A6000D4122A /* ViewController.swift */; };
+		A5277EA6265E1A6000D4122A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA4265E1A6000D4122A /* Main.storyboard */; };
+		A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA7265E1A6200D4122A /* Assets.xcassets */; };
+		A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */; };
+		A5277EBC265E1C4900D4122A /* Bbangmain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */; };
+		A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */; };
+		A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */; };
+		A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */; };
+		A5277ECC265E1DF500D4122A /* Bbangstagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */; };
+		A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */; };
+		A5277ED2265E1E6100D4122A /* Bbangsearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */; };
+		A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */; };
+		A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED7265E1ED400D4122A /* Bbangset.storyboard */; };
+		A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A540D20B265CEB0F00243B61 /* Bbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A540D20E265CEB0F00243B61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A540D210265CEB0F00243B61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A540D212265CEB0F00243B61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A540D215265CEB0F00243B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A540D217265CEB1000243B61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A540D21A265CEB1000243B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A540D21C265CEB1000243B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangstagram.storyboard; sourceTree = "<group>"; };
-		A540D250265D0DA500243B61 /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
-		A540D259265D376200243B61 /* Bbangtour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangtour.storyboard; path = ../../../../../Documents/Bbangtour.storyboard; sourceTree = "<group>"; };
-		A540D25C265D379100243B61 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangtourViewController.swift; path = ../../../../../Documents/BbangtourViewController.swift; sourceTree = "<group>"; };
-		A540D25F265D38FF00243B61 /* Bbangmain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangmain.storyboard; path = ../../../../../Documents/Bbangmain.storyboard; sourceTree = "<group>"; };
-		A540D262265D392A00243B61 /* BbangmainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangmainViewController.swift; path = ../../../../../Documents/BbangmainViewController.swift; sourceTree = "<group>"; };
-		A540D265265D398900243B61 /* Bbangsearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangsearch.storyboard; path = ../../../../../Documents/Bbangsearch.storyboard; sourceTree = "<group>"; };
-		A540D268265D399500243B61 /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangsearchViewController.swift; path = ../../../../../Documents/BbangsearchViewController.swift; sourceTree = "<group>"; };
-		A540D26B265D3A3500243B61 /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Bbangset.storyboard; path = ../../../../../Documents/Bbangset.storyboard; sourceTree = "<group>"; };
-		A540D26E265D3A4000243B61 /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BbangsetViewController.swift; path = ../../../../../Documents/BbangsetViewController.swift; sourceTree = "<group>"; };
+		A5277E9B265E1A6000D4122A /* Bbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5277E9E265E1A6000D4122A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5277EA0265E1A6000D4122A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A5277EA2265E1A6000D4122A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5277EA5265E1A6000D4122A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5277EA7265E1A6200D4122A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5277EAA265E1A6200D4122A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5277EAC265E1A6200D4122A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangmain.storyboard; sourceTree = "<group>"; };
+		A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangmainViewController.swift; sourceTree = "<group>"; };
+		A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangtour.storyboard; sourceTree = "<group>"; };
+		A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
+		A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangstagram.storyboard; sourceTree = "<group>"; };
+		A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
+		A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangsearch.storyboard; sourceTree = "<group>"; };
+		A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsearchViewController.swift; sourceTree = "<group>"; };
+		A5277ED7265E1ED400D4122A /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangset.storyboard; sourceTree = "<group>"; };
+		A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A540D208265CEB0F00243B61 /* Frameworks */ = {
+		A5277E98265E1A6000D4122A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,93 +57,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A540D202265CEB0F00243B61 = {
+		A5277E92265E1A6000D4122A = {
 			isa = PBXGroup;
 			children = (
-				A540D20D265CEB0F00243B61 /* Bbang */,
-				A540D20C265CEB0F00243B61 /* Products */,
+				A5277E9D265E1A6000D4122A /* Bbang */,
+				A5277E9C265E1A6000D4122A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A540D20C265CEB0F00243B61 /* Products */ = {
+		A5277E9C265E1A6000D4122A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A540D20B265CEB0F00243B61 /* Bbang.app */,
+				A5277E9B265E1A6000D4122A /* Bbang.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A540D20D265CEB0F00243B61 /* Bbang */ = {
+		A5277E9D265E1A6000D4122A /* Bbang */ = {
 			isa = PBXGroup;
 			children = (
-				A540D20E265CEB0F00243B61 /* AppDelegate.swift */,
-				A540D210265CEB0F00243B61 /* SceneDelegate.swift */,
-				A540D212265CEB0F00243B61 /* ViewController.swift */,
-				A540D214265CEB0F00243B61 /* Main.storyboard */,
-				A540D217265CEB1000243B61 /* Assets.xcassets */,
-				A540D219265CEB1000243B61 /* LaunchScreen.storyboard */,
-				A540D21C265CEB1000243B61 /* Info.plist */,
-				A540D258265D36C600243B61 /* 로그인 화면 */,
-				A540D254265D36A500243B61 /* 메인 */,
-				A540D255265D36B200243B61 /* 빵지순례 */,
-				A540D24C265D0D6500243B61 /* 빵스타그램 */,
-				A540D257265D36C000243B61 /* 주변빵집검색 */,
-				A540D256265D36BA00243B61 /* 설정 */,
+				A5277E9E265E1A6000D4122A /* AppDelegate.swift */,
+				A5277EA0265E1A6000D4122A /* SceneDelegate.swift */,
+				A5277EA2265E1A6000D4122A /* ViewController.swift */,
+				A5277EA4265E1A6000D4122A /* Main.storyboard */,
+				A5277EA7265E1A6200D4122A /* Assets.xcassets */,
+				A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */,
+				A5277EAC265E1A6200D4122A /* Info.plist */,
+				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
+				A5277EB7265E1A9E00D4122A /* 메인 */,
+				A5277EB6265E1A9700D4122A /* 빵지순례 */,
+				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
+				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
+				A5277EB3265E1A7800D4122A /* 설정 */,
 			);
 			path = Bbang;
 			sourceTree = "<group>";
 		};
-		A540D24C265D0D6500243B61 /* 빵스타그램 */ = {
+		A5277EB3265E1A7800D4122A /* 설정 */ = {
 			isa = PBXGroup;
 			children = (
-				A540D24D265D0D7400243B61 /* Bbangstagram.storyboard */,
-				A540D250265D0DA500243B61 /* BbangstagramViewController.swift */,
-			);
-			name = "빵스타그램";
-			path = "빵스타그램";
-			sourceTree = "<group>";
-		};
-		A540D254265D36A500243B61 /* 메인 */ = {
-			isa = PBXGroup;
-			children = (
-				A540D25F265D38FF00243B61 /* Bbangmain.storyboard */,
-				A540D262265D392A00243B61 /* BbangmainViewController.swift */,
-			);
-			name = "메인";
-			path = "메인";
-			sourceTree = "<group>";
-		};
-		A540D255265D36B200243B61 /* 빵지순례 */ = {
-			isa = PBXGroup;
-			children = (
-				A540D259265D376200243B61 /* Bbangtour.storyboard */,
-				A540D25C265D379100243B61 /* BbangtourViewController.swift */,
-			);
-			name = "빵지순례";
-			path = "빵지순례";
-			sourceTree = "<group>";
-		};
-		A540D256265D36BA00243B61 /* 설정 */ = {
-			isa = PBXGroup;
-			children = (
-				A540D26B265D3A3500243B61 /* Bbangset.storyboard */,
-				A540D26E265D3A4000243B61 /* BbangsetViewController.swift */,
+				A5277ED7265E1ED400D4122A /* Bbangset.storyboard */,
+				A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */,
 			);
 			name = "설정";
 			path = "설정";
 			sourceTree = "<group>";
 		};
-		A540D257265D36C000243B61 /* 주변빵집검색 */ = {
+		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
 			isa = PBXGroup;
 			children = (
-				A540D265265D398900243B61 /* Bbangsearch.storyboard */,
-				A540D268265D399500243B61 /* BbangsearchViewController.swift */,
+				A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */,
+				A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */,
 			);
 			name = "주변빵집검색";
 			path = "주변빵집검색";
 			sourceTree = "<group>";
 		};
-		A540D258265D36C600243B61 /* 로그인 화면 */ = {
+		A5277EB5265E1A9000D4122A /* 빵스타그램 */ = {
+			isa = PBXGroup;
+			children = (
+				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
+				A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */,
+			);
+			name = "빵스타그램";
+			path = "빵스타그램";
+			sourceTree = "<group>";
+		};
+		A5277EB6265E1A9700D4122A /* 빵지순례 */ = {
+			isa = PBXGroup;
+			children = (
+				A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */,
+				A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */,
+			);
+			name = "빵지순례";
+			path = "빵지순례";
+			sourceTree = "<group>";
+		};
+		A5277EB7265E1A9E00D4122A /* 메인 */ = {
+			isa = PBXGroup;
+			children = (
+				A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */,
+				A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */,
+			);
+			name = "메인";
+			path = "메인";
+			sourceTree = "<group>";
+		};
+		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -154,13 +154,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A540D20A265CEB0F00243B61 /* Bbang */ = {
+		A5277E9A265E1A6000D4122A /* Bbang */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A540D21F265CEB1000243B61 /* Build configuration list for PBXNativeTarget "Bbang" */;
+			buildConfigurationList = A5277EAF265E1A6200D4122A /* Build configuration list for PBXNativeTarget "Bbang" */;
 			buildPhases = (
-				A540D207265CEB0F00243B61 /* Sources */,
-				A540D208265CEB0F00243B61 /* Frameworks */,
-				A540D209265CEB0F00243B61 /* Resources */,
+				A5277E97265E1A6000D4122A /* Sources */,
+				A5277E98265E1A6000D4122A /* Frameworks */,
+				A5277E99265E1A6000D4122A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -168,24 +168,24 @@
 			);
 			name = Bbang;
 			productName = Bbang;
-			productReference = A540D20B265CEB0F00243B61 /* Bbang.app */;
+			productReference = A5277E9B265E1A6000D4122A /* Bbang.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A540D203265CEB0F00243B61 /* Project object */ = {
+		A5277E93265E1A6000D4122A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					A540D20A265CEB0F00243B61 = {
+					A5277E9A265E1A6000D4122A = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = A540D206265CEB0F00243B61 /* Build configuration list for PBXProject "Bbang" */;
+			buildConfigurationList = A5277E96265E1A6000D4122A /* Build configuration list for PBXProject "Bbang" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -193,65 +193,65 @@
 				en,
 				Base,
 			);
-			mainGroup = A540D202265CEB0F00243B61;
-			productRefGroup = A540D20C265CEB0F00243B61 /* Products */;
+			mainGroup = A5277E92265E1A6000D4122A;
+			productRefGroup = A5277E9C265E1A6000D4122A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A540D20A265CEB0F00243B61 /* Bbang */,
+				A5277E9A265E1A6000D4122A /* Bbang */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A540D209265CEB0F00243B61 /* Resources */ = {
+		A5277E99265E1A6000D4122A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A540D26C265D3A3500243B61 /* Bbangset.storyboard in Resources */,
-				A540D25A265D376200243B61 /* Bbangtour.storyboard in Resources */,
-				A540D21B265CEB1000243B61 /* LaunchScreen.storyboard in Resources */,
-				A540D260265D38FF00243B61 /* Bbangmain.storyboard in Resources */,
-				A540D218265CEB1000243B61 /* Assets.xcassets in Resources */,
-				A540D216265CEB0F00243B61 /* Main.storyboard in Resources */,
-				A540D24E265D0D7400243B61 /* Bbangstagram.storyboard in Resources */,
-				A540D266265D398900243B61 /* Bbangsearch.storyboard in Resources */,
+				A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */,
+				A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */,
+				A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */,
+				A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */,
+				A5277EBC265E1C4900D4122A /* Bbangmain.storyboard in Resources */,
+				A5277EA6265E1A6000D4122A /* Main.storyboard in Resources */,
+				A5277ECC265E1DF500D4122A /* Bbangstagram.storyboard in Resources */,
+				A5277ED2265E1E6100D4122A /* Bbangsearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A540D207265CEB0F00243B61 /* Sources */ = {
+		A5277E97265E1A6000D4122A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A540D269265D399500243B61 /* BbangsearchViewController.swift in Sources */,
-				A540D263265D392A00243B61 /* BbangmainViewController.swift in Sources */,
-				A540D25D265D379100243B61 /* BbangtourViewController.swift in Sources */,
-				A540D213265CEB0F00243B61 /* ViewController.swift in Sources */,
-				A540D26F265D3A4000243B61 /* BbangsetViewController.swift in Sources */,
-				A540D20F265CEB0F00243B61 /* AppDelegate.swift in Sources */,
-				A540D251265D0DA500243B61 /* BbangstagramViewController.swift in Sources */,
-				A540D211265CEB0F00243B61 /* SceneDelegate.swift in Sources */,
+				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
+				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
+				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
+				A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */,
+				A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */,
+				A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */,
+				A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */,
+				A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A540D214265CEB0F00243B61 /* Main.storyboard */ = {
+		A5277EA4265E1A6000D4122A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A540D215265CEB0F00243B61 /* Base */,
+				A5277EA5265E1A6000D4122A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A540D219265CEB1000243B61 /* LaunchScreen.storyboard */ = {
+		A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A540D21A265CEB1000243B61 /* Base */,
+				A5277EAA265E1A6200D4122A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A540D21D265CEB1000243B61 /* Debug */ = {
+		A5277EAD265E1A6200D4122A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -320,7 +320,7 @@
 			};
 			name = Debug;
 		};
-		A540D21E265CEB1000243B61 /* Release */ = {
+		A5277EAE265E1A6200D4122A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -375,12 +375,13 @@
 			};
 			name = Release;
 		};
-		A540D220265CEB1000243B61 /* Debug */ = {
+		A5277EB0265E1A6200D4122A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T6749JX6FZ;
 				INFOPLIST_FILE = Bbang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -393,12 +394,13 @@
 			};
 			name = Debug;
 		};
-		A540D221265CEB1000243B61 /* Release */ = {
+		A5277EB1265E1A6200D4122A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T6749JX6FZ;
 				INFOPLIST_FILE = Bbang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -414,25 +416,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A540D206265CEB0F00243B61 /* Build configuration list for PBXProject "Bbang" */ = {
+		A5277E96265E1A6000D4122A /* Build configuration list for PBXProject "Bbang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A540D21D265CEB1000243B61 /* Debug */,
-				A540D21E265CEB1000243B61 /* Release */,
+				A5277EAD265E1A6200D4122A /* Debug */,
+				A5277EAE265E1A6200D4122A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A540D21F265CEB1000243B61 /* Build configuration list for PBXNativeTarget "Bbang" */ = {
+		A5277EAF265E1A6200D4122A /* Build configuration list for PBXNativeTarget "Bbang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A540D220265CEB1000243B61 /* Debug */,
-				A540D221265CEB1000243B61 /* Release */,
+				A5277EB0265E1A6200D4122A /* Debug */,
+				A5277EB1265E1A6200D4122A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A540D203265CEB0F00243B61 /* Project object */;
+	rootObject = A5277E93265E1A6000D4122A /* Project object */;
 }
