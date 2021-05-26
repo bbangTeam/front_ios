@@ -20,6 +20,7 @@
                         <segue destination="Agq-sZ-J6X" kind="relationship" relationship="viewControllers" id="RP5-eM-EQP"/>
                         <segue destination="Leq-hH-dgy" kind="relationship" relationship="viewControllers" id="l1a-G6-ebD"/>
                         <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="cZe-hm-gMi"/>
+                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="egs-hC-Hbp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SX7-BZ-qfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -44,7 +45,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xq-ZlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="353"/>
+            <point key="canvasLocation" x="117" y="344"/>
         </scene>
         <!--BbangstagramViewController-->
         <scene sceneID="ozK-CR-Ovq">
@@ -54,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-WW-9ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="431"/>
+            <point key="canvasLocation" x="139" y="424"/>
         </scene>
         <!--BbangsearchViewController-->
         <scene sceneID="JBr-T2-uBb">
@@ -65,6 +66,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyU-F3-zjI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133" y="506"/>
+        </scene>
+        <!--BbangsetViewController-->
+        <scene sceneID="7Mr-Zq-Oi4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Bbangset" referencedIdentifier="BbangsetViewController" id="ZdD-ah-ZIN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="VkE-Ac-epS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2C-X2-70Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117" y="577"/>
         </scene>
     </scenes>
 </document>

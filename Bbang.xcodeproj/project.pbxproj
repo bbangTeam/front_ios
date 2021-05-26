@@ -21,6 +21,8 @@
 		A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */; };
 		A5277ED2265E1E6100D4122A /* Bbangsearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */; };
 		A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */; };
+		A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED7265E1ED400D4122A /* Bbangset.storyboard */; };
+		A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
 		A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangsearch.storyboard; sourceTree = "<group>"; };
 		A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsearchViewController.swift; sourceTree = "<group>"; };
+		A5277ED7265E1ED400D4122A /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangset.storyboard; sourceTree = "<group>"; };
+		A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 		A5277EB3265E1A7800D4122A /* 설정 */ = {
 			isa = PBXGroup;
 			children = (
+				A5277ED7265E1ED400D4122A /* Bbangset.storyboard */,
+				A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */,
 			);
 			name = "설정";
 			path = "설정";
@@ -202,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */,
 				A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */,
 				A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */,
 				A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */,
@@ -223,6 +230,7 @@
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
 				A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */,
+				A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */,
 				A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */,
 				A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */,
 				A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */,
