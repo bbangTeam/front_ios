@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Bbang
 //
-//  Created by 소영 on 2021/05/25.
+//  Created by 소영 on 2021/05/26.
 //
 
 import UIKit
