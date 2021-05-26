@@ -7,25 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89AC9542265E28BE005605D5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89AC9541265E28BE005605D5 /* Home.storyboard */; };
+		89AC9544265E28D4005605D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC9543265E28D4005605D5 /* HomeViewController.swift */; };
+		89AC9546265E28E7005605D5 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC9545265E28E7005605D5 /* MapSearchViewController.swift */; };
+		89AC9548265E28F5005605D5 /* MapSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89AC9547265E28F5005605D5 /* MapSearch.storyboard */; };
+		89AC954A265E35F6005605D5 /* WelcomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC9549265E35F6005605D5 /* WelcomeFeedVC.swift */; };
+		89AC954C265E3607005605D5 /* TourQuickLookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC954B265E3607005605D5 /* TourQuickLookVC.swift */; };
+		89AC954E265E3613005605D5 /* WorldCupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC954D265E3613005605D5 /* WorldCupVC.swift */; };
+		89AC9550265E3635005605D5 /* BbangStarQuikLookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC954F265E3635005605D5 /* BbangStarQuikLookVC.swift */; };
 		A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277E9E265E1A6000D4122A /* AppDelegate.swift */; };
 		A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA0265E1A6000D4122A /* SceneDelegate.swift */; };
 		A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA2265E1A6000D4122A /* ViewController.swift */; };
 		A5277EA6265E1A6000D4122A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA4265E1A6000D4122A /* Main.storyboard */; };
 		A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA7265E1A6200D4122A /* Assets.xcassets */; };
 		A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */; };
-		A5277EBC265E1C4900D4122A /* Bbangmain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */; };
-		A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */; };
 		A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */; };
 		A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */; };
 		A5277ECC265E1DF500D4122A /* Bbangstagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */; };
 		A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */; };
-		A5277ED2265E1E6100D4122A /* Bbangsearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */; };
-		A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */; };
 		A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED7265E1ED400D4122A /* Bbangset.storyboard */; };
 		A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89AC9541265E28BE005605D5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		89AC9543265E28D4005605D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		89AC9545265E28E7005605D5 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		89AC9547265E28F5005605D5 /* MapSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapSearch.storyboard; sourceTree = "<group>"; };
+		89AC9549265E35F6005605D5 /* WelcomeFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFeedVC.swift; sourceTree = "<group>"; };
+		89AC954B265E3607005605D5 /* TourQuickLookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourQuickLookVC.swift; sourceTree = "<group>"; };
+		89AC954D265E3613005605D5 /* WorldCupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCupVC.swift; sourceTree = "<group>"; };
+		89AC954F265E3635005605D5 /* BbangStarQuikLookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangStarQuikLookVC.swift; sourceTree = "<group>"; };
 		A5277E9B265E1A6000D4122A /* Bbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5277E9E265E1A6000D4122A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5277EA0265E1A6000D4122A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,14 +46,10 @@
 		A5277EA7265E1A6200D4122A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5277EAA265E1A6200D4122A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5277EAC265E1A6200D4122A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangmain.storyboard; sourceTree = "<group>"; };
-		A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangmainViewController.swift; sourceTree = "<group>"; };
 		A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangtour.storyboard; sourceTree = "<group>"; };
 		A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
 		A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangstagram.storyboard; sourceTree = "<group>"; };
 		A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstagramViewController.swift; sourceTree = "<group>"; };
-		A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangsearch.storyboard; sourceTree = "<group>"; };
-		A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsearchViewController.swift; sourceTree = "<group>"; };
 		A5277ED7265E1ED400D4122A /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangset.storyboard; sourceTree = "<group>"; };
 		A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,10 +91,9 @@
 				A5277EA7265E1A6200D4122A /* Assets.xcassets */,
 				A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */,
 				A5277EAC265E1A6200D4122A /* Info.plist */,
-				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
-				A5277EB7265E1A9E00D4122A /* 메인 */,
 				A5277EB6265E1A9700D4122A /* 빵지순례 */,
 				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
+				A5277EB7265E1A9E00D4122A /* 메인 */,
 				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
 				A5277EB3265E1A7800D4122A /* 설정 */,
 			);
@@ -106,8 +113,8 @@
 		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
 			isa = PBXGroup;
 			children = (
-				A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */,
-				A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */,
+				89AC9545265E28E7005605D5 /* MapSearchViewController.swift */,
+				89AC9547265E28F5005605D5 /* MapSearch.storyboard */,
 			);
 			name = "주변빵집검색";
 			path = "주변빵집검색";
@@ -136,19 +143,15 @@
 		A5277EB7265E1A9E00D4122A /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
-				A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */,
-				A5277EBE265E1C5400D4122A /* BbangmainViewController.swift */,
+				89AC9541265E28BE005605D5 /* Home.storyboard */,
+				89AC9549265E35F6005605D5 /* WelcomeFeedVC.swift */,
+				89AC9543265E28D4005605D5 /* HomeViewController.swift */,
+				89AC954B265E3607005605D5 /* TourQuickLookVC.swift */,
+				89AC954F265E3635005605D5 /* BbangStarQuikLookVC.swift */,
+				89AC954D265E3613005605D5 /* WorldCupVC.swift */,
 			);
 			name = "메인";
 			path = "메인";
-			sourceTree = "<group>";
-		};
-		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "로그인 화면";
-			path = "로그인 화면";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,14 +211,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89AC9542265E28BE005605D5 /* Home.storyboard in Resources */,
 				A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */,
 				A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */,
 				A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */,
 				A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */,
-				A5277EBC265E1C4900D4122A /* Bbangmain.storyboard in Resources */,
 				A5277EA6265E1A6000D4122A /* Main.storyboard in Resources */,
 				A5277ECC265E1DF500D4122A /* Bbangstagram.storyboard in Resources */,
-				A5277ED2265E1E6100D4122A /* Bbangsearch.storyboard in Resources */,
+				89AC9548265E28F5005605D5 /* MapSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,13 +229,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
 				A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */,
+				89AC9546265E28E7005605D5 /* MapSearchViewController.swift in Sources */,
 				A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */,
+				89AC954A265E35F6005605D5 /* WelcomeFeedVC.swift in Sources */,
 				A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */,
-				A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */,
+				89AC954C265E3607005605D5 /* TourQuickLookVC.swift in Sources */,
+				89AC9550265E3635005605D5 /* BbangStarQuikLookVC.swift in Sources */,
+				89AC954E265E3613005605D5 /* WorldCupVC.swift in Sources */,
+				89AC9544265E28D4005605D5 /* HomeViewController.swift in Sources */,
 				A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

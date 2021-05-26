@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7iI-6B-C6r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7iI-6B-C6r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,26 +16,26 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="G1C-La-D3T" kind="relationship" relationship="viewControllers" id="Fk9-Uj-pDD"/>
                         <segue destination="Agq-sZ-J6X" kind="relationship" relationship="viewControllers" id="RP5-eM-EQP"/>
                         <segue destination="Leq-hH-dgy" kind="relationship" relationship="viewControllers" id="l1a-G6-ebD"/>
-                        <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="cZe-hm-gMi"/>
-                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="egs-hC-Hbp"/>
+                        <segue destination="G1C-La-D3T" kind="relationship" relationship="viewControllers" id="5KD-Be-eBa"/>
+                        <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="kev-Z2-viy"/>
+                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="IZk-eY-ZuG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SX7-BZ-qfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-716" y="443"/>
         </scene>
-        <!--BbangmainViewController-->
+        <!--Home-->
         <scene sceneID="cKQ-sG-Fro">
             <objects>
-                <viewControllerPlaceholder storyboardName="Bbangmain" referencedIdentifier="BbangmainViewController" id="G1C-La-D3T" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="Home" id="G1C-La-D3T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RHg-di-SMq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77a-A5-frZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="261"/>
+            <point key="canvasLocation" x="-6" y="382"/>
         </scene>
         <!--BbangtourViewController-->
         <scene sceneID="TCc-51-wkt">
@@ -45,7 +45,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xq-ZlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="344"/>
+            <point key="canvasLocation" x="70" y="234"/>
         </scene>
         <!--BbangstagramViewController-->
         <scene sceneID="ozK-CR-Ovq">
@@ -55,17 +55,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-WW-9ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="424"/>
+            <point key="canvasLocation" x="87" y="298"/>
         </scene>
-        <!--BbangsearchViewController-->
+        <!--MapSearch-->
         <scene sceneID="JBr-T2-uBb">
             <objects>
-                <viewControllerPlaceholder storyboardName="Bbangsearch" referencedIdentifier="BbangsearchViewController" id="nzV-Mu-YDd" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MapSearch" referencedIdentifier="MapSearch" id="nzV-Mu-YDd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="u4w-ch-IIE"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyU-F3-zjI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="506"/>
+            <point key="canvasLocation" x="7" y="443"/>
         </scene>
         <!--BbangsetViewController-->
         <scene sceneID="7Mr-Zq-Oi4">
@@ -75,7 +75,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2C-X2-70Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="577"/>
+            <point key="canvasLocation" x="65" y="511"/>
         </scene>
     </scenes>
 </document>

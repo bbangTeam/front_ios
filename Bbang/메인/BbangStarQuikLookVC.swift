@@ -1,13 +1,13 @@
 //
-//  BbangsearchViewController.swift
+//  BbangStarQuikLookVC.swift
 //  Bbang
 //
-//  Created by 소영 on 2021/05/26.
+//  Created by bart Shin on 26/05/2021.
 //
 
 import UIKit
 
-class BbangsearchViewController: UIViewController {
+class BbangStarQuikLookVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
