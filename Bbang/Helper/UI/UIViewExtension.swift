@@ -28,7 +28,13 @@ extension UIView {
 		return image
 	}
 	
-	static func createShadowView(in parentView: UIView?, behind originalView: UIView?, radius: CGFloat = 10, opacity: Float = 0.3, offset: CGSize = .zero) -> UIView? {
+	static func createShadowView(in parentView: UIView?,
+															 behind originalView: UIView?,
+															 radius: CGFloat = 10,
+															 opacity: Float = 0.3,
+															 widthScale: CGFloat = 0.8,
+															 heightScale: CGFloat = 0.9,
+															 offset: CGSize = .zero) -> UIView? {
 		guard let view = originalView else {
 			return nil
 		}
@@ -42,8 +48,6 @@ extension UIView {
 		shadow.layer.shadowOffset = offset
 		parentView?.insertSubview(shadow, belowSubview: view)
 		
-		let widthScale: CGFloat = 0.8
-		let heightScale: CGFloat = 0.9
 		shadow.snp.makeConstraints {
 			$0.width.equalTo(view.snp.width).multipliedBy(widthScale)
 			$0.height.equalTo(view.snp.height).multipliedBy(heightScale)
