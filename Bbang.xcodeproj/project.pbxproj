@@ -23,6 +23,7 @@
 		A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */; };
 		A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5277ED7265E1ED400D4122A /* Bbangset.storyboard */; };
 		A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */; };
+		A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A5277ED4265E1E6C00D4122A /* BbangsearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsearchViewController.swift; sourceTree = "<group>"; };
 		A5277ED7265E1ED400D4122A /* Bbangset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bbangset.storyboard; sourceTree = "<group>"; };
 		A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsetViewController.swift; sourceTree = "<group>"; };
+		A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
 				A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */,
+				A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */,
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
@@ -228,6 +231,7 @@
 			files = (
 				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
+				A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
 				A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */,
 				A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */,
