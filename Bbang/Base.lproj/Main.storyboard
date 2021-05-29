@@ -16,11 +16,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Agq-sZ-J6X" kind="relationship" relationship="viewControllers" id="RP5-eM-EQP"/>
-                        <segue destination="Leq-hH-dgy" kind="relationship" relationship="viewControllers" id="l1a-G6-ebD"/>
-                        <segue destination="G1C-La-D3T" kind="relationship" relationship="viewControllers" id="5KD-Be-eBa"/>
-                        <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="kev-Z2-viy"/>
-                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="IZk-eY-ZuG"/>
+                        <segue destination="G1C-La-D3T" kind="relationship" relationship="viewControllers" id="1ye-TY-eao"/>
+                        <segue destination="Agq-sZ-J6X" kind="relationship" relationship="viewControllers" id="ajy-EK-Ys6"/>
+                        <segue destination="Leq-hH-dgy" kind="relationship" relationship="viewControllers" id="XWo-yw-W12"/>
+                        <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="DgX-GP-d41"/>
+                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="eVF-p2-V1L"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SX7-BZ-qfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -35,7 +35,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77a-A5-frZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="382"/>
+            <point key="canvasLocation" x="-7" y="244"/>
         </scene>
         <!--BbangtourViewController-->
         <scene sceneID="TCc-51-wkt">
@@ -45,7 +45,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xq-ZlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="234"/>
+            <point key="canvasLocation" x="68" y="327"/>
         </scene>
         <!--BbangstagramViewController-->
         <scene sceneID="ozK-CR-Ovq">
@@ -55,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-WW-9ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="298"/>
+            <point key="canvasLocation" x="86" y="392"/>
         </scene>
         <!--MapSearch-->
         <scene sceneID="JBr-T2-uBb">
