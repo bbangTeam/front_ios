@@ -19,7 +19,13 @@ class BbangstagramViewController: UIViewController {
         BbangstaCollectionView.delegate = self
         BbangstaCollectionView.dataSource = self
         
- //       BbangstaCollectionView.register(BbangstaCollectionViewCell.self, forCellWithReuseIdentifier: "BbangstaCollectionViewCell")
+        let flowLayout: UICollectionViewFlowLayout
+        flowLayout = UICollectionViewFlowLayout()
+        
+        let width = UIScreen.main.bounds.width
+        flowLayout.itemSize = CGSize(width: width, height: 500)
+
+        BbangstaCollectionView.collectionViewLayout = flowLayout
 
     }
     
@@ -28,13 +34,13 @@ class BbangstagramViewController: UIViewController {
 extension BbangstagramViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaCollectionViewCell", for: indexPath) as! BbangstaCollectionViewCell
         
-        cell.backgroundColor = .blue
+        cell.backgroundColor = #colorLiteral(red: 0.9527208209, green: 0.9568652511, blue: 0.9608766437, alpha: 1)
 
         return cell
     }
@@ -47,24 +53,9 @@ extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
     // 위 아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 1
+        return 10
     }
     
-    // 옆 간격
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            
-            return 1
-        }
-    
-    // cell 사이즈
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            let width = collectionView.frame.width
-            let size = CGSize(width: width, height: width)
-            
-            return size
-            
-        }
     
     
 }
