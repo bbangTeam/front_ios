@@ -40,7 +40,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaCollectionViewCell", for: indexPath) as! BbangstaCollectionViewCell
         
-        cell.backgroundColor = #colorLiteral(red: 0.9527208209, green: 0.9568652511, blue: 0.9608766437, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
 
         return cell
     }
