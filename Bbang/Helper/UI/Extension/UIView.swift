@@ -11,6 +11,11 @@ import UIKit
 import SnapKit
 
 extension UIView {
+	
+	class func fromNib<T: UIView>() -> T {
+		return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+	}
+	
 	func takeSnapshot(_ frame: CGRect) -> UIImage? {
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
 		

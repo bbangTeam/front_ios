@@ -44,13 +44,22 @@ class SlideCardCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initLayers()
-		shadowView = UIView.createShadowView(in: contentView, behind: frontContainerView)
+		if dropShadow {
+			shadowView = UIView.createShadowView(
+				in: contentView,
+				behind: frontContainerView)
+		}
 	}
 	
 	open override func awakeFromNib() {
 		super.awakeFromNib()
 		initLayers()
-		shadowView = UIView.createShadowView(in: contentView, behind: frontContainerView)
+		if dropShadow {
+			shadowView = UIView.createShadowView(
+				in: contentView,
+				behind: frontContainerView,
+				heightScale: 0.7)
+		}
 	}
 	
 	fileprivate func initLayers() {

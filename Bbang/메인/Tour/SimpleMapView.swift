@@ -13,7 +13,7 @@ class SimpleMapView: UIView{
 	var strokeColor = UIColor.black.cgColor
 	var defaultColor = UIColor.clear.cgColor
 	var selectedColor = UIColor.blue.cgColor
-	var selectedArea: MapPath.Area? {
+	var selectedArea: Area? {
 		didSet {
 			changeColor(of: selectedArea, to: selectedColor)
 		}
@@ -21,7 +21,7 @@ class SimpleMapView: UIView{
 	private let originalMapSize = CGSize(width: 619, height: 629)
 
 	private var paths = MapPath()
-	var areas = [MapPath.Area]()
+	var areas = [Area]()
 	
 	override func draw(_ rect: CGRect) {
 		layer.sublayers = areas.compactMap{
@@ -29,7 +29,7 @@ class SimpleMapView: UIView{
 		}
 	}
 	
-	func getFrame(of area: MapPath.Area) -> CGRect?{
+	func getFrame(of area: Area) -> CGRect?{
 		var found: CGRect?
 		layer.sublayers?.forEach({
 			if let mapLayer = $0 as? CAShapeLayer,
@@ -40,13 +40,13 @@ class SimpleMapView: UIView{
 		return found
 	}
 	
-	func findMap(contain location: CGPoint) -> (map: MapPath.Area, frame: CGRect)? {
-		var found: (MapPath.Area, CGRect)?
+	func findMap(contain location: CGPoint) -> (map: Area, frame: CGRect)? {
+		var found: (Area, CGRect)?
 		layer.sublayers?.forEach({
 			if let mapLayer = $0 as? CAShapeLayer,
 				 mapLayer.path!.boundingBox.contains(location),
 				 mapLayer.name != nil,
-				 let area = MapPath.Area(rawValue: mapLayer.name!){
+				 let area = Area(rawValue: mapLayer.name!){
 				let areaOrigin = CGPoint(
 					x: mapLayer.path!.boundingBox.origin.x,
 					y: mapLayer.path!.boundingBox.origin.y )
@@ -57,7 +57,7 @@ class SimpleMapView: UIView{
 		return found
 	}
 	
-	private func changeColor(of area: MapPath.Area?, to color: CGColor) {
+	private func changeColor(of area: Area?, to color: CGColor) {
 		let indexToPaint: Int?
 		if let toPaint = area {
 			indexToPaint = layer.sublayers?.firstIndex(where: {
@@ -73,7 +73,7 @@ class SimpleMapView: UIView{
 		}
 	}
 	
-	func createLayer(for area: MapPath.Area) -> CAShapeLayer {
+	func createLayer(for area: Area) -> CAShapeLayer {
 		let layer = CAShapeLayer()
 		let path = MapPath.getPath(for: area)
 		layer.frame = bounds
@@ -91,11 +91,30 @@ class SimpleMapView: UIView{
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	enum Area: String, CaseIterable {
+		case gyeonggi
+		case gangwon
+		case jeju
+		case northChungcheong
+		case southChungcheong
+		case northJeolla
+		case southJeolla
+		case northGyeongsang
+		case southGyeongsang
+		case seoul
+		case busan
+		case incheon
+		case daejeon
+		case daegu
+		case gwangju
+		case ulsan
+	}
 }
 
 struct MapPath {
 
-	static func getPath(for area: Area) -> UIBezierPath {
+	static func getPath(for area: SimpleMapView.Area) -> UIBezierPath {
 		switch area {
 		case .seoul:
 			return seoul
@@ -130,25 +149,6 @@ struct MapPath {
 		case .incheon:
 			return incheon
 		}
-	}
-	
-	enum Area: String, CaseIterable {
-		case gyeonggi
-		case gangwon
-		case jeju
-		case northChungcheong
-		case southChungcheong
-		case northJeolla
-		case southJeolla
-		case northGyeongsang
-		case southGyeongsang
-		case seoul
-		case busan
-		case incheon
-		case daejeon
-		case daegu
-		case gwangju
-		case ulsan
 	}
 
 	fileprivate static var sejong: UIBezierPath {
