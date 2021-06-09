@@ -140,10 +140,10 @@
             </objects>
             <point key="canvasLocation" x="-252.17391304347828" y="71.651785714285708"/>
         </scene>
-        <!--Bbangsta Write View Controller-->
+        <!--빵스타 글쓰기-->
         <scene sceneID="E3i-Nu-AhU">
             <objects>
-                <viewController storyboardIdentifier="BbangstaWriteViewController" id="oih-Ms-DOu" customClass="BbangstaWriteViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BbangstaWriteViewController" title="빵스타 글쓰기" id="oih-Ms-DOu" customClass="BbangstaWriteViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mpd-8w-f7f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6q-LK-oaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556.52173913043487" y="71.651785714285708"/>
+            <point key="canvasLocation" x="483" y="72"/>
         </scene>
     </scenes>
     <resources>
