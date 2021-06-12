@@ -133,7 +133,7 @@
                     <tabBarItem key="tabBarItem" title="빵스타그램" id="fmd-cJ-4Pu"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="BbangstaCollectionView" destination="eYK-dP-vhk" id="Nyr-xK-PzQ"/>
+                        <outlet property="bbangstaCollectionView" destination="eYK-dP-vhk" id="Nyr-xK-PzQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU8-Mm-CgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

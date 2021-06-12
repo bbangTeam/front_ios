@@ -180,6 +180,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Pb7-IO-iXC"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bbangtourTableView" destination="lad-w1-M57" id="Rt1-Ix-wpF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEr-bY-9Tl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

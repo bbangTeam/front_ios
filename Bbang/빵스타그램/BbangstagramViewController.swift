@@ -10,14 +10,14 @@ import UIKit
 class BbangstagramViewController: UIViewController {
 
     
-    @IBOutlet var BbangstaCollectionView: UICollectionView!
+    @IBOutlet var bbangstaCollectionView: UICollectionView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BbangstaCollectionView.delegate = self
-        BbangstaCollectionView.dataSource = self
+        bbangstaCollectionView.delegate = self
+        bbangstaCollectionView.dataSource = self
         
         let flowLayout: UICollectionViewFlowLayout
         flowLayout = UICollectionViewFlowLayout()
@@ -25,7 +25,7 @@ class BbangstagramViewController: UIViewController {
         let width = UIScreen.main.bounds.width
         flowLayout.itemSize = CGSize(width: width, height: 500)
 
-        BbangstaCollectionView.collectionViewLayout = flowLayout
+        bbangstaCollectionView.collectionViewLayout = flowLayout
 
     }
     
