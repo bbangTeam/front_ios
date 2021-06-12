@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="125" y="261"/>
         </scene>
-        <!--BbangtourViewController-->
+        <!--BbangtourNavigationController-->
         <scene sceneID="TCc-51-wkt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Bbangtour" referencedIdentifier="BbangtourViewController" id="Agq-sZ-J6X" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Bbangtour" referencedIdentifier="BbangtourNavigationController" id="Agq-sZ-J6X" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="2yk-pZ-8ER"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xq-ZlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
