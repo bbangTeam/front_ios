@@ -8,7 +8,12 @@
 import UIKit
 
 class BbangtourTableViewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet var bbangtourImageView: UIImageView!
+    
+    @IBOutlet var bbangtourBreadTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
