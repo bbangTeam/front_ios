@@ -198,6 +198,21 @@
             </objects>
             <point key="canvasLocation" x="483" y="72"/>
         </scene>
+        <!--빵스타 댓글-->
+        <scene sceneID="3CH-7b-h2d">
+            <objects>
+                <viewController title="빵스타 댓글" id="oFF-j5-jbX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NBX-f7-3IU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aYb-Mr-wrz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GpV-5A-LKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="72"/>
+        </scene>
     </scenes>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
