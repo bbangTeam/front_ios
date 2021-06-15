@@ -13,6 +13,7 @@ class BbangtourTableViewCell: UITableViewCell {
     @IBOutlet var bbangtourImageView: UIImageView!
     
     @IBOutlet var bbangtourBreadTimeLabel: UILabel!
+    @IBOutlet var bbangtourStoreTimeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

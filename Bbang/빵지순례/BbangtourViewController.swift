@@ -33,11 +33,13 @@ extension BbangtourViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BbangtourTableViewCell", for: indexPath) as! BbangtourTableViewCell
         
-        cell.bbangtourImageView.layer.cornerRadius = 10
+        cell.bbangtourImageView.layer.cornerRadius = 8
         
-        cell.bbangtourBreadTimeLabel.layer.borderWidth = 1
-        cell.bbangtourBreadTimeLabel.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        cell.bbangtourBreadTimeLabel.layer.cornerRadius = 5
+        cell.bbangtourBreadTimeLabel.layer.masksToBounds = true
+        cell.bbangtourBreadTimeLabel.layer.cornerRadius = 2
+        cell.bbangtourStoreTimeLabel.layer.masksToBounds = true
+        cell.bbangtourStoreTimeLabel.layer.cornerRadius = 2
+        
         
         return cell
         
