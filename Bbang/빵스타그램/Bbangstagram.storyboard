@@ -130,7 +130,7 @@
                             <constraint firstItem="eYK-dP-vhk" firstAttribute="leading" secondItem="g3R-gl-jPI" secondAttribute="leading" id="pyZ-GC-026"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="빵스타그램" id="fmd-cJ-4Pu"/>
+                    <tabBarItem key="tabBarItem" title="빵스타그램" image="heart" catalog="system" selectedImage="heart.fill" id="fmd-cJ-4Pu"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bbangstaCollectionView" destination="eYK-dP-vhk" id="Nyr-xK-PzQ"/>
@@ -216,6 +216,7 @@
     </scenes>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

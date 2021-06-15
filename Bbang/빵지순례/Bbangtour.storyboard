@@ -202,7 +202,7 @@
         <scene sceneID="Bx9-4k-nZZ">
             <objects>
                 <navigationController storyboardIdentifier="BbangtourNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="zkM-Bl-3u3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="빵지순례" id="QEB-ph-Rwa"/>
+                    <tabBarItem key="tabBarItem" title="빵지순례" image="heart" catalog="system" selectedImage="heart.fill" id="QEB-ph-Rwa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EgQ-12-KcX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -221,6 +221,8 @@
     </scenes>
     <resources>
         <image name="flag" catalog="system" width="128" height="121"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
