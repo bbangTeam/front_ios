@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetVC" customModule="Bbang" customModuleProvider="target">
             <connections>
+                <outlet property="handleBar" destination="HH3-PI-J9F" id="q5o-9Y-I2H"/>
                 <outlet property="sheetHandle" destination="XIO-ga-a9a" id="U8u-rh-ad6"/>
-                <outlet property="tableView" destination="4iy-np-ChE" id="s96-ke-40X"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7iU-Aa-zqk"/>
             </connections>
         </placeholder>
@@ -20,25 +20,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIO-ga-a9a">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIO-ga-a9a">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HH3-PI-J9F">
+                            <rect key="frame" x="182" y="7.5" width="50" height="5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="c8F-nP-1uQ"/>
+                                <constraint firstAttribute="width" constant="50" id="nSR-fW-XTf"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="HH3-PI-J9F" firstAttribute="centerY" secondItem="XIO-ga-a9a" secondAttribute="centerY" id="CNq-dA-9qY"/>
+                        <constraint firstAttribute="height" constant="20" id="efJ-wD-3AW"/>
+                        <constraint firstItem="HH3-PI-J9F" firstAttribute="centerX" secondItem="XIO-ga-a9a" secondAttribute="centerX" id="vav-QO-VIX"/>
+                    </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4iy-np-ChE">
-                    <rect key="frame" x="0.0" y="384" width="414" height="128"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4iy-np-ChE" secondAttribute="trailing" id="0ZU-cb-5IW"/>
                 <constraint firstAttribute="trailing" secondItem="XIO-ga-a9a" secondAttribute="trailing" id="5YZ-iG-vDw"/>
                 <constraint firstItem="XIO-ga-a9a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9eI-QC-gfb"/>
                 <constraint firstAttribute="top" secondItem="XIO-ga-a9a" secondAttribute="top" id="B0q-EO-CuA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4iy-np-ChE" secondAttribute="bottom" id="NUy-RZ-q37"/>
-                <constraint firstItem="4iy-np-ChE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lDH-8r-qtX"/>
-                <constraint firstItem="4iy-np-ChE" firstAttribute="top" secondItem="XIO-ga-a9a" secondAttribute="bottom" id="qiM-ia-JLz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-13" y="154"/>

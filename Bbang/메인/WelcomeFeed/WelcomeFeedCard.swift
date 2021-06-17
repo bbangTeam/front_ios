@@ -1,21 +1,28 @@
 //
-//  WelcomFeedCard.swift
+//  WelcomeFeedCard.swift
 //  Bbang
 //
-//  Created by bart Shin on 27/05/2021.
+//  Created by bart Shin on 07/06/2021.
 //
 
 import UIKit
 
-class WelcomeFeedCard: SlideCardCell {
-	@IBOutlet weak var cardImage: UIImageView!
+class WelcomeFeedCard: UIView {
+
 	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var descriptionText: UITextView!
+	@IBOutlet weak var subtitleLabel: UILabel!
+	@IBOutlet weak var backgroundView: UIImageView!
 	
 	override func awakeFromNib() {
-		super.awakeFromNib()
-		additionalWidth = 100
-		additionalHeight = 200
-		cardImage.layer.cornerRadius = 30
+		titleLabel.textColor = DesignConstant.getUIColor(palette: .onSecondary(for: .high))
+		subtitleLabel.textColor = DesignConstant.getUIColor(palette: .onSecondary(for: .high))
+		titleLabel.font = DesignConstant.getUIFont(
+			.init(family: .NotoSansCJKkr, style: .headline(scale: 2)))
+		subtitleLabel.font = DesignConstant.getUIFont(
+			.init(family: .NotoSansCJKkr, style: .headline(scale: 5)))
+		subtitleLabel.snp.makeConstraints {
+			$0.width.lessThanOrEqualTo(self.snp.width).multipliedBy(0.5)
+		}
+		subtitleLabel.numberOfLines = 2
 	}
 }

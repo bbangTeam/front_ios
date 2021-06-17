@@ -10,48 +10,54 @@ import UIKit
 protocol ContainSheet: UIViewController {
 	
 	var sheetVC: Collapsable { get }
-	var blurView: UIVisualEffectView! { get set }
-	var blurAnimator: UIViewPropertyAnimator? { get set }
+	var durationForMoveSheet: TimeInterval { get }
+	var sheetAnimator: UIViewPropertyAnimator? { get set }
 	var sheetPauseFraction: CGFloat { get set }
+	var blurView: UIVisualEffectView? { get }
+	var blurEffect: UIBlurEffect? { get }
+	func additionalAnimation(toCollapse: Bool) -> Void
 }
 
 extension ContainSheet {
 	
 	func moveSheet() {
-		guard blurAnimator == nil, sheetVC.frameAnimator == nil else {
+		guard sheetAnimator == nil, sheetVC.frameAnimator == nil else {
 			return
 		}
-		let blur: UIBlurEffect? = sheetVC.isCollapsed ? UIBlurEffect(style: .light): nil
-		sheetVC.changeState(toCollapse: sheetVC.isCollapsed ? false: true ,duration: 1, dampingRatio: 1)
-		let animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak weakSelf = self] in
-				weakSelf?.blurView.effect = blur
+		let toCollapse = !sheetVC.isCollapsed
+		sheetVC.changeState(toCollapse: toCollapse,
+												duration: durationForMoveSheet, dampingRatio: 1)
+		let animator = UIViewPropertyAnimator(duration: durationForMoveSheet, curve: .linear) { [weak weakSelf = self] in
+			weakSelf?.blurView?.effect = weakSelf?.blurEffect
+		}
+		animator.addAnimations { [weak weakSelf = self] in
+			weakSelf?.additionalAnimation(toCollapse: toCollapse)
 		}
 		animator.addCompletion { [weak weakSelf = self] _ in
-			weakSelf?.blurAnimator = nil
+			weakSelf?.sheetAnimator = nil
 		}
-		blurAnimator = animator
+		sheetAnimator = animator
 		animator.startAnimation()
 	}
 	
-	
 	func startDragSheet() {
-		if blurAnimator == nil && sheetVC.frameAnimator == nil {
+		if sheetAnimator == nil && sheetVC.frameAnimator == nil {
 			moveSheet()
 		}
-		blurAnimator?.pauseAnimation()
+		sheetAnimator?.pauseAnimation()
 		sheetVC.frameAnimator?.pauseAnimation()
-		sheetPauseFraction = blurAnimator?.fractionComplete ?? 0
+		sheetPauseFraction = sheetAnimator?.fractionComplete ?? 0
 	}
 	
 	func updateSheetState(_ delta: CGFloat) {
-		blurAnimator?.fractionComplete = sheetPauseFraction + delta
+		sheetAnimator?.fractionComplete = sheetPauseFraction + delta
 		sheetVC.frameAnimator?.fractionComplete = sheetPauseFraction + delta
 	}
 	
 	func continueSheetMoving(toReverse: Bool) {
-		blurAnimator?.isReversed = toReverse
+		sheetAnimator?.isReversed = toReverse
 		sheetVC.frameAnimator?.isReversed = toReverse
-		blurAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		sheetAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 		sheetVC.frameAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 	}
 }

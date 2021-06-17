@@ -10,25 +10,54 @@ import MapKit
 
 class MapSearchViewController: UIViewController {
 
-	@IBOutlet weak var mapView: MKMapView!
+	var server: ServerDataOperator!
 	var location: LocationGather!
-	var bottomVC: BottomSheetVC!
+	var mapSearchController: MapSearchController!
+	private var bottomVC: BottomSheetVC!
 	var sheetVC: Collapsable {
 		bottomVC
 	}
-	var blurView: UIVisualEffectView!
-	var blurAnimator: UIViewPropertyAnimator?
+	@IBOutlet private weak var mapView: MKMapView!
+	var sheetAnimator: UIViewPropertyAnimator?
 	var sheetPauseFraction: CGFloat = 0
-	var searchController: UISearchController!
+	private var searchController: UISearchController!
+	private let searchButton = UIButton()
+	private let cancelButton = UIButton()
+	private let searchBarButtonSize: CGFloat = 40
+	private var navigationBarHeight: CGFloat {
+		view.bounds.width * (48.0/375.0)
+	}
+	private var minimumMapHeight: CGFloat {
+		view.bounds.width * (280.0/375.0)
+	}
+	var durationForMoveSheet: TimeInterval = 0.5
+	
+	//MARK:- User intents
+	
+	@objc private func tapSearchButton() {
+		searchController.searchBar.resignFirstResponder()
+		searchBarSearchButtonClicked(searchController.searchBar)
+	}
+	
+	@objc private func tapCancelButton() {
+		searchController.searchBar.resignFirstResponder()
+		searchBarCancelButtonClicked(searchController.searchBar)
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		mapSearchController = MapSearchController(server: server)
 		initMapView()
 		initBottomSheet()
-		initSearchController()
-		initBlurView()
+		initNavigationBar()
 		bottomVC.sheetHandle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapSheetHandle(_:))))
 		bottomVC.sheetHandle.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragSheetHandle(_:))))
+		self.extendedLayoutIncludesOpaqueBars = true
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		mapView.frame.size.height = view.bounds.height - (bottomVC.isCollapsed ? bottomVC.collapsedHeight: bottomVC.expandedHeight)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +65,12 @@ class MapSearchViewController: UIViewController {
 		location.requestAuthorization()
 	}
 	
-	private func initMapView() {
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		modifySearchBar()
+	}
+	
+	fileprivate func initMapView() {
 		mapView.isZoomEnabled = true
 		mapView.isScrollEnabled = true
 		mapView.delegate = self
@@ -48,9 +82,9 @@ class MapSearchViewController: UIViewController {
 		mapView.register(StoreAnnotationView.self, forAnnotationViewWithReuseIdentifier: String(describing: StoreAnnotationView.self))
 	}
 	
-	private func initBottomSheet() {
-		let sheetHeights: (expanded: CGFloat, collapsed: CGFloat) = (view.bounds.height * 0.8, view.bounds.height * 0.2)
-		let bottomVC = BottomSheetVC(heights: sheetHeights) { [weak self] isCollapsed in
+	fileprivate func initBottomSheet() {
+		let sheetHeights: (expanded: CGFloat, collapsed: CGFloat) = (view.bounds.height - minimumMapHeight - navigationBarHeight, view.bounds.height * 0.15)
+		let bottomVC = BottomSheetVC(heights: sheetHeights, mapSearchController: mapSearchController) { [weak self] isCollapsed in
 			guard let strongSelf = self else {
 				return
 			}
@@ -70,49 +104,87 @@ class MapSearchViewController: UIViewController {
 		self.bottomVC = bottomVC
 	}
 	
-	private func initBlurView() {
-		blurView = UIVisualEffectView(frame: view.bounds)
-		blurView.alpha = 0.6
-		blurView.isUserInteractionEnabled = false
-		view.insertSubview(blurView, belowSubview: bottomVC.view)
+	fileprivate func initNavigationBar() {
+		let safeAreaHeight = view.getInsetHeight(for: .top)
+		let navigationBar = UINavigationBar(
+			frame: CGRect(
+				origin: CGPoint(x: view.bounds.origin.x,
+												y: view.bounds.origin.y + safeAreaHeight),
+				size: CGSize(width: view.bounds.width,
+										 height: navigationBarHeight)))
+		navigationBar.backgroundColor = .white
+		navigationBar.isTranslucent = false
+		initSearchBar(in: navigationBar)
+		view.addSubview(navigationBar)
 	}
 	
-	private func initSearchController() {
-		let center = CGPoint(x: view.bounds.midX,
-												 y: view.bounds.height * 0.1)
-		let size = CGSize(width: view.bounds.width * 0.7 ,
-											height: view.bounds.height * 0.15)
-		let navigationBar = UINavigationBar()
-		navigationBar.center = center
-		navigationBar.bounds.size = size
+	fileprivate func initSearchBar(in navigationBar: UINavigationBar) {
 		searchController = UISearchController(searchResultsController: nil)
-		let navigationItem = UINavigationItem()
-		navigationBar.pushItem(navigationItem, animated: false)
-		navigationBar.topItem!.searchController = searchController
+		navigationBar.addSubview(searchController.searchBar)
 		searchController.searchResultsUpdater = bottomVC
-		searchController.searchBar.center = center
-		searchController.searchBar.sizeToFit()
 		searchController.showsSearchResultsController = false
-		searchController.searchBar.layer.cornerRadius = 12
 		searchController.searchBar.autocapitalizationType = .none
 		searchController.obscuresBackgroundDuringPresentation = false
 		searchController.searchBar.delegate = self
-		if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-			textfield.clipsToBounds = true
-			if let leftView = textfield.leftView as? UIImageView {
-				leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-				leftView.tintColor = UIColor.black
-			}
-			
-			if let rightView = textfield.rightView as? UIImageView {
-				rightView.image = rightView.image?.withRenderingMode(.alwaysTemplate)
-				rightView.tintColor = UIColor.black
-			}
+		searchController.searchBar.searchTextField.snp.makeConstraints {
+			$0.center.equalToSuperview()
+			$0.width.equalToSuperview().multipliedBy(279.0/375.0)
 		}
-		
-		view.addSubview(navigationBar)
+		searchController.searchBar.showsCancelButton = false
+		initSearchBarButton()
 	}
+	
+	fileprivate func initSearchBarButton() {
+		let searchImage = UIImage(systemName: "magnifyingglass")!
+		searchButton.setImage(searchImage, for: .normal)
+		searchButton.tintColor = .black
+		searchButton.frame.size = CGSize(width: searchBarButtonSize,
+																		 height: searchBarButtonSize)
+		searchButton.addTarget(self, action: #selector(tapSearchButton), for: .touchUpInside)
+		searchController.searchBar.addSubview(searchButton)
+		searchButton.snp.makeConstraints {
+			$0.right.equalToSuperview().offset(-18)
+			$0.centerY.equalToSuperview()
+		}
+		let cancelImage = UIImage(systemName: "arrow.left")!
+		cancelButton.setImage(cancelImage, for: .normal)
+		cancelButton.tintColor = .black
+		cancelButton.frame.size = CGSize(width: searchBarButtonSize,
+																		 height: searchBarButtonSize)
+		cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
+		searchController.searchBar.addSubview(cancelButton)
+		cancelButton.snp.makeConstraints {
+			$0.left.equalToSuperview().offset(20)
+			$0.centerY.equalToSuperview()
+		}
+		cancelButton.isEnabled = false
+	}
+	
+	fileprivate func modifySearchBar() {
+		if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+			textfield.borderStyle = .none
+			textfield.leftViewMode = .never
+			textfield.backgroundColor = DesignConstant.getUIColor(palette: .secondary(staturation: 100))
+			let font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
+			if let placeholderLabel = textfield.value(forKey: "placeholderLabel") as? UILabel {
+				textfield.addSubview(placeholderLabel)
+				placeholderLabel.text = "검색어를 입력하세요"
+				placeholderLabel.font = font
+				placeholderLabel.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 400))
+				placeholderLabel.snp.makeConstraints {
+					$0.width.equalToSuperview().multipliedBy(0.7)
+					$0.height.equalToSuperview()
+					$0.left.equalToSuperview().offset(17.5)
+				}
+			}
+			textfield.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 900))
+			textfield.font = font
+		}
+	}
+	var blurEffect: UIBlurEffect? = nil
+	var blurView: UIVisualEffectView? = nil
 }
+
 
 extension MapSearchViewController: MKMapViewDelegate {
 	
@@ -142,6 +214,7 @@ extension MapSearchViewController: UISearchBarDelegate {
 		if bottomVC.isCollapsed {
 			moveSheet()
 		}
+		cancelButton.isEnabled = true
 		return true
 	}
 	
@@ -149,10 +222,25 @@ extension MapSearchViewController: UISearchBarDelegate {
 		if !bottomVC.isCollapsed {
 			moveSheet()
 		}
+		cancelButton.isEnabled = false
+	}
+	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		if bottomVC.isCollapsed {
+			moveSheet()
+		}
+		cancelButton.isEnabled = false
+		if let searchString = searchBar.text {
+			mapSearchController.search(for: searchString)
+		}
 	}
 }
 
 extension MapSearchViewController: ContainSheet {
+	
+	func additionalAnimation(toCollapse: Bool) {
+		mapView.frame.size.height = view.bounds.height - (toCollapse ? bottomVC.collapsedHeight: bottomVC.expandedHeight)
+	}
 	
 	@objc private func tapSheetHandle(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
@@ -169,10 +257,10 @@ extension MapSearchViewController: ContainSheet {
 			delta *= bottomVC.isCollapsed ? 1: -1
 			updateSheetState(delta)
 		case .ended:
-			continueSheetMoving(toReverse: blurAnimator != nil && blurAnimator!.fractionComplete < 0.2)
+			continueSheetMoving(toReverse: sheetAnimator != nil && sheetAnimator!.fractionComplete < 0.2)
 		default:
 			break
 		}
 	}
-
+ 
 }

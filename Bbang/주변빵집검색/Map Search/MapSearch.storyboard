@@ -16,17 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QMi-br-FrY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QMi-br-FrY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QMi-br-FrY" secondAttribute="trailing" id="KCH-ID-0zN"/>
-                            <constraint firstItem="QMi-br-FrY" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="i1s-Rh-7SL"/>
+                            <constraint firstItem="QMi-br-FrY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="i1s-Rh-7SL"/>
                             <constraint firstItem="QMi-br-FrY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="z1l-Fk-Uku"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="QMi-br-FrY" secondAttribute="bottom" id="zNt-IZ-WGT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="주변 빵집" id="uKe-pe-Ep6"/>

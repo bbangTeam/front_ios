@@ -29,7 +29,13 @@ class LocationGather: NSObject {
 			}
 		}
 	}
-	@Published private(set) var lastLocation: CLLocation?
+	@Published private(set) var lastLocation: CLLocation? {
+		didSet{
+			getCityInfomation()
+		}
+	}
+	@Published private(set) var cityname: String?
+	
 	var isObservingLocation = false {
 		didSet {
 			guard isPermitted else {
@@ -46,6 +52,20 @@ class LocationGather: NSObject {
 	func requestAuthorization() {
 		if manager.authorizationStatus == .notDetermined {
 			manager.requestWhenInUseAuthorization()
+		}
+	}
+	
+	fileprivate func getCityInfomation() {
+		guard let location = lastLocation else {
+			return
+		}
+		let geocoder = CLGeocoder()
+		geocoder.reverseGeocodeLocation(
+			location,
+			preferredLocale: .init(identifier: "Ko-kr")) {[weak weakSelf = self] placemarks, error in
+			if let lastPlacemark = placemarks?.last {
+				weakSelf?.cityname = lastPlacemark.locality
+			}
 		}
 	}
 	

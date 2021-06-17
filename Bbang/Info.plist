@@ -45,6 +45,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansCJKkr-Regular.otf</string>
+		<string>NotoSansCJKkr-Medium.otf</string>
+		<string>NotoSansCJKkr-Bold.otf</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>주변 빵집 검색을 돕기 위해 사용자의 위치를 요청합니다, 허용하지 않더라도 검색이 가능합니다</string>
 	<key>UIRequiredDeviceCapabilities</key>

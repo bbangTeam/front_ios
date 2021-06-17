@@ -5,25 +5,23 @@
 //  Created by bart Shin on 29/05/2021.
 //
 
-import UIKit
+import SwiftUI
 import MapKit
 
 class BottomSheetVC: UIViewController {
 	
+	private let searchResultView: UIView
 	static let nibName = "BottomSheet"
 	let expandedHeight: CGFloat
 	let collapsedHeight: CGFloat
-	var handleHeight: CGFloat = 30
+	var handleHeight: CGFloat = 20
+	private let handleConnerRadius: CGFloat = 20
 	
-	@IBOutlet weak var tableView: UITableView!
 	unowned var mapView: MKMapView!
 	@IBOutlet weak var sheetHandle: UIView!
+	@IBOutlet weak var handleBar: UIView!
 	var frameAnimator: UIViewPropertyAnimator?
-	private var mapItems = [MKMapItem]() {
-		didSet {
-			tableView.reloadData()
-		}
-	}
+	private var mapItems = [MKMapItem]()
 	private let tableViewSelectHandler: (Bool) -> Void
 	private func getAddress(of item: MKMapItem) -> String {
 		"\(item.placemark.locality ?? "") \(item.placemark.thoroughfare ?? "")"
@@ -32,23 +30,38 @@ class BottomSheetVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.clipsToBounds = true
+		initHandle()
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		searchResultView.snp.makeConstraints {
+			$0.top.equalTo(sheetHandle.snp.bottom)
+			$0.left.bottom.right.equalToSuperview()
+		}
+	}
+	
+	fileprivate func initHandle() {
 		sheetHandle.snp.makeConstraints {
 			$0.height.equalTo(handleHeight)
 		}
-		initTableView()
+		handleBar.backgroundColor = DesignConstant.getUIColor(palette: .secondary(staturation: 100))
+		handleBar.layer.cornerRadius = 10
 	}
 	
-	private func initTableView() {
-		tableView.delegate = self
-		tableView.dataSource = self
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: self)+"Cell")
-	}
-	
-	init(heights: (expanded: CGFloat, collapsed: CGFloat), tableViewSelectHandler: @escaping (Bool) -> Void) {
+	init(heights: (expanded: CGFloat, collapsed: CGFloat),
+			 mapSearchController: MapSearchController,
+			 tableViewSelectHandler: @escaping (Bool) -> Void) {
 		self.expandedHeight = heights.expanded
 		self.collapsedHeight = heights.collapsed
 		self.tableViewSelectHandler = tableViewSelectHandler
+		let hostingVC = UIHostingController(rootView: SearchResultView(searchController: mapSearchController))
+		hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
+		searchResultView = hostingVC.view
 		super.init(nibName: Self.nibName, bundle: nil)
+		addChild(hostingVC)
+		view.addSubview(hostingVC.view)
+		hostingVC.didMove(toParent: self)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -119,7 +132,11 @@ extension BottomSheetVC: UISearchResultsUpdating {
 extension BottomSheetVC: Collapsable {
 	
 	var isCollapsed: Bool {
-		abs(collapsedHeight - view.frame.origin.y) > abs(expandedHeight - view.frame.origin.y)
+		guard view.superview != nil  else {
+			return false
+		}
+		let currentHeight = view.superview!.bounds.height - view.frame.origin.y
+		return abs(collapsedHeight - currentHeight) < abs(expandedHeight - currentHeight)
 	}
 	
 	func changeState(toCollapse: Bool, duration: TimeInterval, dampingRatio: CGFloat) {
@@ -132,7 +149,7 @@ extension BottomSheetVC: Collapsable {
 					return
 				}
 				strongSelf.view.frame.origin.y = superView.bounds.height - (toCollapse ? strongSelf.collapsedHeight: strongSelf.expandedHeight)
-				strongSelf.view.layer.cornerRadius = toCollapse ? 0: 20
+				strongSelf.view.layer.cornerRadius = toCollapse ? strongSelf.handleConnerRadius: 0
 			}
 			animator.addCompletion { [weak weakSelf = self] _ in
 				weakSelf?.frameAnimator = nil

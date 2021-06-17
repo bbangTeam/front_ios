@@ -11,9 +11,9 @@ import SpriteKit
 
 class WorldCupVC: UIViewController {
 	
-	private let worldCupTitle = "식빵 이상형 월드컵"
-	private var breads = [BubbleScene.BubbleData]()
-	private var breadsCount = 8
+	private let worldCupTitle = "빵드컵"
+	private var breads: [BubbleScene.BubbleData]
+	private var maxCount = 16
 	private var spriteView: SKView!
 	private var bubbleScene: BubbleScene!
 	private var navigationBar: UINavigationBar!
@@ -40,15 +40,20 @@ class WorldCupVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		loadBreadsData()
 		initBlurView()
 		initBubbleView()
 		initNavigationBar()
 		observeBubbleScene()
 	}
 	
-	override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
+	init(with content: WorldCupContent) {
+		breads = Array(content.images.compactMap{
+			BubbleScene.BubbleData(image: $0.value,
+														 title: $0.key.name,
+														 description: $0.key.imageUrl,
+														 id: $0.key.id)}[0...maxCount-1])
+			.shuffled()
+		super.init(nibName: nil, bundle: nil)
 	}
 	
 	fileprivate func observeBubbleScene() {
@@ -110,15 +115,8 @@ class WorldCupVC: UIViewController {
 		spriteView.presentScene(bubbleScene)
 	}
 	
-	fileprivate func loadBreadsData() {
-		for count in 1...breadsCount {
-			let num = count%5 + 1
-			let data = BubbleScene.BubbleData(
-				image: UIImage(named: "breadBubble\(num)")!,
-				title: "식빵 \(count)",
-				description: "description description description",
-				id: "\(count)")
-			breads.append(data)
-		}
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
+	
 }

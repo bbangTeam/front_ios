@@ -26,8 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				let mapSearchVC = tabBar.viewControllers?.first(where: {
 					$0 is MapSearchViewController
 				}) as? MapSearchViewController{
+					let server = ServerDataOperator()
 					let locationGather = LocationGather()
+					homeVC.location = locationGather
+					homeVC.server = server
 					mapSearchVC.location = locationGather
+					mapSearchVC.server = server
 				}else {
 					assertionFailure("Fail to find view controllers in tab bar")
 				}

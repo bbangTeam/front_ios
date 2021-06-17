@@ -1,5 +1,5 @@
 //
-//  SimpleMapView.swift
+//  CompleteMapView.swift
 //  Bbang
 //
 //  Created by bart Shin on 28/05/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleMapView: UIView{
+class CompleteMapView: UIView{
 	
 	private let lineWidth: CGFloat = 1
 	var strokeColor = UIColor.black.cgColor
@@ -20,7 +20,7 @@ class SimpleMapView: UIView{
 	}
 	private let originalMapSize = CGSize(width: 619, height: 629)
 
-	private var paths = MapPath()
+	private var paths = SimpleMapPath()
 	var areas = [Area]()
 	
 	override func draw(_ rect: CGRect) {
@@ -75,7 +75,7 @@ class SimpleMapView: UIView{
 	
 	func createLayer(for area: Area) -> CAShapeLayer {
 		let layer = CAShapeLayer()
-		let path = MapPath.getPath(for: area)
+		let path = SimpleMapPath.getBezierPath(for: area)
 		layer.frame = bounds
 		layer.path = path.cgPath
 		layer.strokeColor = strokeColor
@@ -91,30 +91,11 @@ class SimpleMapView: UIView{
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	enum Area: String, CaseIterable {
-		case gyeonggi
-		case gangwon
-		case jeju
-		case northChungcheong
-		case southChungcheong
-		case northJeolla
-		case southJeolla
-		case northGyeongsang
-		case southGyeongsang
-		case seoul
-		case busan
-		case incheon
-		case daejeon
-		case daegu
-		case gwangju
-		case ulsan
-	}
 }
 
-struct MapPath {
+fileprivate struct SimpleMapPath {
 
-	static func getPath(for area: SimpleMapView.Area) -> UIBezierPath {
+	static func getBezierPath(for area: Area) -> UIBezierPath {
 		switch area {
 		case .seoul:
 			return seoul
