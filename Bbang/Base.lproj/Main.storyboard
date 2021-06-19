@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="117" y="344"/>
         </scene>
-        <!--BbangstagramViewController-->
+        <!--BbangstagramNavigationController-->
         <scene sceneID="ozK-CR-Ovq">
             <objects>
-                <viewControllerPlaceholder storyboardName="Bbangstagram" referencedIdentifier="BbangstagramViewController" id="Leq-hH-dgy" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Bbangstagram" referencedIdentifier="BbangstagramNavigationController" id="Leq-hH-dgy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="3FG-jp-91f"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-WW-9ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -23,7 +23,7 @@ class BbangstagramViewController: UIViewController {
         flowLayout = UICollectionViewFlowLayout()
         
         let width = UIScreen.main.bounds.width
-        flowLayout.itemSize = CGSize(width: width, height: 500)
+        flowLayout.itemSize = CGSize(width: width, height: 650)
 
         bbangstaCollectionView.collectionViewLayout = flowLayout
 

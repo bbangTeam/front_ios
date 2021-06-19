@@ -188,7 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="빵터짐" id="Pb7-IO-iXC">
                         <barButtonItem key="leftBarButtonItem" title="Write" id="qZj-Du-l8j">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Rdh-Th-Syo" kind="presentation" id="bFM-qZ-b5Y"/>
                             </connections>
