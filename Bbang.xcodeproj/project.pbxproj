@@ -25,6 +25,7 @@
 		A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */; };
 		A54E79A92674C45C002DEC7C /* BbangtourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */; };
 		A55192282678F9F900455927 /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55192272678F9F900455927 /* UITabBar.swift */; };
+		A554C8A9267E27D200CDA47F /* BbangtourReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554C8A8267E27D200CDA47F /* BbangtourReviewViewController.swift */; };
 		A556B1FB2663A35700AC2471 /* BbangstaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */; };
 		A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		A5277EDA265E1EDE00D4122A /* BbangsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangsetViewController.swift; sourceTree = "<group>"; };
 		A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourTableViewCell.swift; sourceTree = "<group>"; };
 		A55192272678F9F900455927 /* UITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
+		A554C8A8267E27D200CDA47F /* BbangtourReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourReviewViewController.swift; sourceTree = "<group>"; };
 		A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaWriteViewController.swift; sourceTree = "<group>"; };
 		A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 				A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */,
 				A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */,
 				A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */,
+				A554C8A8267E27D200CDA47F /* BbangtourReviewViewController.swift */,
 			);
 			name = "빵지순례";
 			path = "빵지순례";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
+				A554C8A9267E27D200CDA47F /* BbangtourReviewViewController.swift in Sources */,
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
 				A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
