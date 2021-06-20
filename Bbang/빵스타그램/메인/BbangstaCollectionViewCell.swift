@@ -7,28 +7,43 @@
 
 import UIKit
 
-class BbangstaCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class BbangstaCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var bbangstaTagCollectionView: UICollectionView!
+    
+    
+    
+    
+    @IBAction func bbangstaCommentButton(_ sender: UIButton) {
+       
+    }
     
     func setupViews() {
         bbangstaTagCollectionView.delegate = self
         bbangstaTagCollectionView.dataSource = self
     
     }
-    
+}
+
+
+//MARK: - CollectionView
+
+extension BbangstaCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaTagCollectionViewCell", for: indexPath)
         
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaTagCollectionViewCell", for: indexPath) as! BbangstaTagCollectionViewCell
+            
         cell.layer.cornerRadius = 10
-
+            
         return cell
     }
 }
+
+//MARK: - CollectionViewFlowLayout
 
 extension BbangstaCollectionViewCell: UICollectionViewDelegateFlowLayout {
     

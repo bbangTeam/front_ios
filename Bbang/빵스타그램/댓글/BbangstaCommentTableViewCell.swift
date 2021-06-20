@@ -9,6 +9,9 @@ import UIKit
 
 class BbangstaCommentTableViewCell: UITableViewCell {
 
+    @IBOutlet var userProfileImageView: UIImageView!
+    @IBOutlet var userIdLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

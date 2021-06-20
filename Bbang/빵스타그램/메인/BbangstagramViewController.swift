@@ -12,8 +12,6 @@ class BbangstagramViewController: UIViewController {
     
     @IBOutlet var bbangstaCollectionView: UICollectionView!
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +21,8 @@ class BbangstagramViewController: UIViewController {
     }
     
 }
+
+//MARK: - CollectionView
 
 extension BbangstagramViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -40,6 +40,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     
     
 }
+//MARK: - CollectionViewFlowLayout
 
 extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
     
