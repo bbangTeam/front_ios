@@ -11,6 +11,7 @@ class BbangstagramViewController: UIViewController {
 
     
     @IBOutlet var bbangstaCollectionView: UICollectionView!
+
     
 
     override func viewDidLoad() {
@@ -18,14 +19,6 @@ class BbangstagramViewController: UIViewController {
         
         bbangstaCollectionView.delegate = self
         bbangstaCollectionView.dataSource = self
-        
-        let flowLayout: UICollectionViewFlowLayout
-        flowLayout = UICollectionViewFlowLayout()
-        
-        let width = UIScreen.main.bounds.width
-        flowLayout.itemSize = CGSize(width: width, height: 650)
-
-        bbangstaCollectionView.collectionViewLayout = flowLayout
 
     }
     
@@ -40,7 +33,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaCollectionViewCell", for: indexPath) as! BbangstaCollectionViewCell
         
-        cell.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        cell.setupViews()
 
         return cell
     }
@@ -53,9 +46,16 @@ extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
     // 위 아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 10
+        return 24
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = collectionView.frame.width
+
+        let size = CGSize(width: width, height: 750)
+           return size
+       }
     
     
 }
