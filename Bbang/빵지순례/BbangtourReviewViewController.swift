@@ -28,6 +28,11 @@ class BbangtourReviewViewController: UIViewController {
         
     }
     
+    
+    @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: .none)
+    }
+    
 }
 
 //MARK: - TextView

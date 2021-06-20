@@ -212,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-DP-3HM">
-                                <rect key="frame" x="16" y="120" width="382" height="637"/>
+                                <rect key="frame" x="16" y="120" width="382" height="678"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mqk-Ai-dBj">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
@@ -299,7 +299,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="테스트" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-hh-6hl">
-                                        <rect key="frame" x="0.0" y="188" width="382" height="449"/>
+                                        <rect key="frame" x="0.0" y="188" width="382" height="490"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -313,12 +313,15 @@
                                     <navigationItem title="매장명입니다 매장명입니다" id="tCT-Qf-m5a">
                                         <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="vFd-7j-dRZ">
                                             <color key="tintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="backBarButtonItem:" destination="Rdh-Th-Syo" id="BYV-tr-qkx"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrE-ps-AlY">
-                                <rect key="frame" x="16" y="814" width="382" height="48"/>
+                                <rect key="frame" x="16" y="818" width="382" height="48"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.55686274509803924" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="WLx-DQ-hyV"/>
@@ -332,16 +335,14 @@
                         <viewLayoutGuide key="safeArea" id="B3A-KX-bCl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UrE-ps-AlY" firstAttribute="top" secondItem="UTN-DP-3HM" secondAttribute="bottom" constant="57" id="594-iG-bT9"/>
                             <constraint firstItem="UTN-DP-3HM" firstAttribute="top" secondItem="bVT-nf-VEz" secondAttribute="bottom" constant="32" id="6Rx-n9-kyU"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="trailing" secondItem="B3A-KX-bCl" secondAttribute="trailing" id="8JH-99-GfM"/>
                             <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="UrE-ps-AlY" secondAttribute="trailing" constant="16" id="98Q-6b-xAn"/>
                             <constraint firstItem="UTN-DP-3HM" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="16" id="9k4-qU-NEO"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="top" secondItem="B3A-KX-bCl" secondAttribute="top" id="LdR-1o-eBU"/>
-                            <constraint firstItem="UrE-ps-AlY" firstAttribute="bottom" secondItem="B3A-KX-bCl" secondAttribute="bottom" id="T0h-2x-d4M"/>
+                            <constraint firstAttribute="bottom" secondItem="UrE-ps-AlY" secondAttribute="bottom" constant="30" id="NTa-nm-MUP"/>
                             <constraint firstItem="UrE-ps-AlY" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="16" id="YyQ-6H-RtX"/>
-                            <constraint firstItem="UTN-DP-3HM" firstAttribute="centerX" secondItem="vGn-dP-xGw" secondAttribute="centerX" id="Z1N-hV-GEF"/>
-                            <constraint firstItem="UrE-ps-AlY" firstAttribute="centerX" secondItem="vGn-dP-xGw" secondAttribute="centerX" id="ZUy-Pi-BNx"/>
+                            <constraint firstItem="UrE-ps-AlY" firstAttribute="top" secondItem="UTN-DP-3HM" secondAttribute="bottom" constant="20" id="b7e-Zh-Wev"/>
                             <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="UTN-DP-3HM" secondAttribute="trailing" constant="16" id="t2T-gm-FQJ"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" id="y07-YA-TYH"/>
                         </constraints>
