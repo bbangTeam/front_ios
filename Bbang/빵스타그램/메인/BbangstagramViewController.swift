@@ -40,15 +40,9 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     
     
 }
-//MARK: - CollectionViewFlowLayout
+//MARK: - CollectionView FlowLayout
 
 extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
-    
-    // 위 아래 간격
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 24
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
@@ -58,5 +52,10 @@ extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
            return size
        }
     
+    // 위 아래 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 24
+    }
     
 }
