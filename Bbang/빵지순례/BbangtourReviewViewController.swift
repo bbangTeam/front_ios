@@ -9,10 +9,9 @@ import UIKit
 
 class BbangtourReviewViewController: UIViewController {
     
-    
     @IBOutlet var bbangNameTextField: UITextField!
-    
     @IBOutlet var bbangReviewTextView: UITextView!
+    @IBOutlet var writeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,8 @@ class BbangtourReviewViewController: UIViewController {
         bbangReviewTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 200, right: 5)
         bbangReviewTextView.text = "가게와 빵에 대한 솔직한 리뷰를 남겨주세요. 허위 리뷰를 작성 시 이용에 제한이 있을 수 있습니다."
         bbangReviewTextView.textColor = UIColor.lightGray
+        
+        writeButton.layer.cornerRadius = 8
         
     }
     

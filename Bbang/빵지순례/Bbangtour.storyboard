@@ -157,6 +157,7 @@
                     <connections>
                         <outlet property="bbangNameTextField" destination="4ch-Lb-wKu" id="UaJ-Gp-2qe"/>
                         <outlet property="bbangReviewTextView" destination="4GY-hh-6hl" id="emE-Nd-xjA"/>
+                        <outlet property="writeButton" destination="UrE-ps-AlY" id="f3I-sW-yQf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqE-uW-ll3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -354,6 +355,13 @@
                                                     <constraint firstAttribute="height" constant="240" id="mVC-6A-Wy7"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmD-ct-i7X">
+                                                <rect key="frame" x="91" y="0.0" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="testButtonAciton:" destination="c1O-Om-hLw" eventType="touchUpInside" id="n92-FA-tIz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -364,7 +372,10 @@
                                             <constraint firstAttribute="bottom" secondItem="Lr7-o4-jfU" secondAttribute="bottom" id="H5f-e5-IBB"/>
                                             <constraint firstItem="Lr7-o4-jfU" firstAttribute="leading" secondItem="hdN-zM-NOO" secondAttribute="leading" id="M6l-IB-7X8"/>
                                             <constraint firstItem="VEs-Ty-AmU" firstAttribute="top" secondItem="hdN-zM-NOO" secondAttribute="top" constant="4" id="VXK-iI-GVb"/>
+                                            <constraint firstItem="pmD-ct-i7X" firstAttribute="leading" secondItem="VEs-Ty-AmU" secondAttribute="trailing" constant="27" id="Yby-as-dVH"/>
                                             <constraint firstItem="eNP-vG-TdN" firstAttribute="top" secondItem="VEs-Ty-AmU" secondAttribute="bottom" id="Z20-oA-Bew"/>
+                                            <constraint firstItem="pmD-ct-i7X" firstAttribute="top" secondItem="hdN-zM-NOO" secondAttribute="top" id="hgw-70-qKz"/>
+                                            <constraint firstAttribute="trailing" secondItem="pmD-ct-i7X" secondAttribute="trailing" constant="277" id="vbk-dJ-JQM"/>
                                             <constraint firstItem="Lr7-o4-jfU" firstAttribute="top" secondItem="eNP-vG-TdN" secondAttribute="bottom" constant="16" id="wXC-Ej-Klm"/>
                                         </constraints>
                                     </view>
@@ -400,8 +411,10 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bbangtourMapImageView" destination="eNP-vG-TdN" id="Gwj-ew-HsB"/>
                         <outlet property="bbangtourTableView" destination="Lr7-o4-jfU" id="i7J-c2-h8g"/>
                         <outlet property="bbangtourTableViewHeight" destination="ACY-GR-MG8" id="Ncx-xg-vbf"/>
+                        <outlet property="test" destination="pmD-ct-i7X" id="AGd-js-dmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="di6-QS-33f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
