@@ -233,6 +233,7 @@
                                         <size key="customSize" width="372" height="731"/>
                                         <connections>
                                             <outlet property="bbangstaTagCollectionView" destination="yFU-sO-uiu" id="bQa-Ae-ksk"/>
+                                            <outlet property="bbangstaTagCollectionViewHeight" destination="vFq-yC-Avk" id="PmZ-WX-hYX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

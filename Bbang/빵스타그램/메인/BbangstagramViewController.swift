@@ -9,7 +9,6 @@ import UIKit
 
 class BbangstagramViewController: UIViewController {
 
-    
     @IBOutlet var bbangstaCollectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -51,10 +50,10 @@ extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
         let size = CGSize(width: width, height: 750)
            return size
        }
+
     
-    // 위 아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
+
         return 24
     }
     

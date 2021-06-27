@@ -10,6 +10,7 @@ import UIKit
 class BbangstaCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var bbangstaTagCollectionView: UICollectionView!
+    @IBOutlet var bbangstaTagCollectionViewHeight: NSLayoutConstraint!
     
     
     
@@ -21,7 +22,12 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     func setupViews() {
         bbangstaTagCollectionView.delegate = self
         bbangstaTagCollectionView.dataSource = self
-    
+        
+        let bbangstaTagflowLayout = UICollectionViewFlowLayout()
+        bbangstaTagflowLayout.scrollDirection = .horizontal
+        self.bbangstaTagCollectionView.collectionViewLayout = bbangstaTagflowLayout
+        
+        //bbangstaTagCollectionViewHeight.constant = 10 * 5
     }
 }
 
@@ -31,14 +37,14 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
 extension BbangstaCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 10
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaTagCollectionViewCell", for: indexPath) as! BbangstaTagCollectionViewCell
             
         cell.layer.cornerRadius = 10
-            
+        
         return cell
     }
 }
@@ -48,8 +54,12 @@ extension BbangstaCollectionViewCell: UICollectionViewDelegate, UICollectionView
 extension BbangstaCollectionViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 4
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 5
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
@@ -57,5 +67,7 @@ extension BbangstaCollectionViewCell: UICollectionViewDelegateFlowLayout {
         
            return size
        }
+    
+   
     
 }
