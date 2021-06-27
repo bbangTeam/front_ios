@@ -9,6 +9,7 @@ import UIKit
 
 class BbangtourReviewViewController: UIViewController {
     
+    
     @IBOutlet var bbangNameTextField: UITextField!
     @IBOutlet var bbangReviewTextView: UITextView!
     @IBOutlet var writeButton: UIButton!
@@ -29,10 +30,27 @@ class BbangtourReviewViewController: UIViewController {
         
     }
     
-    
+    //MARK: - Function
     @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: .none)
     }
+    
+    @IBAction func starSliderAction(_ sender: UISlider) {
+        
+        let roundValue = round(sender.value)
+        
+        for index in 0 ... 5 {
+            
+            if let starImage = view.viewWithTag(index) as? UIImageView {
+                if index <= Int(roundValue) {
+                    starImage.tintColor = #colorLiteral(red: 0.9960784314, green: 0.5568627451, blue: 0.1568627451, alpha: 1)
+                } else {
+                    starImage.tintColor = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
+                }
+            }
+        }
+    }
+    
     
 }
 

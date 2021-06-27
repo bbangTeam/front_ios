@@ -17,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="테스트" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-hh-6hl">
+                                <rect key="frame" x="16" y="308" width="382" height="445"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-DP-3HM">
-                                <rect key="frame" x="16" y="120" width="382" height="678"/>
+                                <rect key="frame" x="16" y="120" width="382" height="156"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mqk-Ai-dBj">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
@@ -26,67 +32,45 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4rl-Z2-of9">
                                                 <rect key="frame" x="67" y="0.0" width="248" height="48"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c46-cF-1Wj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="48" id="HE7-zu-djO"/>
-                                                            <constraint firstAttribute="width" constant="48" id="b9h-gd-kFj"/>
-                                                        </constraints>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UZq-Hy-O7p">
+                                                        <rect key="frame" x="0.0" y="-0.5" width="48" height="48"/>
                                                         <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal">
-                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoV-Wy-jWA">
-                                                        <rect key="frame" x="50" y="0.0" width="48" height="48"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="48" id="LUm-D1-dx1"/>
-                                                            <constraint firstAttribute="height" constant="48" id="sEQ-RS-6eA"/>
+                                                            <constraint firstAttribute="width" constant="48" id="37d-kL-Ar2"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal">
-                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIA-vX-j4N">
-                                                        <rect key="frame" x="100" y="0.0" width="48" height="48"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Bam-iq-b4b">
+                                                        <rect key="frame" x="50" y="-0.5" width="48" height="48"/>
+                                                        <color key="tintColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="48" id="gl1-A4-LDt"/>
-                                                            <constraint firstAttribute="width" constant="48" id="tXh-ss-w28"/>
+                                                            <constraint firstAttribute="width" constant="48" id="zFp-fm-vad"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal">
-                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBk-zt-2Ks">
-                                                        <rect key="frame" x="150" y="0.0" width="48" height="48"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="N0R-gr-Y4c">
+                                                        <rect key="frame" x="100" y="-0.5" width="48" height="48"/>
+                                                        <color key="tintColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="48" id="czL-Cu-89k"/>
-                                                            <constraint firstAttribute="width" constant="48" id="ubz-mn-Qrf"/>
+                                                            <constraint firstAttribute="width" constant="48" id="N1I-KL-Spx"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal">
-                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Ti-z7i">
-                                                        <rect key="frame" x="200" y="0.0" width="48" height="48"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fvi-No-mox">
+                                                        <rect key="frame" x="150" y="-0.5" width="48" height="48"/>
+                                                        <color key="tintColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="48" id="baL-Ha-NeT"/>
-                                                            <constraint firstAttribute="height" constant="48" id="fwn-eq-cKT"/>
+                                                            <constraint firstAttribute="width" constant="48" id="ge0-om-3El"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal">
-                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="27"/>
-                                                        </state>
-                                                    </button>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G69-Ab-VpJ">
+                                                        <rect key="frame" x="200" y="-0.5" width="48" height="48"/>
+                                                        <color key="tintColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="48" id="UfW-D1-AuH"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="K56-k4-x2e"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맛을 별점으로 표현해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qb-ke-wSz">
                                                 <rect key="frame" x="120" y="64" width="142.5" height="16"/>
@@ -104,14 +88,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="테스트" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-hh-6hl">
-                                        <rect key="frame" x="0.0" y="188" width="382" height="490"/>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="TEJ-Wn-x4d" customClass="StarSlider" customModule="Bbang" customModuleProvider="target">
+                                <rect key="frame" x="68" y="131" width="268" height="31"/>
+                                <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="starSliderAction:" destination="Rdh-Th-Syo" eventType="valueChanged" id="7bh-3v-ogK"/>
+                                </connections>
+                            </slider>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVT-nf-VEz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,14 +128,20 @@
                         <viewLayoutGuide key="safeArea" id="B3A-KX-bCl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TEJ-Wn-x4d" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="70" id="06n-MK-qST"/>
+                            <constraint firstItem="UrE-ps-AlY" firstAttribute="top" secondItem="4GY-hh-6hl" secondAttribute="bottom" constant="65" id="2YX-bL-r4H"/>
                             <constraint firstItem="UTN-DP-3HM" firstAttribute="top" secondItem="bVT-nf-VEz" secondAttribute="bottom" constant="32" id="6Rx-n9-kyU"/>
+                            <constraint firstItem="TEJ-Wn-x4d" firstAttribute="top" secondItem="bVT-nf-VEz" secondAttribute="bottom" constant="43" id="7NZ-vU-z1R"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="trailing" secondItem="B3A-KX-bCl" secondAttribute="trailing" id="8JH-99-GfM"/>
                             <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="UrE-ps-AlY" secondAttribute="trailing" constant="16" id="98Q-6b-xAn"/>
                             <constraint firstItem="UTN-DP-3HM" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="16" id="9k4-qU-NEO"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="top" secondItem="B3A-KX-bCl" secondAttribute="top" id="LdR-1o-eBU"/>
                             <constraint firstAttribute="bottom" secondItem="UrE-ps-AlY" secondAttribute="bottom" constant="30" id="NTa-nm-MUP"/>
+                            <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="4GY-hh-6hl" secondAttribute="trailing" constant="16" id="NZm-iD-IzL"/>
+                            <constraint firstItem="4GY-hh-6hl" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="16" id="Q9g-Tu-84g"/>
+                            <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="TEJ-Wn-x4d" secondAttribute="trailing" constant="80" id="XgS-Tb-U30"/>
                             <constraint firstItem="UrE-ps-AlY" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" constant="16" id="YyQ-6H-RtX"/>
-                            <constraint firstItem="UrE-ps-AlY" firstAttribute="top" secondItem="UTN-DP-3HM" secondAttribute="bottom" constant="20" id="b7e-Zh-Wev"/>
+                            <constraint firstItem="4GY-hh-6hl" firstAttribute="top" secondItem="UTN-DP-3HM" secondAttribute="bottom" constant="32" id="deE-fQ-MuN"/>
                             <constraint firstItem="B3A-KX-bCl" firstAttribute="trailing" secondItem="UTN-DP-3HM" secondAttribute="trailing" constant="16" id="t2T-gm-FQJ"/>
                             <constraint firstItem="bVT-nf-VEz" firstAttribute="leading" secondItem="B3A-KX-bCl" secondAttribute="leading" id="y07-YA-TYH"/>
                         </constraints>
