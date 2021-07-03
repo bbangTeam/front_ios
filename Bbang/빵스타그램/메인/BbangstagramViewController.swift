@@ -10,12 +10,16 @@ import UIKit
 class BbangstagramViewController: UIViewController {
 
     @IBOutlet var bbangstaCollectionView: UICollectionView!
-
+    @IBOutlet var bbangstaCollectionViewWidth: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bbangstaCollectionView.delegate = self
         bbangstaCollectionView.dataSource = self
+        
+        bbangstaCollectionViewWidth.constant = view.frame.size.width
+        
 
     }
     
@@ -32,8 +36,11 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaCollectionViewCell", for: indexPath) as! BbangstaCollectionViewCell
         
-        cell.setupViews()
-
+        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.height/2
+        cell.scrollViewHeight.constant = view.frame.size.width
+        cell.numberView.layer.cornerRadius = 15
+        
+        
         return cell
     }
     
@@ -42,19 +49,14 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
 //MARK: - CollectionView FlowLayout
 
 extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = collectionView.frame.width
-
-        let size = CGSize(width: width, height: 750)
-           return size
-       }
-
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        return 24
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
 }

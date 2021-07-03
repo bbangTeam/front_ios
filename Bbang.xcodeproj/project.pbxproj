@@ -28,7 +28,6 @@
 		A546918E268889D60055C674 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A546918D268889D60055C674 /* PageViewController.swift */; };
 		A546919126888B040055C674 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A546919026888B040055C674 /* TwoViewController.swift */; };
 		A54E79A92674C45C002DEC7C /* BbangtourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */; };
-		A54ED95F267F0B39001E5BD1 /* BbangstaTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54ED95E267F0B39001E5BD1 /* BbangstaTagCollectionViewCell.swift */; };
 		A55192282678F9F900455927 /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55192272678F9F900455927 /* UITabBar.swift */; };
 		A554C8A9267E27D200CDA47F /* BbangtourReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554C8A8267E27D200CDA47F /* BbangtourReviewViewController.swift */; };
 		A554C8AC267E495600CDA47F /* BbangstaCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554C8AB267E495600CDA47F /* BbangstaCommentTableViewCell.swift */; };
@@ -62,7 +61,6 @@
 		A546918D268889D60055C674 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		A546919026888B040055C674 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourTableViewCell.swift; sourceTree = "<group>"; };
-		A54ED95E267F0B39001E5BD1 /* BbangstaTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		A55192272678F9F900455927 /* UITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
 		A554C8A8267E27D200CDA47F /* BbangtourReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourReviewViewController.swift; sourceTree = "<group>"; };
 		A554C8AB267E495600CDA47F /* BbangstaCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 			children = (
 				A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */,
 				A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */,
-				A54ED95E267F0B39001E5BD1 /* BbangstaTagCollectionViewCell.swift */,
 			);
 			name = "메인";
 			path = "메인";
@@ -314,7 +311,6 @@
 				A546919126888B040055C674 /* TwoViewController.swift in Sources */,
 				A546918E268889D60055C674 /* PageViewController.swift in Sources */,
 				A546918B268887C10055C674 /* SeoulTabViewController.swift in Sources */,
-				A54ED95F267F0B39001E5BD1 /* BbangstaTagCollectionViewCell.swift in Sources */,
 				A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */,
 				A5277EBF265E1C5400D4122A /* BbangmainViewController.swift in Sources */,
 				A546917E26887A090055C674 /* StarSlider.swift in Sources */,
