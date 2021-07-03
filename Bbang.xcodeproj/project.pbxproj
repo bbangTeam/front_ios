@@ -35,6 +35,7 @@
 		A556B1FB2663A35700AC2471 /* BbangstaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */; };
 		A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */; };
 		A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */; };
+		A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaWriteViewController.swift; sourceTree = "<group>"; };
 		A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCollectionViewCell.swift; sourceTree = "<group>"; };
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
+		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,9 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
+				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
 				A54ED961267F0B5F001E5BD1 /* 메인 */,
 				A54ED962267F0B7C001E5BD1 /* 댓글 */,
-				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
@@ -209,6 +211,7 @@
 			children = (
 				A554C8AE267E49AC00CDA47F /* BbangstaCommentViewController.swift */,
 				A554C8AB267E495600CDA47F /* BbangstaCommentTableViewCell.swift */,
+				A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */,
 			);
 			name = "댓글";
 			path = "댓글";
@@ -316,6 +319,7 @@
 				A546917E26887A090055C674 /* StarSlider.swift in Sources */,
 				A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */,
 				A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */,
+				A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */,
 				A55192282678F9F900455927 /* UITabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

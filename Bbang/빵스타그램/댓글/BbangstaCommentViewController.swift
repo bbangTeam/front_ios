@@ -10,6 +10,7 @@ import UIKit
 class BbangstaCommentViewController: UIViewController {
 
     @IBOutlet var bbangstaCommentTableView: UITableView!
+
     @IBOutlet var commentTextField: UITextField!
     
     override func viewDidLoad() {
@@ -38,6 +39,8 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
+        cell.setupViews()
+       
         return cell
     }
     
