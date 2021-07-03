@@ -36,6 +36,7 @@
 		A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */; };
 		A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */; };
 		A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */; };
+		A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCollectionViewCell.swift; sourceTree = "<group>"; };
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
 		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
+		A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
 				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
+				A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */,
 				A54ED961267F0B5F001E5BD1 /* 메인 */,
 				A54ED962267F0B7C001E5BD1 /* 댓글 */,
 			);
@@ -303,6 +306,7 @@
 				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
 				A554C8A9267E27D200CDA47F /* BbangtourReviewViewController.swift in Sources */,
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
+				A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */,
 				A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
 				A554C8AF267E49AC00CDA47F /* BbangstaCommentViewController.swift in Sources */,
