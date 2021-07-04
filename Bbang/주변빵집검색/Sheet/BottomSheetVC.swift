@@ -10,7 +10,7 @@ import MapKit
 
 class BottomSheetVC: UIViewController {
 	
-	private let searchResultView: UIView
+	let searchResultView: UIView
 	static let nibName = "BottomSheet"
 	let expandedHeight: CGFloat
 	let collapsedHeight: CGFloat
@@ -50,12 +50,13 @@ class BottomSheetVC: UIViewController {
 	}
 	
 	init(heights: (expanded: CGFloat, collapsed: CGFloat),
-			 mapSearchController: MapSearchController,
+			 mapSearchController: BakeryInfoManager,
 			 tableViewSelectHandler: @escaping (Bool) -> Void) {
 		self.expandedHeight = heights.expanded
 		self.collapsedHeight = heights.collapsed
 		self.tableViewSelectHandler = tableViewSelectHandler
-		let hostingVC = UIHostingController(rootView: SearchResultView(searchController: mapSearchController))
+		let hostingVC = UIHostingController(rootView: MapBakeryList()
+																					.environmentObject(mapSearchController))
 		hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
 		searchResultView = hostingVC.view
 		super.init(nibName: Self.nibName, bundle: nil)
@@ -143,19 +144,17 @@ extension BottomSheetVC: Collapsable {
 		guard let superView = view.superview else {
 			return
 		}
-		if frameAnimator == nil {
-			let animator = UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) { [weak self] in
-				guard let strongSelf = self else {
-					return
-				}
-				strongSelf.view.frame.origin.y = superView.bounds.height - (toCollapse ? strongSelf.collapsedHeight: strongSelf.expandedHeight)
-				strongSelf.view.layer.cornerRadius = toCollapse ? strongSelf.handleConnerRadius: 0
+		let animator = UIViewPropertyAnimator(duration: duration, dampingRatio: dampingRatio) { [weak self] in
+			guard let strongSelf = self else {
+				return
 			}
-			animator.addCompletion { [weak weakSelf = self] _ in
-				weakSelf?.frameAnimator = nil
-			}
-			frameAnimator = animator
-			animator.startAnimation()
+			strongSelf.view.frame.origin.y = superView.bounds.height - (toCollapse ? strongSelf.collapsedHeight: strongSelf.expandedHeight)
+			strongSelf.view.layer.cornerRadius = toCollapse ? strongSelf.handleConnerRadius: 0
 		}
+		animator.addCompletion { [weak weakSelf = self] _ in
+			weakSelf?.frameAnimator = nil
+		}
+		frameAnimator = animator
+		animator.startAnimation()
 	}
 }

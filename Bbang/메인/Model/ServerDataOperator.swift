@@ -6,39 +6,54 @@
 //
 
 import Foundation
+import Combine
 
-class ServerDataOperator {
+class ServerDataOperator: ObservableObject {
 	
 	typealias StatusCode = Int
 	
-	@Published private(set) var responses = [APICategory: Set<Response>]()
+	private(set) var responses = [APICategory: Set<Response>]()
 	
 	func checkServerStatus() {
 		sendReqeust(.healthCheck, authToken: nil)
 			.observe { result in
 				if case let .failure(error) = result {
-					print("Server status: \(error)")
-				}else if case let .success(response) = result {
-					print("Sever status: \(response.statusCode)")
+					print("Fail to check server: \(error.localizedDescription)")
 				}
 			}
 	}
 	
+	//MARK:- WorldCup
 	func reqeustWorldCupData() -> Promise<Bool> {
-		sendReqeust(.worldCup, authToken: Constants.tokenForTest)
-			.chained { [weak weakSelf = self] result in
-				weakSelf?.responses[.worldCup]!.insert(result)
-				return Promise<Bool>(value: true)
+		sendReqeust(.worldCupData, authToken: Constants.tokenForTest)
+			.chained { [weak weakSelf = self] in
+				weakSelf?.storeResponse($0, in: .worldCup) ?? Promise<Bool>(value: false)
+			}
+	}
+
+	func sendWorldCupWinner(_ winnerId: String) -> Promise<Response> {
+		sendReqeust(.worldCupWinner(id: winnerId), authToken: Constants.tokenForTest)
+	}
+
+	func getWorldCupRaking() -> Promise<Response> {
+		sendReqeust(.worldCupRaking, authToken: Constants.tokenForTest)
+	}
+	
+	//MARK:- Bbangstargram
+	func requestFeed(at pageNumber: Int, by pageSize: Int) -> Promise<Bool> {
+		sendReqeust(.bbangStargramList(pageNumber: pageNumber, pageSize: pageSize), authToken: Constants.tokenForTest)
+			.chained { [weak weakSelf = self] in
+				weakSelf?.storeResponse($0, in: .bbangStarNewsFeed) ?? Promise<Bool>(value: false)
 			}
 	}
 	
+	//MARK:- Famous bakery
 	func requestFamous(nearby area: Area, lengthDemand: Int, needDetail: Bool) -> Promise<Bool> {
-		return sendReqeust(.famous(city: area.rawValue,
+		 sendReqeust(.famous(city: area.rawValue,
 												needDetail: needDetail,
 												demandNumber: lengthDemand), authToken: Constants.tokenForTest)
-			.chained { [weak weakSelf = self] result in
-				weakSelf?.responses[.famous]!.insert(result)
-				return Promise<Bool>(value: true)
+			.chained { [weak weakSelf = self] in
+				weakSelf?.storeResponse($0, in: .famous) ?? Promise<Bool>(value: false)
 			}
 	}
 	
@@ -46,13 +61,26 @@ class ServerDataOperator {
 		responses[category]?.remove(response)
 	}
 	
+	
 	fileprivate func sendReqeust(_ request: Constants.Reqeust, authToken: String?) -> Promise<Response> {
 		guard var urlComponents = URLComponents(string: Constants.host + request.path) else {
 			assertionFailure("Error creating url component for \(request)")
 			return Promise.rejected(with: ServerError.badRequest)
 		}
+		var httpBody: Data? = nil
 		if let parameters = request.parameters {
-			urlComponents.addQueryItems(parameters)
+			switch request.method {
+				case .get:
+					urlComponents.addQueryItems(parameters)
+				case .put, .post:
+					do {
+						let json = try JSONEncoder().encode(parameters)
+						httpBody = json
+					}
+					catch {
+						return Promise.rejected(with: ServerError.badRequest)
+					}
+			}
 		}
 		guard let url = urlComponents.url else  {
 			assertionFailure("Error creating url for \(request)")
@@ -63,6 +91,8 @@ class ServerDataOperator {
 		urlRequest.setValue(request.contentType.rawValue, forHTTPHeaderField: "Content-Type")
 		urlRequest.setValue(authToken, forHTTPHeaderField: "Authorization")
 		urlRequest.setValue(request.contentLength == nil ? nil: String(request.contentLength!), forHTTPHeaderField: "Content-Length")
+		urlRequest.httpBody = httpBody
+		
 		let date = Date()
 		let promise = Promise<Response>()
 		URLSession.shared.dataTask(with: urlRequest)
@@ -84,6 +114,12 @@ class ServerDataOperator {
 		return promise
 	}
 	
+	fileprivate func storeResponse(_ response: Response, in category: APICategory) -> Promise<Bool>{
+		responses[category]!.insert(response)
+		objectWillChange.send()
+		return Promise<Bool>(value: true)
+	}
+	
 	init() {
 		APICategory.allCases.forEach {
 			responses[$0] = Set<Response>()
@@ -93,6 +129,7 @@ class ServerDataOperator {
 	enum APICategory: CaseIterable {
 		case worldCup
 		case famous
+		case bbangStarNewsFeed
 	}
 	
 	struct Response: Hashable {
@@ -115,51 +152,71 @@ class ServerDataOperator {
 		
 		enum Reqeust {
 			case healthCheck
-			case worldCup
+			case worldCupData
+			case worldCupRaking
+			case worldCupWinner(id: String)
+			case bbangStargramList(pageNumber: Int, pageSize: Int)
 			case famous(city: String, needDetail: Bool, demandNumber: Int)
 			
 			var path: String {
 				switch self {
-				case .healthCheck:
-					return "/api/healthcheck"
-				case .worldCup:
-					return "/api/ideal/content"
-				case .famous:
-					return "/api/pilgrimage/list"
+					case .healthCheck:
+						return "/api/healthcheck"
+					case .worldCupData:
+						return "/api/ideal/content"
+					case .worldCupRaking:
+						return "/api/ideal/rank"
+					case .worldCupWinner(_):
+						return "/api/ideal/selected"
+					case .bbangStargramList(_, _):
+						return "/api/breadstagram/list"
+					case .famous:
+						return "/api/pilgrimage/list"
 				}
 			}
 			
 			var method: Method {
 				switch self {
-				case .healthCheck, .worldCup, .famous:
-					return .get
+					case .healthCheck, .worldCupData, .worldCupRaking, .bbangStargramList(_, _), .famous:
+						return .get
+					case .worldCupWinner(_):
+						return .put
 				}
 			}
 			
 			var contentType: ContentType  {
 				switch self {
-				case .healthCheck, .worldCup, .famous:
-					return .json
+					case .healthCheck, .worldCupData, .worldCupRaking,  .worldCupWinner(_), .bbangStargramList(_, _), .famous:
+						return .json
 				}
 			}
 			var parameters: [String: String]? {
 				switch self {
-				case .healthCheck, .worldCup:
-					return nil
-				case .famous(let city, let needDetail, _):
-					return [
-						"id": city + "001", // FIXME: What the heck this 001
-						"option": needDetail ? "all": "none"
-					]
+					case .healthCheck, .worldCupData, .worldCupRaking:
+						return nil
+					case .worldCupWinner(let winnerId):
+						return [
+							"id": winnerId
+						]
+					case .bbangStargramList(let pageNumber, let pageSize):
+						return [
+							"pageNum": String(pageNumber),
+							"pageSize": String(pageSize)
+						]
+					case .famous(let city, let needDetail, _):
+						return [
+							"id": city + "001", // FIXME: What is this 001
+							"option": needDetail ? "all": "none"
+						]
 				}
 			}
 			
 			var contentLength: Int? {
 				switch self {
-				case .healthCheck, .worldCup:
-					return nil
-				case .famous(_, _, let demandNumber):
-					return demandNumber
+					case .healthCheck, .worldCupData, .worldCupRaking, .worldCupWinner(_), .bbangStargramList(_, _):
+						return nil
+					case .famous(_, _, let demandNumber):
+						return demandNumber
 				}
 			}
 			/// Identify request when handle response

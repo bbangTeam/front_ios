@@ -11,53 +11,50 @@ protocol ContainSheet: UIViewController {
 	
 	var sheetVC: Collapsable { get }
 	var durationForMoveSheet: TimeInterval { get }
-	var sheetAnimator: UIViewPropertyAnimator? { get set }
+	var mainVCAnimator: UIViewPropertyAnimator? { get set }
 	var sheetPauseFraction: CGFloat { get set }
 	var blurView: UIVisualEffectView? { get }
 	var blurEffect: UIBlurEffect? { get }
-	func additionalAnimation(toCollapse: Bool) -> Void
+	/// Set animation and assign to mainVC animator which will automatically run when sheet moving
+	func setAnimation(toCollapse: Bool) -> Void
+	
 }
 
 extension ContainSheet {
 	
-	func moveSheet() {
-		guard sheetAnimator == nil, sheetVC.frameAnimator == nil else {
+	 func moveSheet() {
+		guard mainVCAnimator == nil, sheetVC.frameAnimator == nil else {
 			return
 		}
 		let toCollapse = !sheetVC.isCollapsed
 		sheetVC.changeState(toCollapse: toCollapse,
-												duration: durationForMoveSheet, dampingRatio: 1)
-		let animator = UIViewPropertyAnimator(duration: durationForMoveSheet, curve: .linear) { [weak weakSelf = self] in
-			weakSelf?.blurView?.effect = weakSelf?.blurEffect
+							duration: durationForMoveSheet,
+							dampingRatio: 1)
+		setAnimation(toCollapse: toCollapse)
+		mainVCAnimator?.addCompletion { [weak weakSelf = self] position in
+			weakSelf?.mainVCAnimator = nil
 		}
-		animator.addAnimations { [weak weakSelf = self] in
-			weakSelf?.additionalAnimation(toCollapse: toCollapse)
-		}
-		animator.addCompletion { [weak weakSelf = self] _ in
-			weakSelf?.sheetAnimator = nil
-		}
-		sheetAnimator = animator
-		animator.startAnimation()
+		mainVCAnimator?.startAnimation()
 	}
 	
 	func startDragSheet() {
-		if sheetAnimator == nil && sheetVC.frameAnimator == nil {
+		if mainVCAnimator == nil && sheetVC.frameAnimator == nil {
 			moveSheet()
 		}
-		sheetAnimator?.pauseAnimation()
+		mainVCAnimator?.pauseAnimation()
 		sheetVC.frameAnimator?.pauseAnimation()
-		sheetPauseFraction = sheetAnimator?.fractionComplete ?? 0
+		sheetPauseFraction = mainVCAnimator?.fractionComplete ?? 0
 	}
 	
 	func updateSheetState(_ delta: CGFloat) {
-		sheetAnimator?.fractionComplete = sheetPauseFraction + delta
+		mainVCAnimator?.fractionComplete = sheetPauseFraction + delta
 		sheetVC.frameAnimator?.fractionComplete = sheetPauseFraction + delta
 	}
 	
 	func continueSheetMoving(toReverse: Bool) {
-		sheetAnimator?.isReversed = toReverse
+		mainVCAnimator?.isReversed = toReverse
 		sheetVC.frameAnimator?.isReversed = toReverse
-		sheetAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		mainVCAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 		sheetVC.frameAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 	}
 }

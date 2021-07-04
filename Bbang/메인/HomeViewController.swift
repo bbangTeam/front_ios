@@ -5,9 +5,8 @@
 //  Created by bart Shin on 26/05/2021.
 //
 
-import UIKit
+import SwiftUI
 import Combine
-import SDWebImage
 
 class HomeViewController: UIViewController {
 	
@@ -18,24 +17,30 @@ class HomeViewController: UIViewController {
 			_ = server.reqeustWorldCupData()
 		}
 	}
-	private var tourQuickLookVC: TourQuickLookVC?
+	
+	private var bakeryListHC: UIHostingController<HomeBakeryList>!
+	private var tourQuickLookVC: TourVC?
+	private var BSPreviewVC: BSPreviewVC?
 	
 	private var serverResponseObserver: AnyCancellable?
 	private var cityObserver: AnyCancellable?
-	private var tourObserver: AnyCancellable?
 	private var worldCupPreviews = [(content: WorldCupContent, preview: WorldCupPreview)]()
 	private var worldCupImageObservers = [WorldCupContent: AnyCancellable]()
 	
-	@IBOutlet weak var scrollview: UIScrollView!
+	@IBOutlet weak var homeVerticalScrollview: UIScrollView!
 	@IBOutlet weak var welcomeFeed: UIView!
-	@IBOutlet weak var tourQuickLook: UIView!
-	@IBOutlet weak var BbangStarQuikLook: UIView!
-	@IBOutlet weak var worldCupSelector: UIScrollView!
+	@IBOutlet weak var bakeryListContainerView: UIView!
+	@IBOutlet weak var tourView: UIView!
+	@IBOutlet weak var BbangStarView: UIView!
+	@IBOutlet weak var worldCupScrollView: UIScrollView!
+	@IBOutlet weak var listCollapseButton: UIButton!
+	@IBOutlet weak var bakeryListViewHeight: NSLayoutConstraint!
+	@IBOutlet weak var collapseButtonView: UIView!
+	private var isBakeryListCollapsed = true
+	private var bakeryListCollapsedHeight: CGFloat!
+	private var worldCupPreviewSize: CGSize!
 	
-	private var previewMargin: CGFloat!
-	private var worldCupPreviewSize: CGSize {
-		CGSize(width: view.bounds.width*0.6, height: worldCupSelector.frame.height)
-	}
+	
 	
 	// MARK:- User intents
 	
@@ -55,15 +60,66 @@ class HomeViewController: UIViewController {
 		worldCupVC.definesPresentationContext = true
 		worldCupVC.modalPresentationStyle = .overCurrentContext
 		worldCupVC.view.backgroundColor = .clear
+		worldCupVC.server = server
 		present(worldCupVC, animated: true)
 	}
 	
+	@IBAction private func tapListCollapseButton(_ sender: UIButton) {
+		isBakeryListCollapsed.toggle()
+		sender.setTitle(isBakeryListCollapsed ? "더보기": "접기", for: .normal)
+		UIView.animate(withDuration: 0.8,
+					   delay: 0,
+					   usingSpringWithDamping: 0.7,
+					   initialSpringVelocity: 1,
+					   options: [.curveEaseInOut]) { [self] in
+			bakeryListViewHeight.constant = isBakeryListCollapsed ? bakeryListCollapsedHeight: bakeryListHC.view.bounds.height + Constant.collapseButtonHeight
+			if isBakeryListCollapsed {
+				homeVerticalScrollview.contentOffset =
+					CGPoint(x: bakeryListContainerView.frame.origin.x,
+							y: bakeryListContainerView.frame.origin.y + bakeryListCollapsedHeight)
+			}
+			homeVerticalScrollview.layoutIfNeeded()
+		}
+	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		initWorldCupView()
-		scrollview.contentInsetAdjustmentBehavior = .never
+		initBakeryListView()
+		worldCupScrollView.delegate = self
+		worldCupPreviewSize = CGSize(width: view.bounds.width * 0.6,
+									 height: worldCupScrollView.frame.height)
+		homeVerticalScrollview.contentInsetAdjustmentBehavior = .never
 		observeCity()
 		location.requestAuthorization()
+		server.requestFeed(at: 1, by: 10)
+			.observe { result in
+				print("Request news feed \(result)")
+			}
+	}
+	
+	fileprivate func initBakeryListView() {
+		bakeryListCollapsedHeight = HomeBakeryList.Constant.topBarHeight + (UIScreen.main.bounds.width - HomeBakeryList.Constant.horizontalMargin * 2) * BakeryFeedView.Constant.aspectRatio * 2 + Constant.collapseButtonHeight - 10
+		bakeryListViewHeight.constant = bakeryListCollapsedHeight
+		bakeryListHC = UIHostingController(rootView: HomeBakeryList(bakeries: BakeryInfoManager.Bakery.dummys))
+		bakeryListHC.view.frame = .init(
+			origin: bakeryListContainerView.bounds.origin,
+			size: .init(width: bakeryListContainerView.bounds.width,
+						height: bakeryListHC.view.intrinsicContentSize.height))
+		bakeryListContainerView.insertSubview(bakeryListHC.view, belowSubview:
+												collapseButtonView)
+		bakeryListHC.view.sizeToFit()
+		initCollapseButton()
+	}
+	
+	fileprivate func initCollapseButton() {
+		listCollapseButton.frame.size = Constant.collapseButtonSize
+		listCollapseButton.snp.makeConstraints {
+			$0.size.equalTo(Constant.collapseButtonSize)
+		}
+		listCollapseButton.titleLabel?.font = Constant.collapseButtonFont
+		listCollapseButton.setTitleColor(Constant.collapseButtonColor, for: .normal)
+		listCollapseButton.layer.borderWidth = 1
+		listCollapseButton.layer.borderColor = Constant.collapseButtonColor.cgColor
+		listCollapseButton.layer.cornerRadius = 4
 	}
 	
 	fileprivate func observeCity() {
@@ -73,30 +129,34 @@ class HomeViewController: UIViewController {
 					$0.koreanName.contains(cityName) || cityName.contains($0.koreanName)
 				 }) {
 				weakSelf?.tourQuickLookVC?.zoom(to: city)
-				weakSelf?.server.requestFamous(
+				_ = weakSelf?.server.requestFamous(
 					nearby: city,
 					lengthDemand: 40,
 					needDetail: false)
-					.observe(using: { result in
-						print(result)
-					})
 			}
 		}
 	}
 	
 	fileprivate func observeServerResponse() {
-		serverResponseObserver = server.$responses.sink{ [self] responses in
-			if responses[.worldCup] != nil {
-				extractWorlcupDate(in: responses[.worldCup]!)
+		serverResponseObserver = server.objectWillChange.sink{ [self] in
+			if server.responses[.worldCup] != nil,
+			   !server.responses[.worldCup]!.isEmpty{
+				extractWorlcupDate()
 			}
-			if responses[.famous] != nil {
-				extractFamousData(in: responses[.famous]!)
+			if server.responses[.famous] != nil,
+			   !server.responses[.famous]!.isEmpty{
+				extractFamousData()
+			}
+			if server.responses[.bbangStarNewsFeed] != nil,
+			   !server.responses[.bbangStarNewsFeed]!.isEmpty{
+				extractNewsFeed()
 			}
 		}
+		
 	}
 	
-	fileprivate func extractWorlcupDate(in responses: Set<ServerDataOperator.Response> ) {
-		responses.forEach {
+	fileprivate func extractWorlcupDate() {
+		server.responses[.worldCup]!.forEach {
 			server.removeResponse($0, in: .worldCup)
 			if let data = $0.data ,
 				 let content = WorldCupContent(from: data) {
@@ -106,11 +166,37 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func extractFamousData(in responses: Set<ServerDataOperator.Response>) {
-		responses.forEach {
+	fileprivate func extractNewsFeed() {
+		server.responses[.bbangStarNewsFeed]!.forEach { server.removeResponse($0, in: .bbangStarNewsFeed)
+			if let data = $0.data ,
+			   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] ,
+			   let list = json["breadstagramList"] as? [[String: Any]] {
+				let newFeeds = list.compactMap { BSFeed(from: $0) }
+				#if DEBUG
+				if newFeeds.isEmpty {
+					DispatchQueue.main.async {
+						self.BSPreviewVC?.feeds = .init(repeating: .dummy, count: 10)
+					}
+					print("BS feed is emtpy using dummy data")
+					return
+				}
+				#endif
+				DispatchQueue.main.async {
+					self.BSPreviewVC?.feeds = newFeeds
+				}
+			}else {
+				assertionFailure("Fail to get data for \($0)")
+			}
+		}
+	}
+	
+	fileprivate func extractFamousData() {
+		guard tourQuickLookVC != nil else {
+			return
+		}
+		server.responses[.famous]!.forEach {
 			server.removeResponse($0, in: .famous)
 			if let data = $0.data,
-				 
 				 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
 				 let tag = $0.requestTag,
 				 let area = Area(rawValue: tag),
@@ -118,7 +204,7 @@ class HomeViewController: UIViewController {
 				let stores = storeList.compactMap {
 					StoreInfo(from: $0)
 				}
-				tourQuickLookVC?.stores[area] = stores
+				tourQuickLookVC!.stores[area] = stores
 			}
 		}
 	}
@@ -133,32 +219,41 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func initWorldCupView() {
-		previewMargin = view.bounds.width*0.05
-		worldCupSelector.delegate = self
-	}
-	
 	fileprivate func createPreview(with content: WorldCupContent) {
-		let origin = CGPoint(x: worldCupPreviews.last == nil ? previewMargin*2: worldCupPreviews.last!.1.frame.maxX + previewMargin,
-												 y: worldCupSelector.bounds.origin.y)
+		let origin = CGPoint(x: worldCupPreviews.last == nil ? Constant.previewMargin*2: worldCupPreviews.last!.1.frame.maxX + Constant.previewMargin,
+							 y: worldCupScrollView.bounds.origin.y)
 		let preview: WorldCupPreview = .fromNib()
 		preview.frame = CGRect(origin: origin, size: worldCupPreviewSize)
 		preview.imageView.image = content.images.first?.value
 		preview.title.text = "빵드컵"
-		preview.addGestureRecognizer(UITapGestureRecognizer(
-																	target: self,
-																	action: #selector(tapWorldCupPreview(_:))))
+		preview.addGestureRecognizer(
+			UITapGestureRecognizer(
+				target: self,
+				action: #selector(tapWorldCupPreview(_:))))
 		worldCupPreviews.append((content, preview))
-		worldCupSelector.contentSize = CGSize(
+		worldCupScrollView.contentSize = CGSize(
 			width: view.bounds.width*CGFloat(worldCupPreviews.count),
 			height: worldCupPreviewSize.height)
-		worldCupSelector.addSubview(preview)
+		worldCupScrollView.addSubview(preview)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.destination is TourQuickLookVC {
-			self.tourQuickLookVC = (segue.destination as! TourQuickLookVC)
+		if let tourVC = segue.destination as? TourVC {
+			self.tourQuickLookVC = tourVC
+			tourVC.server = server
 		}
+		else if let BSPreviewVC = segue.destination as? BSPreviewVC {
+			BSPreviewVC.server = server
+			self.BSPreviewVC = BSPreviewVC
+		}
+	}
+	
+	struct Constant {
+		static let collapseButtonHeight: CGFloat = 50
+		static var previewMargin: CGFloat = 20
+		static let collapseButtonSize = CGSize(width: 264, height: 34)
+		static let collapseButtonFont = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
+		static let collapseButtonColor = DesignConstant.getUIColor(palette: .secondary(staturation: 400))
 	}
 }
 
@@ -184,74 +279,3 @@ extension HomeViewController: UIScrollViewDelegate {
 	}
 }
 
-
-class WorldCupContent {
-
-	private let id = UUID()
-	private(set) var fragments: [Fragment]
-	@Published private(set) var fetcedImageCount = 0
-	private(set) var images = [Fragment: UIImage]() {
-		didSet {
-			fetcedImageCount = images.values.count
-		}
-	}
-	
-	func fetchImages() {
-		fragments.forEach { fragment in
-			guard let url = URL(string: fragment.imageUrl) else {
-				return
-			}
-			SDWebImageDownloader.shared.downloadImage(with: url) {  [weak self] image, data, error, _ in
-				guard let strongSelf = self else {
-					return
-				}
-				if image != nil {
-					strongSelf.images[fragment] = image!
-				}
-				else {
-					print("Fail to download worldcup image for \(fragment.name) \(error?.localizedDescription ?? "")")
-				}
-			}
-		}
-	}
-	
-	init?(from data: Data) {
-		guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-				let breadList = json["breadList"] as? [[String:Any]] else {
-			return nil
-		}
-		self.fragments = breadList.compactMap {
-			.init(from: $0)
-		}
-	}
-	
-	struct Fragment: Codable, Hashable {
-		let id: String
-		let imageUrl: String
-		let name: String
-		
-		init?(from dictionary: [String: Any]) {
-			if let id = dictionary["id"] as? String,
-				 let imageUrl = dictionary["imageUrl"] as? String,
-				 let name = dictionary["name"] as? String {
-				self.id = id
-				self.name = name
-				self.imageUrl = imageUrl
-			}
-			else {
-				return nil
-			}
-		}
-	}
-}
-
-extension WorldCupContent: Equatable, Hashable {
-	
-	static func == (lhs: WorldCupContent, rhs: WorldCupContent) -> Bool {
-		lhs.id == rhs.id
-	}
-	
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
-	}
-}

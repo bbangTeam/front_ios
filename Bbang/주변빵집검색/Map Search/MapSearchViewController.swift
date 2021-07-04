@@ -12,13 +12,18 @@ class MapSearchViewController: UIViewController {
 
 	var server: ServerDataOperator!
 	var location: LocationGather!
-	var mapSearchController: MapSearchController!
+	var mapSearchController: BakeryInfoManager!
 	private var bottomVC: BottomSheetVC!
 	var sheetVC: Collapsable {
 		bottomVC
 	}
 	@IBOutlet private weak var mapView: MKMapView!
-	var sheetAnimator: UIViewPropertyAnimator?
+	private var userCoordinates: CLLocationCoordinate2D? {
+		didSet {
+			showUserLocation()
+		}
+	}
+	var mainVCAnimator: UIViewPropertyAnimator?
 	var sheetPauseFraction: CGFloat = 0
 	private var searchController: UISearchController!
 	private let searchButton = UIButton()
@@ -44,9 +49,13 @@ class MapSearchViewController: UIViewController {
 		searchBarCancelButtonClicked(searchController.searchBar)
 	}
 	
+	@IBAction func tapLocationButton(_ sender: UIButton) {
+		showUserLocation()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		mapSearchController = MapSearchController(server: server)
+		mapSearchController = BakeryInfoManager(server: server)
 		initMapView()
 		initBottomSheet()
 		initNavigationBar()
@@ -57,7 +66,9 @@ class MapSearchViewController: UIViewController {
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
+		bottomVC.searchResultView.isUserInteractionEnabled = !bottomVC.isCollapsed
 		mapView.frame.size.height = view.bounds.height - (bottomVC.isCollapsed ? bottomVC.collapsedHeight: bottomVC.expandedHeight)
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +78,9 @@ class MapSearchViewController: UIViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		if let lastLocation = location.lastLocation {
+			userCoordinates = lastLocation.coordinate
+		}
 		modifySearchBar()
 	}
 	
@@ -203,8 +217,17 @@ extension MapSearchViewController: MKMapViewDelegate {
 	}
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		let region = MKCoordinateRegion(center: userLocation.coordinate, span: LocationGather.streetBounds)
-		mapView.setRegion(region, animated: true)
+		if userCoordinates == nil {
+			userCoordinates = userLocation.coordinate
+		}
+	}
+	
+	private func showUserLocation(animated: Bool = true) {
+		guard userCoordinates != nil else { return }
+		mapView.setRegion(
+			MKCoordinateRegion(center: userCoordinates!,
+							   span: LocationGather.streetBounds),
+			animated: animated)
 	}
 }
 
@@ -238,8 +261,14 @@ extension MapSearchViewController: UISearchBarDelegate {
 
 extension MapSearchViewController: ContainSheet {
 	
-	func additionalAnimation(toCollapse: Bool) {
-		mapView.frame.size.height = view.bounds.height - (toCollapse ? bottomVC.collapsedHeight: bottomVC.expandedHeight)
+	func setAnimation(toCollapse: Bool) {
+		mainVCAnimator = UIViewPropertyAnimator(
+			duration: durationForMoveSheet,
+			dampingRatio: 1)
+		{ [weak self] in
+			guard let strongSelf = self else { return }
+			strongSelf.mapView.frame.size.height = strongSelf.view.bounds.height - (toCollapse ? strongSelf.bottomVC.collapsedHeight: strongSelf.bottomVC.expandedHeight)
+		}
 	}
 	
 	@objc private func tapSheetHandle(_ sender: UITapGestureRecognizer) {
@@ -257,7 +286,9 @@ extension MapSearchViewController: ContainSheet {
 			delta *= bottomVC.isCollapsed ? 1: -1
 			updateSheetState(delta)
 		case .ended:
-			continueSheetMoving(toReverse: sheetAnimator != nil && sheetAnimator!.fractionComplete < 0.2)
+			continueSheetMoving(
+				toReverse: bottomVC.isCollapsed &&
+					mainVCAnimator != nil && mainVCAnimator!.fractionComplete < 0.2)
 		default:
 			break
 		}
