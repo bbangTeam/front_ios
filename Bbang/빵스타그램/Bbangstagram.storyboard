@@ -604,7 +604,10 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j4O-4A-Hy6">
                                 <rect key="frame" x="0.0" y="89" width="414" height="713"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="713" id="qsb-MS-N8C"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BbangstaCommentTableViewCell" rowHeight="545" id="A5G-EA-VRf" customClass="BbangstaCommentTableViewCell" customModule="Bbang" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="545"/>
@@ -638,7 +641,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIU-6B-Us8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIU-6B-Us8">
                                                     <rect key="frame" x="56" y="60" width="342" height="62.5"/>
                                                     <string key="text">댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -654,7 +657,7 @@
                                                     <state key="normal" image="comment_heart"/>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fWr-oL-C4A">
-                                                    <rect key="frame" x="56" y="130.5" width="122.5" height="14.5"/>
+                                                    <rect key="frame" x="56" y="130.5" width="123" height="14.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아요 20개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9e-tn-RBA">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="14.5"/>
@@ -662,12 +665,16 @@
                                                             <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대댓글 2개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3V-f9-HZl">
-                                                            <rect key="frame" x="70" y="0.0" width="52.5" height="14.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-nl-dyV">
+                                                            <rect key="frame" x="70" y="0.0" width="53" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <state key="normal" title="대댓글 2개">
+                                                                <color key="titleColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="reCommentButtonAction:" destination="A5G-EA-VRf" eventType="touchUpInside" id="gJp-xe-NKQ"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-TG-fAM">
@@ -680,9 +687,9 @@
                                                         <action selector="commentButtonAction:" destination="A5G-EA-VRf" eventType="touchUpInside" id="PAX-7G-ZPG"/>
                                                     </connections>
                                                 </button>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zax-L1-aah">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zax-L1-aah">
                                                     <rect key="frame" x="56" y="145" width="358" height="400"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="400" id="6Hp-44-xZl"/>
                                                     </constraints>
@@ -726,6 +733,9 @@
                                                                             <constraint firstAttribute="width" constant="12" id="a4o-cj-u31"/>
                                                                         </constraints>
                                                                         <state key="normal" image="comment_heart"/>
+                                                                        <connections>
+                                                                            <action selector="heartButtonAction:" destination="eKd-qI-hvc" eventType="touchUpInside" id="jTR-7K-NF8"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wd-Yp-uQE">
                                                                         <rect key="frame" x="40" y="64" width="302" height="78"/>
@@ -754,6 +764,14 @@
                                                                     <constraint firstItem="QB4-dT-ltK" firstAttribute="leading" secondItem="7Wd-Yp-uQE" secondAttribute="leading" id="woJ-1i-4Yx"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="goodLabel" destination="QB4-dT-ltK" id="wzc-qx-xFv"/>
+                                                                <outlet property="heartButton" destination="rMC-6T-gxO" id="dj1-jV-MVm"/>
+                                                                <outlet property="reCommentLabel" destination="7Wd-Yp-uQE" id="QJh-GO-a2j"/>
+                                                                <outlet property="timeLabel" destination="cmf-Rn-ex2" id="Y0U-su-d6g"/>
+                                                                <outlet property="userIdLabel" destination="cmf-Rn-ex2" id="eWt-E8-Nxe"/>
+                                                                <outlet property="userImageView" destination="kB2-Jp-7xH" id="cUM-x4-rTm"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
@@ -777,8 +795,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="recommentTableView" destination="zax-L1-aah" id="lKl-AC-XDR"/>
-                                            <outlet property="recommentTableViewHeight" destination="6Hp-44-xZl" id="QRG-pY-hO1"/>
+                                            <outlet property="commentLabel" destination="CIU-6B-Us8" id="gcn-8p-QBU"/>
+                                            <outlet property="goodLabel" destination="F9e-tn-RBA" id="CIM-fD-Wyf"/>
+                                            <outlet property="heartButton" destination="QEt-fw-oce" id="DDZ-C9-jfk"/>
+                                            <outlet property="reCommentButton" destination="hE4-nl-dyV" id="rTe-47-Cxv"/>
+                                            <outlet property="reCommentTableView" destination="zax-L1-aah" id="lKl-AC-XDR"/>
+                                            <outlet property="reCommentTableViewHeight" destination="6Hp-44-xZl" id="QRG-pY-hO1"/>
+                                            <outlet property="timeLabel" destination="PUW-DE-7L7" id="0ny-Cn-jzm"/>
                                             <outlet property="userIdLabel" destination="pou-df-dR5" id="ava-Es-Wk8"/>
                                             <outlet property="userProfileImageView" destination="UMi-1g-ajj" id="CpD-sD-c60"/>
                                         </connections>
@@ -831,6 +854,7 @@
                     </view>
                     <connections>
                         <outlet property="bbangstaCommentTableView" destination="j4O-4A-Hy6" id="FXY-PL-gWQ"/>
+                        <outlet property="bbangstaCommentTableViewHeight" destination="qsb-MS-N8C" id="rwB-E9-UNw"/>
                         <outlet property="commentTextField" destination="jmL-9E-qFL" id="e5a-UR-yk0"/>
                     </connections>
                 </viewController>
@@ -882,6 +906,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,7 +9,7 @@ import UIKit
 
 class BbangstaCollectionViewCell: UICollectionViewCell {
     
-    var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart")]
+    var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart"), #imageLiteral(resourceName: "tagXmark")]
     var imageViews = [UIImageView]()
     
     @IBOutlet var userImageView: UIImageView!
