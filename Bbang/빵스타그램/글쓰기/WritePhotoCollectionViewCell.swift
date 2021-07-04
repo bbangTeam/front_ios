@@ -9,5 +9,9 @@ import UIKit
 
 class WritePhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var deleteButton: UIButton!
     
+    @IBAction func deleteButtonAction(_ sender: UIButton) {
+        print("삭제")
+    }
 }

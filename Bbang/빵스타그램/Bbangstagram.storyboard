@@ -106,9 +106,13 @@
                                                         <action selector="bbangstaMenuButtonAction:" destination="qIY-Q1-tmK" eventType="touchUpInside" id="e1j-Ty-sDj"/>
                                                     </connections>
                                                 </button>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4k-fU-olL">
+                                                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wyb-Ka-dX3">
+                                                    <rect key="frame" x="145" y="314" width="123" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </pageControl>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4k-fU-olL">
                                                     <rect key="frame" x="0.0" y="82" width="414" height="400"/>
-                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <color key="backgroundColor" red="0.99607843139999996" green="0.5568627451" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="372" id="lHY-4C-5Ia"/>
                                                     </constraints>
@@ -242,10 +246,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="allNumberLabel" destination="coW-XY-Qfv" id="RLJ-KH-np4"/>
                                             <outlet property="bbangstaScrollView" destination="N4k-fU-olL" id="kbn-WZ-nQ4"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
                                             <outlet property="numberLabel" destination="X7p-WH-71X" id="sxv-hl-a2z"/>
                                             <outlet property="numberView" destination="YBm-mX-HXs" id="F06-BF-bLk"/>
+                                            <outlet property="pageControl" destination="wyb-Ka-dX3" id="uYm-Ev-3PQ"/>
                                             <outlet property="scrollViewHeight" destination="lHY-4C-5Ia" id="NTl-hk-fZI"/>
                                             <outlet property="userIdLabel" destination="148-xw-4hI" id="FNV-Ok-uno"/>
                                             <outlet property="userImageView" destination="2N8-zX-nvP" id="QgJ-h6-UEW"/>
@@ -301,7 +307,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="hV3-jZ-Qox">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hgT-6B-xAj">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hgT-6B-xAj">
                                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="게시"/>
@@ -361,7 +367,6 @@
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="photoCollectionView" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zzl-k1-jOv">
                                 <rect key="frame" x="17" y="688" width="397" height="70"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="CB4-8t-Us0"/>
                                 </constraints>
@@ -383,16 +388,31 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <color key="backgroundColor" red="0.99607843139999996" green="0.5568627451" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cf5-dD-BbF">
+                                                    <rect key="frame" x="50" y="4" width="16" height="16"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="J0m-mL-cSA"/>
+                                                        <constraint firstAttribute="width" constant="16" id="nKn-mq-4EX"/>
+                                                    </constraints>
+                                                    <state key="normal" image="photoXmark"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonAction:" destination="M3M-fV-QWm" eventType="touchUpInside" id="MI8-Rm-ac8"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="V7f-mJ-82X" secondAttribute="bottom" id="4uu-ng-5Js"/>
+                                                <constraint firstItem="Cf5-dD-BbF" firstAttribute="top" secondItem="QGk-yo-nGt" secondAttribute="top" constant="4" id="5j5-Lu-Bzb"/>
                                                 <constraint firstItem="V7f-mJ-82X" firstAttribute="top" secondItem="QGk-yo-nGt" secondAttribute="top" id="Q4J-l1-GmH"/>
                                                 <constraint firstItem="V7f-mJ-82X" firstAttribute="leading" secondItem="QGk-yo-nGt" secondAttribute="leading" id="YdD-98-HqF"/>
                                                 <constraint firstAttribute="trailing" secondItem="V7f-mJ-82X" secondAttribute="trailing" id="q3G-20-V3B"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cf5-dD-BbF" secondAttribute="trailing" constant="4" id="xT5-KJ-0Y3"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="70" height="70"/>
                                         <connections>
+                                            <outlet property="deleteButton" destination="Cf5-dD-BbF" id="FdL-M1-mS3"/>
                                             <outlet property="imageView" destination="V7f-mJ-82X" id="5ci-ql-JQk"/>
                                         </connections>
                                     </collectionViewCell>
@@ -421,7 +441,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="CUt-NR-kJd">
                                         <rect key="frame" x="8" y="2" width="29" height="14"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HA1-nt-TtG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HA1-nt-TtG">
                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -542,6 +562,7 @@
                         <outlet property="breadTagCollectionView" destination="oxH-64-b0F" id="wnt-Em-dy1"/>
                         <outlet property="cameraButton" destination="9SN-UV-NDG" id="qO5-Z6-FAs"/>
                         <outlet property="cameraView" destination="uxl-IC-cbG" id="8b4-kA-Xaa"/>
+                        <outlet property="imageCountLabel" destination="HA1-nt-TtG" id="mbX-gx-BaL"/>
                         <outlet property="locationTextField" destination="CWd-GB-bHm" id="PVA-6g-UJG"/>
                         <outlet property="photoCollectionView" destination="zzl-k1-jOv" id="SHS-u5-T4a"/>
                         <outlet property="storeTextField" destination="IbG-dp-gED" id="rjr-nJ-PlG"/>
@@ -843,10 +864,11 @@
         <image name="bbangsta_menu" width="16" height="4"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="comment_heart" width="12" height="11"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart" width="20" height="18.5"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="message" width="20" height="18"/>
+        <image name="photoXmark" width="8" height="8"/>
         <image name="tagXmark" width="8" height="8"/>
         <image name="write_Comment" width="23" height="22.5"/>
         <systemColor name="labelColor">
@@ -857,9 +879,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,6 +10,7 @@ import UIKit
 class BbangstaWriteViewController: UIViewController {
     
     var textArray = ["빵", "소보루", "식빵", "이름이아주아주긴빵ddddddd"]
+    var imageArray = [1,2,3,4,5,6,7,8,9,10]
     
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var storeTextField: UITextField!
@@ -20,6 +21,8 @@ class BbangstaWriteViewController: UIViewController {
     
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var cameraView: UIView!
+    @IBOutlet var imageCountLabel: UILabel!
+    
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var writeButton: UIButton!
     
@@ -91,6 +94,7 @@ extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionVie
             
             cell.layer.cornerRadius = 8
             cell.contentView.frame.size.width = 70
+            cell.deleteButton.layer.cornerRadius = cell.deleteButton.frame.size.height/2
             
             return cell
         default:

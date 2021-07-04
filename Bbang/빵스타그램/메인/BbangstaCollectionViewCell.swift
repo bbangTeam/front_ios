@@ -18,13 +18,16 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var bbangstaScrollView: UIScrollView!
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
+    @IBOutlet var pageControl: UIPageControl!
     
     @IBOutlet var numberView: UIView!
     @IBOutlet var numberLabel: UILabel!
+    @IBOutlet var allNumberLabel: UILabel!
     
     func setupViews() {
         bbangstaScrollView.delegate = self
         addContentScrollView()
+        setPageControl()
     }
     
  
@@ -43,10 +46,25 @@ extension BbangstaCollectionViewCell: UIScrollViewDelegate {
         for i in 0..<images.count {
             let imageView = UIImageView()
             let xPosition = self.contentView.frame.width * CGFloat(i)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.width)
-            bbangstaScrollView.contentSize.width = bbangstaScrollView.frame.width * CGFloat(i + 1)
-           
+            imageView.frame = CGRect(x: xPosition, y: 0, width: bbangstaScrollView.bounds.width, height: bbangstaScrollView.bounds.height)
+            imageView.image = images[i]
             bbangstaScrollView.addSubview(imageView)
+            bbangstaScrollView.contentSize.width = bbangstaScrollView.frame.width * CGFloat(i + 1)
+            
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+        setPageControlSelectedPage(currentPage: Int(round(value)))
+
+    }
+    
+    func setPageControl() {
+        pageControl.numberOfPages = images.count
+    }
+    func setPageControlSelectedPage(currentPage: Int) {
+        pageControl.currentPage = currentPage
+        numberLabel.text = "\(currentPage + 1)"
     }
 }
