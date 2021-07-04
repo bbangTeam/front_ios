@@ -8,9 +8,12 @@
 import UIKit
 
 class BbangstagramViewController: UIViewController {
+    
+ 
 
     @IBOutlet var bbangstaCollectionView: UICollectionView!
     @IBOutlet var bbangstaCollectionViewWidth: NSLayoutConstraint!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +23,9 @@ class BbangstagramViewController: UIViewController {
         
         bbangstaCollectionViewWidth.constant = view.frame.size.width
         
-
+    
     }
+
     
 }
 
@@ -35,6 +39,8 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BbangstaCollectionViewCell", for: indexPath) as! BbangstaCollectionViewCell
+        
+        cell.setupViews()
         
         cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.height/2
         cell.scrollViewHeight.constant = view.frame.size.width
