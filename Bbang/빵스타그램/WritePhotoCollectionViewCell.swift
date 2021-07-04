@@ -8,5 +8,6 @@
 import UIKit
 
 class WritePhotoCollectionViewCell: UICollectionViewCell {
+    @IBOutlet var imageView: UIImageView!
     
 }

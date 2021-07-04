@@ -9,6 +9,8 @@ import UIKit
 
 class BbangstaWriteViewController: UIViewController {
     
+    var textArray = ["빵", "소보루", "식빵", "이름이아주아주긴빵ddddddd"]
+    
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var storeTextField: UITextField!
     @IBOutlet var breadNameTextField: UITextField!
@@ -65,7 +67,7 @@ extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionVie
         
         switch collectionView.tag {
         case 1:
-            return 5
+            return 4
         case 2:
             return 10
         default:
@@ -79,8 +81,9 @@ extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionVie
         switch collectionView.tag {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BreadTagCollectionViewCell", for: indexPath) as! BreadTagCollectionViewCell
-            
+
             cell.layer.cornerRadius = 20
+            cell.breadNameLabel.text = textArray[indexPath.row]
             
             return cell
         case 2:
@@ -107,7 +110,11 @@ extension BbangstaWriteViewController: UICollectionViewDelegateFlowLayout {
         switch collectionView.tag {
         case 1:
             let height = breadTagCollectionView.frame.size.height
-            return CGSize(width: 91, height: height)
+            let label = UILabel(frame: CGRect.zero)
+            label.text = textArray[indexPath.item]
+            label.sizeToFit()
+            
+            return CGSize(width: label.frame.width + 52, height: height)
         case 2:
             let height = photoCollectionView.frame.size.height
             return CGSize(width: height, height: height)

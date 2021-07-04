@@ -149,10 +149,10 @@
 			children = (
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
 				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
+				A54C9B982691919100735774 /* BreadTagCollectionViewCell.swift */,
 				A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */,
 				A54ED961267F0B5F001E5BD1 /* 메인 */,
 				A54ED962267F0B7C001E5BD1 /* 댓글 */,
-				A54C9B982691919100735774 /* BreadTagCollectionViewCell.swift */,
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
