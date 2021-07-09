@@ -16,7 +16,7 @@ class BbangstaCommentViewController: UIViewController {
                                     ]
 
     @IBOutlet var bbangstaCommentTableView: UITableView!
-    @IBOutlet var bbangstaCommentTableViewHeight: NSLayoutConstraint!
+    //@IBOutlet var bbangstaCommentTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet var commentTextField: UITextField!
     
@@ -28,25 +28,26 @@ class BbangstaCommentViewController: UIViewController {
         
         commentTextField.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         
+        //bbangstaCommentTableViewHeight.constant = 1000
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.bbangstaCommentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.bbangstaCommentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.bbangstaCommentTableView.removeObserver(self, forKeyPath: "contentSize")
+//    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.bbangstaCommentTableView.removeObserver(self, forKeyPath: "contentSize")
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "contentSize" {
-            if let newvalue = change?[.newKey]{
-                let newsize = newvalue as! CGSize
-                self.bbangstaCommentTableViewHeight.constant = newsize.height
-            }
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "contentSize" {
+//            if let newvalue = change?[.newKey]{
+//                let newsize = newvalue as! CGSize
+//                self.bbangstaCommentTableViewHeight.constant = newsize.height
+//            }
+//        }
+//    }
     
     @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: .none)
@@ -67,20 +68,20 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
-        tableView.rowHeight = UITableView.automaticDimension
-        bbangstaCommentTableView.estimatedRowHeight = 3000
+//        tableView.rowHeight = UITableView.automaticDimension
+//        bbangstaCommentTableView.estimatedRowHeight = 500
         
         cell.setupViews()
        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
 }

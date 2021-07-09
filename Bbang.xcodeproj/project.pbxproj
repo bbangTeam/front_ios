@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85CD9B6F03AE1A1D3361F21A /* Pods_Bbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE7BD1AF6AB8EF4FFB35EB /* Pods_Bbang.framework */; };
 		A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277E9E265E1A6000D4122A /* AppDelegate.swift */; };
 		A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA0265E1A6000D4122A /* SceneDelegate.swift */; };
 		A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA2265E1A6000D4122A /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AD14A33F0E302F39E4D8A1C /* Pods-Bbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bbang/Pods-Bbang.debug.xcconfig"; sourceTree = "<group>"; };
 		A5277E9B265E1A6000D4122A /* Bbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5277E9E265E1A6000D4122A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5277EA0265E1A6000D4122A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,8 @@
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
 		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2AE7BD1AF6AB8EF4FFB35EB /* Pods_Bbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D28C9FF19A108544BA2F22F8 /* Pods-Bbang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bbang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bbang/Pods-Bbang.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85CD9B6F03AE1A1D3361F21A /* Pods_Bbang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +97,8 @@
 			children = (
 				A5277E9D265E1A6000D4122A /* Bbang */,
 				A5277E9C265E1A6000D4122A /* Products */,
+				E2A2F001FD8CBFAA87A795FA /* Pods */,
+				BB604044063ACF978D9107AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,17 +121,17 @@
 				A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */,
 				A5277EAC265E1A6200D4122A /* Info.plist */,
 				A55192212678F97800455927 /* Extension */,
-				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
-				A5277EB7265E1A9E00D4122A /* 메인 */,
-				A5277EB6265E1A9700D4122A /* 빵지순례 */,
-				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
-				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
-				A5277EB3265E1A7800D4122A /* 설정 */,
+				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
+				A5277EB7265E1A9E00D4122A /* 메인 */,
+				A5277EB6265E1A9700D4122A /* 빵지순례 */,
+				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
+				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
+				A5277EB3265E1A7800D4122A /* 설정 */,
 			);
 			path = Bbang;
 			sourceTree = "<group>";
 		};
-		A5277EB3265E1A7800D4122A /* 설정 */ = {
+		A5277EB3265E1A7800D4122A /* 설정 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ED7265E1ED400D4122A /* Bbangset.storyboard */,
@@ -134,7 +141,7 @@
 			path = "설정";
 			sourceTree = "<group>";
 		};
-		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
+		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */,
@@ -144,22 +151,22 @@
 			path = "주변빵집검색";
 			sourceTree = "<group>";
 		};
-		A5277EB5265E1A9000D4122A /* 빵스타그램 */ = {
+		A5277EB5265E1A9000D4122A /* 빵스타그램 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
-				A54ED961267F0B5F001E5BD1 /* 메인 */,
-				A54C9B9C2691B70700735774 /* 글쓰기 */,
-				A54ED962267F0B7C001E5BD1 /* 댓글 */,
+				A54ED961267F0B5F001E5BD1 /* 메인 */,
+				A54C9B9C2691B70700735774 /* 글쓰기 */,
+				A54ED962267F0B7C001E5BD1 /* 댓글 */,
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
 			sourceTree = "<group>";
 		};
-		A5277EB6265E1A9700D4122A /* 빵지순례 */ = {
+		A5277EB6265E1A9700D4122A /* 빵지순례 */ = {
 			isa = PBXGroup;
 			children = (
-				A546919326888B090055C674 /* 지역 */,
+				A546919326888B090055C674 /* 지역 */,
 				A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */,
 				A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */,
 				A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */,
@@ -172,7 +179,7 @@
 			path = "빵지순례";
 			sourceTree = "<group>";
 		};
-		A5277EB7265E1A9E00D4122A /* 메인 */ = {
+		A5277EB7265E1A9E00D4122A /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */,
@@ -182,7 +189,7 @@
 			path = "메인";
 			sourceTree = "<group>";
 		};
-		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
+		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -190,7 +197,7 @@
 			path = "로그인 화면";
 			sourceTree = "<group>";
 		};
-		A546919326888B090055C674 /* 지역 */ = {
+		A546919326888B090055C674 /* 지역 */ = {
 			isa = PBXGroup;
 			children = (
 				A546918A268887C10055C674 /* SeoulTabViewController.swift */,
@@ -200,7 +207,7 @@
 			path = "지역";
 			sourceTree = "<group>";
 		};
-		A54C9B9C2691B70700735774 /* 글쓰기 */ = {
+		A54C9B9C2691B70700735774 /* 글쓰기 */ = {
 			isa = PBXGroup;
 			children = (
 				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
@@ -211,7 +218,7 @@
 			path = "글쓰기";
 			sourceTree = "<group>";
 		};
-		A54ED961267F0B5F001E5BD1 /* 메인 */ = {
+		A54ED961267F0B5F001E5BD1 /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ECE265E1E0200D4122A /* BbangstagramViewController.swift */,
@@ -221,7 +228,7 @@
 			path = "메인";
 			sourceTree = "<group>";
 		};
-		A54ED962267F0B7C001E5BD1 /* 댓글 */ = {
+		A54ED962267F0B7C001E5BD1 /* 댓글 */ = {
 			isa = PBXGroup;
 			children = (
 				A554C8AE267E49AC00CDA47F /* BbangstaCommentViewController.swift */,
@@ -240,6 +247,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BB604044063ACF978D9107AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE7BD1AF6AB8EF4FFB35EB /* Pods_Bbang.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2A2F001FD8CBFAA87A795FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1AD14A33F0E302F39E4D8A1C /* Pods-Bbang.debug.xcconfig */,
+				D28C9FF19A108544BA2F22F8 /* Pods-Bbang.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5277EAF265E1A6200D4122A /* Build configuration list for PBXNativeTarget "Bbang" */;
 			buildPhases = (
+				84CF8245F63F7A41A811AAFD /* [CP] Check Pods Manifest.lock */,
 				A5277E97265E1A6000D4122A /* Sources */,
 				A5277E98265E1A6000D4122A /* Frameworks */,
 				A5277E99265E1A6000D4122A /* Resources */,
+				72E850E05B456926F18313C7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,6 +335,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72E850E05B456926F18313C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84CF8245F63F7A41A811AAFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bbang-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A5277E97265E1A6000D4122A /* Sources */ = {
@@ -481,6 +546,7 @@
 		};
 		A5277EB0265E1A6200D4122A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AD14A33F0E302F39E4D8A1C /* Pods-Bbang.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -500,6 +566,7 @@
 		};
 		A5277EB1265E1A6200D4122A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D28C9FF19A108544BA2F22F8 /* Pods-Bbang.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
