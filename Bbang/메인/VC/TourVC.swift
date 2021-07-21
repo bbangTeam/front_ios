@@ -19,25 +19,18 @@ class TourVC: UIViewController, PushToOtherTap {
 	@IBOutlet weak var subtitleLabel: UILabel!
 	@IBOutlet weak var detailView: UIView!
 	@IBOutlet weak var iconContainerView: UIView!
-	@IBOutlet weak var cityImageView: UIImageView!
+	@IBOutlet weak var areaImageView: UIImageView!
 	
-	var stores = [Area: [StoreInfo]]() {
-		didSet {
-			if let currentArea = map.selectedArea,
-				 stores[currentArea] != nil {
-				DispatchQueue.main.async {
-					self.drawStores()
-				}
-			}
-		}
-	}
+	private(set) var bakeries = [Area: [BakeryInfoManager.Bakery]]()
 	
 	// MARK:- User intents
 	@objc private func tapMap(sender: UIGestureRecognizer) {
 		let location  = sender.location(in: map)
 		if let found = map.findMap(contain: location) {
-			zoom(to: found.map, with: found.frame)
-			_ = server.requestFamous(nearby: found.map, lengthDemand: 40, needDetail: false)
+			zoom(to: found.area, with: found.frame)
+			if bakeries[found.area] == nil {
+				_ = server.requestFamous(nearby: found.area, lengthDemand: 40, needDetail: false)
+			}
 		}
 	}
 	
@@ -45,6 +38,15 @@ class TourVC: UIViewController, PushToOtherTap {
 		changeView(from: detailView, to: scrollview, completion: zoomOut)
 		iconContainerView.subviews.forEach {
 			$0.removeFromSuperview()
+		}
+	}
+	
+	func setBakeryData(_ bakeries: [BakeryInfoManager.Bakery], for area: Area) {
+		self.bakeries[area] = bakeries
+		if map.selectedArea != nil {
+			DispatchQueue.main.async {
+				self.drawBakeries()
+			}
 		}
 	}
 	
@@ -56,18 +58,17 @@ class TourVC: UIViewController, PushToOtherTap {
 		}
 		map.selectedArea = area
 		scrollview.zoom(to: frame!, animated: true)
-		cityImageView.image = UIImage(named: "path_\(area.rawValue)")
+		areaImageView.image = UIImage(named: "path_\(area.rawValue)")
 		changeView(from: scrollview, to: detailView)
 	}
 	
-	private func drawStores() {
-		stores[map.selectedArea!]!.forEach{ info in
-			guard let offset = map.selectedArea!.calcOffset(location: info.location, in: cityImageView.bounds.size) else {
-				return
-			}
+	private func drawBakeries() {
+		let areaSize = CGSize(width: areaImageView.bounds.size.width * 1.1, height: areaImageView.bounds.height * 1.1)
+		bakeries[map.selectedArea!]!.forEach{ info in
+			let offset = map.selectedArea!.calcOffset(for: info.location, in: areaSize)
 			let center = CGPoint(
-				x: cityImageView.frame.minX + offset.x,
-				y: cityImageView.frame.minY + offset.y)
+				x: areaImageView.frame.midX + offset.width,
+				y: areaImageView.frame.midY - areaImageView.bounds.height * 0.1 + offset.height)
 			let icon = UIImageView()
 			icon.image = storeIconImage
 			icon.contentMode = .scaleAspectFit
@@ -75,6 +76,7 @@ class TourVC: UIViewController, PushToOtherTap {
 			icon.center = center
 			iconContainerView.addSubview(icon)
 		}
+		iconContainerView.setNeedsDisplay()
 	}
 	
 	private func zoomOut() {
@@ -96,8 +98,8 @@ class TourVC: UIViewController, PushToOtherTap {
 	fileprivate func initLabels() {
 		titleLabel.font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 2)))
 		subtitleLabel.font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .subtitle(scale: 1)))
-		titleLabel.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 900))
-		subtitleLabel.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 900))
+		titleLabel.textColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface) : .black
+		subtitleLabel.textColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface) : .black
 	}
 	
 	fileprivate func initScrollview() {
@@ -121,6 +123,10 @@ extension TourVC: UIScrollViewDelegate {
 				weakSelf?.titleLabel.text = area.koreanName
 				weakSelf?.subtitleLabel.text = "빵덕후들의 성지"
 			}
+		}
+		if let currentArea = map.selectedArea,
+		   bakeries[currentArea] != nil {
+				self.drawBakeries()
 		}
 	}
 	

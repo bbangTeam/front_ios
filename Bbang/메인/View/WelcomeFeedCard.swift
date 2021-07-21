@@ -14,8 +14,8 @@ class WelcomeFeedCard: UIView {
 	@IBOutlet weak var backgroundView: UIImageView!
 	
 	override func awakeFromNib() {
-		titleLabel.textColor = DesignConstant.getUIColor(palette: .onSecondary(for: .high))
-		subtitleLabel.textColor = DesignConstant.getUIColor(palette: .onSecondary(for: .high))
+		titleLabel.textColor = .black
+		subtitleLabel.textColor = .black
 		titleLabel.font = DesignConstant.getUIFont(
 			.init(family: .NotoSansCJKkr, style: .headline(scale: 2)))
 		subtitleLabel.font = DesignConstant.getUIFont(

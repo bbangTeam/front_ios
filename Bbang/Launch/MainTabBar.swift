@@ -1,13 +1,13 @@
 //
-//  BbangsetViewController.swift
+//  MainTabBar.swift
 //  Bbang
 //
-//  Created by 소영 on 2021/05/26.
+//  Created by bart Shin on 18/07/2021.
 //
 
 import UIKit
 
-class BbangsetViewController: UIViewController {
+class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

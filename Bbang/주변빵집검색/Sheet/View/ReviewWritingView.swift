@@ -29,9 +29,11 @@ struct ReviewWritingView: View {
 				}
 			}
 			.padding(.horizontal, 16)
+			.navigationBarColor(titleColor: Constant.navigationTitleColor, backgroundColor: Constant.navigationBackgroundColor)
 			.navigationBarTitle(bakery.name, displayMode: .inline)
 			.navigationBarBackButtonHidden(true)
 			.navigationBarItems(leading: backButton)
+			.background(DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.secondary(staturation: 900)): .white)
 		}
 	}
 	
@@ -39,9 +41,14 @@ struct ReviewWritingView: View {
 		HStack(spacing: Constant.starInteval){
 			ForEach(1..<6) { index in
 				RatingStar(cornerRadius: 3)
+					.stroke(getStarBorderColor(for: index), lineWidth: 4)
+					.overlay(
+						RatingStar(cornerRadius: 3)
+							.fill(getStarColor(for: index))
+							.padding(2)
+					)
 					.tag(index)
 					.frame(width: Constant.starSize, height: Constant.starSize)
-					.foregroundColor(getStarColor(for: index))
 					.onTapGesture {
 						ratingPoint = index
 					}
@@ -69,34 +76,47 @@ struct ReviewWritingView: View {
 		}
 	}
 	
+	private func getStarBorderColor(for index: Int) -> Color {
+		if let currentRating = ratingPoint ,
+		   index <= currentRating {
+			return Constant.activeStarBorderColor
+		}else {
+			return Constant.inActiveStarBorderColor
+		}
+	}
+	
 	private var textLabel: some View {
 		Text("맛을 별점으로 표현해주세요")
 			.font(Constant.labelFont)
-			.foregroundColor(.black)
+			.foregroundColor(Constant.labelColor)
 			.padding(.top, 16)
 	}
 	
 	private var breadNameTextField: some View {
 		TextField("드신 빵이름을 적어주세요", text: $breadName)
 			.font(Constant.textFont)
-			.foregroundColor(.black)
+			.foregroundColor(.primary)
 			.autocapitalization(.none)
 			.disableAutocorrection(true)
 			.padding(.vertical, 10.5)
 			.padding(.leading, 16)
 			.padding(.trailing, 64)
-			.border(Constant.borderColor, width: 1)
+			.background(Constant.textFieldBackgroundColor)
+			.overlay(RoundedRectangle(cornerRadius: 4)
+						.stroke(Constant.textFieldBorderColor))
+			.cornerRadius(4)
 			.padding(.top, 32)
-		
 	}
 	
 	private var reviewTextField: some View {
 		TextEditor(text: $reviewContent)
 			.font(Constant.textFont)
-			.foregroundColor(reviewContent == Self.placeHolder ? Constant.textColor: .primary)
+			.foregroundColor(reviewContent == Self.placeHolder ? Constant.placeHolderColor: .primary)
 			.padding(.top, 10)
 			.padding(.horizontal, 16)
-			.border(Constant.borderColor, width: 1)
+			.background(Constant.textFieldBackgroundColor)
+			.overlay(RoundedRectangle(cornerRadius: 4)
+						.stroke(Constant.textFieldBorderColor))
 			.padding(.top, 32)
 			.multilineTextAlignment(.leading)
 			.lineLimit(nil)
@@ -139,28 +159,51 @@ struct ReviewWritingView: View {
 		static let starInteval: CGFloat = 2
 		static let starSize: CGFloat = 48
 		static let labelFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
-		static let textColor = DesignConstant.getColor(palette: .secondary(staturation: 400))
+		static var labelColor: Color {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.surface): .black
+		}
+		static let placeHolderColor = DesignConstant.getColor(.secondary(staturation: 400))
 		static let textFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
-		static let inActiveStarColor = DesignConstant.getColor(palette: .secondary(staturation: 200))
-		static let activeStarColor = DesignConstant.getColor(palette: .primary(saturation: 600))
-		static let borderColor = DesignConstant.getColor(palette: .secondary(staturation: 200))
+		static var textFieldBorderColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 200), dark: .secondary(staturation: 800))
+		}
+		static var textFieldBackgroundColor: Color {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.secondary(staturation: 900)): .white
+		}
+		static var inActiveStarBorderColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 200), dark: .secondary(staturation: 500))
+		}
+		static var activeStarBorderColor: Color {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.primary(saturation: 900)):
+				.black
+		}
+		static var inActiveStarColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 100), dark: .secondary(staturation: 900))
+		}
+		static let activeStarColor = DesignConstant.getColor(.primary(saturation: 600))
 		static let confirmButtonFont = DesignConstant.getFont(.init(family: .Roboto, style: .button(scale: 1)))
-		static let confirmButtonTextColor = DesignConstant.getColor(palette: .secondary(staturation: 900))
-		static let confirmButtonColor = DesignConstant.getColor(palette: .primary(saturation: 600))
-		static let backButtonColor = DesignConstant.getColor(palette: .secondary(staturation: 900))
+		static let confirmButtonTextColor = DesignConstant.getColor(.secondary(staturation: 900))
+		static let confirmButtonColor = DesignConstant.getColor(.primary(saturation: 600))
+		static var backButtonColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 900), dark: .surface)
+		}
+		static var navigationTitleColor: UIColor {
+			DesignConstant.getUIColor(light: .secondary(staturation: 900), dark: .surface)
+		}
+		static var navigationBackgroundColor: UIColor? {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.secondary(staturation: 900)): nil
+		}
 	}
 	
 	init(bakery: BakeryInfoManager.Bakery) {
 		self.bakery = bakery
-		let customNavigationBar = UINavigationBarAppearance()
-		customNavigationBar.backgroundColor = .white
-		UINavigationBar.appearance().standardAppearance = customNavigationBar
+		UITextView.appearance().backgroundColor = .clear
 	}
 }
 
 struct ReviewWritingView_Previews: PreviewProvider {
 	static var previews: some View {
-		ReviewWritingView(bakery: BakeryInfoManager.Bakery.dummys[0])
-			.environmentObject(BakeryInfoManager(server: ServerDataOperator()))
+		ReviewWritingView(bakery: BakeryInfoManager.dummys[0])
+			.environmentObject(BakeryInfoManager(server: ServerDataOperator(), location: LocationGather()))
 	}
 }

@@ -24,7 +24,7 @@ class ServerDataOperator: ObservableObject {
 	}
 	
 	//MARK:- WorldCup
-	func reqeustWorldCupData() -> Promise<Bool> {
+	func requestWorldCupData() -> Promise<Bool> {
 		sendReqeust(.worldCupData, authToken: Constants.tokenForTest)
 			.chained { [weak weakSelf = self] in
 				weakSelf?.storeResponse($0, in: .worldCup) ?? Promise<Bool>(value: false)
@@ -48,12 +48,35 @@ class ServerDataOperator: ObservableObject {
 	}
 	
 	//MARK:- Famous bakery
+	fileprivate func requestAreaList() -> Promise<[[String: Any]]> {
+		sendReqeust(.areaList, authToken: Constants.tokenForTest)
+			.chained { response -> Promise<[[String: Any]]> in
+				guard let data = response.data,
+					  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+					  let areaList = json["areaList"] as? [[String: Any]] else {
+					return Promise<[[String: Any]]>.rejected(with: ServerError.parseFail)
+				}
+				return Promise<[[String: Any]]>(value: areaList)
+			}
+	}
 	func requestFamous(nearby area: Area, lengthDemand: Int, needDetail: Bool) -> Promise<Bool> {
-		 sendReqeust(.famous(city: area.rawValue,
-												needDetail: needDetail,
-												demandNumber: lengthDemand), authToken: Constants.tokenForTest)
-			.chained { [weak weakSelf = self] in
-				weakSelf?.storeResponse($0, in: .famous) ?? Promise<Bool>(value: false)
+		requestAreaList()
+			.chained { [weak self] areaList -> Promise<Bool>  in
+				guard let strongSelf = self,
+					let areaKey = areaList.first(where:{
+					$0["name"] as? String == area.koreanName
+				}),
+					let areaName = areaKey["name"] as? String,
+					let areaId = areaKey["id"] as? String else {
+					return Promise<Bool>.rejected(with: ServerError.notFound)
+				}
+				return strongSelf.sendReqeust(.famous(areaName: areaName,
+													  areaId: areaId,
+									needDetail: needDetail,
+									demandNumber: lengthDemand), authToken: Constants.tokenForTest)
+					.chained { [weak weakSelf = self] in
+						weakSelf?.storeResponse($0, in: .famous) ?? Promise<Bool>(value: false)
+					}
 			}
 	}
 	
@@ -98,7 +121,7 @@ class ServerDataOperator: ObservableObject {
 		URLSession.shared.dataTask(with: urlRequest)
 		{ data, response, error in
 			if error != nil {
-				promise.reject(with: ServerError.unSpecified(error!.localizedDescription))
+				promise.reject(with: ServerError.unSpecified("\(error!.localizedDescription) \n \(urlRequest)"))
 			}
 			let statusCode: Int
 			if let response = response as? HTTPURLResponse {
@@ -107,9 +130,9 @@ class ServerDataOperator: ObservableObject {
 				statusCode = 404
 			}
 			promise.resolve(with: .init(statusCode: statusCode,
-																	data: data
-																	,requestDate: date,
-																	requestTag: request.tag))
+										data: data
+										,requestDate: date,
+										requestTag: request.tag))
 		}.resume()
 		return promise
 	}
@@ -148,18 +171,21 @@ class ServerDataOperator: ObservableObject {
 	
 	struct Constants {
 		static let host = "http://125.240.27.115:7000"
-		static let tokenForTest = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjIyOTA0MDA1LCJ1c2VySWQiOiI2MGI3NzkzNTU4NjdlODExZTdmYWRiZTAifQ.Sb91WW9CaEwc-H5jQYGQAPGvnVQG3UJss6Fi5WGP1Apq6nIpvZDdRxuQs8sQTfp-z1oLFEHPePvnwKOXxHDg2g"
+		static let tokenForTest = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjI4NDI4MjAzLCJ1c2VySWQiOiI2MGUxOGU1YzM2ZDgxOTYyNGQxNzk1ZWUifQ.lKGfvcbJB9Uv3OhR9GjM-QaNmrqngnd_zIpkvNyYVaCThOhMcC_PqQX_7NYTp90UjPMQ4idoltgjRPA-VzR-mw"
 		
 		enum Reqeust {
+			case areaList
+			case bbangStargramList(pageNumber: Int, pageSize: Int)
+			case famous(areaName: String, areaId: String, needDetail: Bool, demandNumber: Int)
 			case healthCheck
 			case worldCupData
 			case worldCupRaking
 			case worldCupWinner(id: String)
-			case bbangStargramList(pageNumber: Int, pageSize: Int)
-			case famous(city: String, needDetail: Bool, demandNumber: Int)
 			
 			var path: String {
 				switch self {
+					case .areaList:
+						return "/api/pilgrimage/area/list"
 					case .healthCheck:
 						return "/api/healthcheck"
 					case .worldCupData:
@@ -172,27 +198,28 @@ class ServerDataOperator: ObservableObject {
 						return "/api/breadstagram/list"
 					case .famous:
 						return "/api/pilgrimage/list"
+					
 				}
 			}
 			
 			var method: Method {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking, .bbangStargramList(_, _), .famous:
+					case .healthCheck, .worldCupData, .worldCupRaking, .bbangStargramList(_, _), .famous, .areaList:
 						return .get
 					case .worldCupWinner(_):
-						return .put
+						return .post
 				}
 			}
 			
 			var contentType: ContentType  {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking,  .worldCupWinner(_), .bbangStargramList(_, _), .famous:
+					case .healthCheck, .worldCupData, .worldCupRaking,  .worldCupWinner(_), .bbangStargramList(_, _), .famous, .areaList:
 						return .json
 				}
 			}
 			var parameters: [String: String]? {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking:
+					case .areaList, .healthCheck, .worldCupData, .worldCupRaking:
 						return nil
 					case .worldCupWinner(let winnerId):
 						return [
@@ -203,9 +230,9 @@ class ServerDataOperator: ObservableObject {
 							"pageNum": String(pageNumber),
 							"pageSize": String(pageSize)
 						]
-					case .famous(let city, let needDetail, _):
+					case .famous(_, let areaId, let needDetail, _):
 						return [
-							"id": city + "001", // FIXME: What is this 001
+							"id": areaId ,
 							"option": needDetail ? "all": "none"
 						]
 				}
@@ -213,17 +240,17 @@ class ServerDataOperator: ObservableObject {
 			
 			var contentLength: Int? {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking, .worldCupWinner(_), .bbangStargramList(_, _):
+					case .areaList, .healthCheck, .worldCupData, .worldCupRaking, .worldCupWinner(_), .bbangStargramList(_, _):
 						return nil
-					case .famous(_, _, let demandNumber):
+					case .famous(_, _, _, let demandNumber):
 						return demandNumber
 				}
 			}
 			/// Identify request when handle response
 			var tag: String? {
 				switch self {
-				case .famous(let cityName, _, _):
-					return cityName
+				case .famous(let areaName, _, _, _):
+					return areaName
 				default:
 					return nil
 				}
@@ -244,5 +271,6 @@ class ServerDataOperator: ObservableObject {
 		case badRequest
 		case notFound
 		case unSpecified (String)
+		case parseFail
 	}
 }

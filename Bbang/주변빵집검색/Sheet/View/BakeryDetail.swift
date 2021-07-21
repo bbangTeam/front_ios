@@ -23,7 +23,7 @@ struct BakeryDetail: View {
 struct BakeryDetail_Previews: PreviewProvider {
 	
 	static var previews: some View {
-		BakeryDetail(bakery: BakeryInfoManager.Bakery.dummys[0])
-			.environmentObject(BakeryInfoManager(server: ServerDataOperator()))
+		BakeryDetail(bakery: BakeryInfoManager.dummys[0])  
+			.environmentObject(BakeryInfoManager(server: ServerDataOperator(), location: LocationGather()))
 	}
 }

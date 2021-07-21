@@ -11,6 +11,8 @@ extension URLComponents  {
 	mutating func addQueryItems(_ dictionary: [String: String]) {
 		self.queryItems = dictionary.map {
 			URLQueryItem(name: $0, value: $1)
+		}.sorted {
+			$0.name < $1.name
 		}
 	}
 }

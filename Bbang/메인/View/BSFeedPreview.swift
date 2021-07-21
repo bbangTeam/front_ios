@@ -51,7 +51,7 @@ struct BSFeedPreview: View {
 		Text("좋아요 \(feed.like)개")
 			.lineLimit(1)
 			.font(Constant.hashTagfont)
-			.foregroundColor(Constant.secondaryFontColor)
+			.foregroundColor(Constant.hashTagFontColor)
 	}
 	
 	struct Constant {
@@ -59,8 +59,13 @@ struct BSFeedPreview: View {
 		static let bakeryFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .subtitle(scale: 1)))
 		static let breadFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
 		static let hashTagfont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .caption))
-		static let primaryFontColor = DesignConstant.getColor(palette: .secondary(staturation: 900))
-		static let secondaryFontColor = DesignConstant.getColor(palette: .secondary(staturation: 400))
+		static var primaryFontColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 900), dark: .secondary(staturation: 50))
+		}
+		static var secondaryFontColor: Color {
+			DesignConstant.getColor(light: .secondary(staturation: 800), dark: .secondary(staturation: 200))
+		}
+		static let hashTagFontColor = DesignConstant.getColor(.secondary(staturation: 400))
 	}
 }
 

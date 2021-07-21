@@ -45,7 +45,7 @@ class BottomSheetVC: UIViewController {
 		sheetHandle.snp.makeConstraints {
 			$0.height.equalTo(handleHeight)
 		}
-		handleBar.backgroundColor = DesignConstant.getUIColor(palette: .secondary(staturation: 100))
+		handleBar.backgroundColor = DesignConstant.getUIColor(light: .secondary(staturation: 100), dark: .secondary(staturation: 400))
 		handleBar.layer.cornerRadius = 10
 	}
 	

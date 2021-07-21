@@ -28,6 +28,7 @@ struct HomeBakeryList: View {
 		HStack {
 			Text("내 주변 빵집")
 				.font(Constant.titleFont)
+				.foregroundColor(Constant.titleColor)
 			Spacer()
 			Button {
 				
@@ -42,8 +43,9 @@ struct HomeBakeryList: View {
 	
 	struct Constant {
 		static let titleFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 6)))
+		static let titleColor = DesignConstant.getColor(light: .secondary(staturation: 900), dark: .secondary(staturation: 50))
 		static let moreButtonFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
-		static let moreButtonColor = DesignConstant.getColor(palette: .secondary(staturation: 500))
+		static let moreButtonColor = DesignConstant.getColor(light: .secondary(staturation: 500), dark: .secondary(staturation: 400))
 		static let topBarHeight: CGFloat = 64
 		static let horizontalMargin: CGFloat = 16
 	}
@@ -51,7 +53,7 @@ struct HomeBakeryList: View {
 
 struct HomeBakeryList_Previews: PreviewProvider {
     static var previews: some View {
-		HomeBakeryList(bakeries: BakeryInfoManager.Bakery.dummys)
+		HomeBakeryList(bakeries: BakeryInfoManager.dummys)
 			.previewLayout(.sizeThatFits)
 			.frame(width: 375, height: 1755, alignment: .top)
     }

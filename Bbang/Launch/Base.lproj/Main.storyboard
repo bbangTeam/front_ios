@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7iI-6B-C6r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Tab Bar-->
+        <scene sceneID="BwY-0U-Ied">
+            <objects>
+                <tabBarController id="7iI-6B-C6r" customClass="MainTabBar" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="37T-Gp-3fU"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vYO-di-QRm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="G1C-La-D3T" kind="relationship" relationship="viewControllers" id="1ye-TY-eao"/>
+                        <segue destination="Agq-sZ-J6X" kind="relationship" relationship="viewControllers" id="ajy-EK-Ys6"/>
+                        <segue destination="Leq-hH-dgy" kind="relationship" relationship="viewControllers" id="XWo-yw-W12"/>
+                        <segue destination="nzV-Mu-YDd" kind="relationship" relationship="viewControllers" id="DgX-GP-d41"/>
+                        <segue destination="ZdD-ah-ZIN" kind="relationship" relationship="viewControllers" id="eVF-p2-V1L"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SX7-BZ-qfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-716" y="443"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="cKQ-sG-Fro">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="Home" id="G1C-La-D3T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RHg-di-SMq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="77a-A5-frZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7" y="244"/>
+        </scene>
+        <!--BbangtourViewController-->
+        <scene sceneID="TCc-51-wkt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Bbangtour" referencedIdentifier="BbangtourViewController" id="Agq-sZ-J6X" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2yk-pZ-8ER"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xq-ZlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="327"/>
+        </scene>
+        <!--BbangstagramViewController-->
+        <scene sceneID="ozK-CR-Ovq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Bbangstagram" referencedIdentifier="BbangstagramViewController" id="Leq-hH-dgy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3FG-jp-91f"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-WW-9ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="392"/>
+        </scene>
+        <!--MapSearch-->
+        <scene sceneID="JBr-T2-uBb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MapSearch" referencedIdentifier="MapSearch" id="nzV-Mu-YDd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="u4w-ch-IIE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kyU-F3-zjI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="443"/>
+        </scene>
+        <!--BbangsetViewController-->
+        <scene sceneID="7Mr-Zq-Oi4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Bbangset" referencedIdentifier="BbangsetViewController" id="ZdD-ah-ZIN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="VkE-Ac-epS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2C-X2-70Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="511"/>
+        </scene>
+        <!--Sign InVC-->
+        <scene sceneID="PXU-B7-cMw">
+            <objects>
+                <viewController storyboardIdentifier="SignInVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BPn-oZ-Cwe" customClass="SignInVC" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fOq-2C-w7c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G09-PR-fqL">
+                                <rect key="frame" x="110" y="229" width="194" height="159"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G09-PR-fqL" secondAttribute="height" multiplier="155: 127" id="lRM-oh-RxZ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="jpq-c5-POF">
+                                <rect key="frame" x="32" y="461" width="350" height="346"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xjr-8h-JWe">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sw-wp-Vif">
+                                        <rect key="frame" x="0.0" y="89.5" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BGK-MH-Y9e">
+                                        <rect key="frame" x="0.0" y="179" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SYs-Xu-sDW">
+                                        <rect key="frame" x="0.0" y="268.5" width="350" height="77.5"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bMw-I2-fdM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G09-PR-fqL" firstAttribute="centerX" secondItem="fOq-2C-w7c" secondAttribute="centerX" id="DCV-6s-HgP"/>
+                            <constraint firstItem="bMw-I2-fdM" firstAttribute="bottom" secondItem="jpq-c5-POF" secondAttribute="bottom" constant="55" id="DtS-Or-Hb1"/>
+                            <constraint firstItem="G09-PR-fqL" firstAttribute="top" secondItem="bMw-I2-fdM" secondAttribute="top" constant="185" id="Jd2-Dx-GCz"/>
+                            <constraint firstItem="G09-PR-fqL" firstAttribute="leading" secondItem="bMw-I2-fdM" secondAttribute="leading" constant="110" id="OF3-x4-Or3"/>
+                            <constraint firstItem="jpq-c5-POF" firstAttribute="trailing" secondItem="bMw-I2-fdM" secondAttribute="trailing" constant="-32" id="dKY-cf-upJ"/>
+                            <constraint firstItem="jpq-c5-POF" firstAttribute="leading" secondItem="bMw-I2-fdM" secondAttribute="leading" constant="32" id="f4y-qD-TTa"/>
+                            <constraint firstItem="jpq-c5-POF" firstAttribute="top" secondItem="G09-PR-fqL" secondAttribute="bottom" constant="73" id="mMf-li-fdo"/>
+                            <constraint firstItem="bMw-I2-fdM" firstAttribute="trailing" secondItem="G09-PR-fqL" secondAttribute="trailing" constant="110" id="njO-6x-KKL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButtonStack" destination="jpq-c5-POF" id="psU-eK-xk3"/>
+                        <outlet property="logoView" destination="G09-PR-fqL" id="ujD-bb-M0x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nB8-OY-vaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1788" y="443"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

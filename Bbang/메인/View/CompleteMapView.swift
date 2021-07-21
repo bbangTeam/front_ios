@@ -40,7 +40,7 @@ class CompleteMapView: UIView{
 		return found
 	}
 	
-	func findMap(contain location: CGPoint) -> (map: Area, frame: CGRect)? {
+	func findMap(contain location: CGPoint) -> (area: Area, frame: CGRect)? {
 		var found: (Area, CGRect)?
 		layer.sublayers?.forEach({
 			if let mapLayer = $0 as? CAShapeLayer,

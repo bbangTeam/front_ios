@@ -38,7 +38,7 @@ struct HomeBSPreview<DataSourceT>: View where DataSourceT: BSPreviewDataSouce {
 		HStack {
 			Text("빵스타그램")
 				.font(constant.titleFont)
-				.foregroundColor(.black)
+				.foregroundColor(constant.titleColor)
 			Spacer()
 			Button(action: {
 				
@@ -52,8 +52,12 @@ struct HomeBSPreview<DataSourceT>: View where DataSourceT: BSPreviewDataSouce {
 	
 	struct Constant {
 		let titleFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 6)))
+		var titleColor: Color {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.surface): .black
+		}
 		let moreButtonFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
-		let moreButtonColor = DesignConstant.getColor(palette: .secondary(staturation: 400))
+		var moreButtonColor: Color {
+			return DesignConstant.getColor(light: .secondary(staturation: 500), dark: .secondary(staturation: 400))		}
 	}
 	
 	init(dataSource: DataSourceT, tapFeed: @escaping (BSFeed) -> Void) {

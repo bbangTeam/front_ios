@@ -30,9 +30,6 @@ class BSPreviewVC: UIViewController, ObservableObject, BSPreviewDataSouce {
 				if image != nil {
 					strongSelf.feedImages[feed] = image!
 				}
-				else {
-					print("Fail to fetch image from: \(url) \n \(error?.localizedDescription ?? "")")
-				}
 				countToFetch -= 1
 				if countToFetch < strongSelf.feeds.count / 2 {
 					DispatchQueue.main.async {

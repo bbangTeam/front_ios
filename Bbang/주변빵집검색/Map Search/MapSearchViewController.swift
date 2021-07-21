@@ -12,7 +12,7 @@ class MapSearchViewController: UIViewController {
 
 	var server: ServerDataOperator!
 	var location: LocationGather!
-	var mapSearchController: BakeryInfoManager!
+	var bakeryInfo: BakeryInfoManager!
 	private var bottomVC: BottomSheetVC!
 	var sheetVC: Collapsable {
 		bottomVC
@@ -55,7 +55,6 @@ class MapSearchViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		mapSearchController = BakeryInfoManager(server: server)
 		initMapView()
 		initBottomSheet()
 		initNavigationBar()
@@ -84,6 +83,13 @@ class MapSearchViewController: UIViewController {
 		modifySearchBar()
 	}
 	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		if searchController.isActive == true {
+			searchController.isActive = false
+		}
+	}
+	
 	fileprivate func initMapView() {
 		mapView.isZoomEnabled = true
 		mapView.isScrollEnabled = true
@@ -98,7 +104,7 @@ class MapSearchViewController: UIViewController {
 	
 	fileprivate func initBottomSheet() {
 		let sheetHeights: (expanded: CGFloat, collapsed: CGFloat) = (view.bounds.height - minimumMapHeight - navigationBarHeight, view.bounds.height * 0.15)
-		let bottomVC = BottomSheetVC(heights: sheetHeights, mapSearchController: mapSearchController) { [weak self] isCollapsed in
+		let bottomVC = BottomSheetVC(heights: sheetHeights, mapSearchController: bakeryInfo) { [weak self] isCollapsed in
 			guard let strongSelf = self else {
 				return
 			}
@@ -135,6 +141,7 @@ class MapSearchViewController: UIViewController {
 	fileprivate func initSearchBar(in navigationBar: UINavigationBar) {
 		searchController = UISearchController(searchResultsController: nil)
 		navigationBar.addSubview(searchController.searchBar)
+		navigationBar.backgroundColor = Constant.searcbarBackgroundColor
 		searchController.searchResultsUpdater = bottomVC
 		searchController.showsSearchResultsController = false
 		searchController.searchBar.autocapitalizationType = .none
@@ -151,9 +158,9 @@ class MapSearchViewController: UIViewController {
 	fileprivate func initSearchBarButton() {
 		let searchImage = UIImage(systemName: "magnifyingglass")!
 		searchButton.setImage(searchImage, for: .normal)
-		searchButton.tintColor = .black
+		searchButton.tintColor = Constant.searchbarButtonColor
 		searchButton.frame.size = CGSize(width: searchBarButtonSize,
-																		 height: searchBarButtonSize)
+										 height: searchBarButtonSize)
 		searchButton.addTarget(self, action: #selector(tapSearchButton), for: .touchUpInside)
 		searchController.searchBar.addSubview(searchButton)
 		searchButton.snp.makeConstraints {
@@ -162,7 +169,7 @@ class MapSearchViewController: UIViewController {
 		}
 		let cancelImage = UIImage(systemName: "arrow.left")!
 		cancelButton.setImage(cancelImage, for: .normal)
-		cancelButton.tintColor = .black
+		cancelButton.tintColor = Constant.searchbarButtonColor
 		cancelButton.frame.size = CGSize(width: searchBarButtonSize,
 																		 height: searchBarButtonSize)
 		cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
@@ -175,28 +182,38 @@ class MapSearchViewController: UIViewController {
 	}
 	
 	fileprivate func modifySearchBar() {
+		searchController.searchBar.backgroundColor = Constant.searcbarBackgroundColor
 		if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
 			textfield.borderStyle = .none
 			textfield.leftViewMode = .never
-			textfield.backgroundColor = DesignConstant.getUIColor(palette: .secondary(staturation: 100))
-			let font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
+			textfield.backgroundColor = Constant.searchbarTextfieldBackgroundColor
+			let font = Constant.searchbarFont
 			if let placeholderLabel = textfield.value(forKey: "placeholderLabel") as? UILabel {
 				textfield.addSubview(placeholderLabel)
 				placeholderLabel.text = "검색어를 입력하세요"
 				placeholderLabel.font = font
-				placeholderLabel.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 400))
+				placeholderLabel.textColor = Constant.searchbarPlaceholderColor
 				placeholderLabel.snp.makeConstraints {
 					$0.width.equalToSuperview().multipliedBy(0.7)
 					$0.height.equalToSuperview()
 					$0.left.equalToSuperview().offset(17.5)
 				}
 			}
-			textfield.textColor = DesignConstant.getUIColor(palette: .secondary(staturation: 900))
+			textfield.textColor = Constant.searchbarTextColor
 			textfield.font = font
 		}
 	}
 	var blurEffect: UIBlurEffect? = nil
 	var blurView: UIVisualEffectView? = nil
+	
+	struct Constant {
+		static var searchbarButtonColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface): .black
+		static let searchbarFont = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
+		static var searcbarBackgroundColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.secondary(staturation: 900)): .white
+		static var searchbarTextColor = DesignConstant.getUIColor(light: .secondary(staturation: 900), dark: .surface)
+		static var searchbarPlaceholderColor = DesignConstant.getUIColor(.secondary(staturation: 400))
+		static var searchbarTextfieldBackgroundColor = DesignConstant.getUIColor(light: .secondary(staturation: 100), dark: .secondary(staturation: 800))
+	}
 }
 
 
@@ -254,7 +271,7 @@ extension MapSearchViewController: UISearchBarDelegate {
 		}
 		cancelButton.isEnabled = false
 		if let searchString = searchBar.text {
-			mapSearchController.search(for: searchString)
+			bakeryInfo.search(for: searchString)
 		}
 	}
 }

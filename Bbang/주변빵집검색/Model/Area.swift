@@ -47,30 +47,56 @@ enum Area: String, CaseIterable {
 		}
 	}
 	
-	func calcOffset(location: CLLocationCoordinate2D, in bound: CGSize) -> CGPoint? {
-		guard let horizontal = self.latitudeRange,
-					let vertical = self.longitudeRange else {
-			return nil
-		}
-		let x = bound.width * CGFloat((location.latitude - horizontal.min) / (horizontal.max - horizontal.min))
-		let y = bound.height * CGFloat((location.longitude - vertical.min) / (vertical.max - vertical.min))
-		return CGPoint(x: x, y: y)
+	func calcOffset(for location: CLLocationCoordinate2D, in bound: CGSize) -> CGSize {
+		let x = bound.height * CGFloat((location.longitude - geometry.longitude) / (geometry.deltaLongitude * 2))
+		let y = bound.width * CGFloat((location.latitude - geometry.latitude) / (geometry.deltaLatitdue * 2))
+		return CGSize(width: x, height: y)
 	}
 	
-	fileprivate var latitudeRange: (min: Double, max: Double)?{
+	fileprivate var geometry: (latitude: Double, longitude: Double, deltaLatitdue: Double, deltaLongitude: Double) {
 		switch self {
-		case .seoul:
-			return (37.413294, 37.715133)
-		default:
-			return nil
+			case .seoul:
+				return (37.540705, 126.956764, 0.551279, 0.483654)
+			case .incheon:
+				return (37.469221, 126.573234, 0.513281, 0.449886)
+			case .gwangju:
+				return (35.126033, 126.831302, 0.488798, 0.415746)
+			case .daegu:
+				return (35.798838, 128.583052, 0.477603, 0.409637)
+			case .ulsan:
+				return (35.519301, 129.239078, 0.581102, 0.496665)
+			case .daejeon:
+				return (36.321655, 127.378953, 0.431948, 0.372948)
+			case .busan:
+				return (35.198362, 129.053922, 0.650120, 0.553922)
+			case .gyeonggi:
+				return (37.567167, 127.190292, 1.454663, 1.276685)
+			case .gangwon:
+				return (37.555837, 128.209315, 2.734753, 2.399858)
+			case .southChungcheong:
+				return (36.557229, 126.779757, 1.640025, 1.420338)
+			case .northChungcheong:
+				return (36.628503, 127.929344, 1.638511, 1.420338)
+			case .northGyeongsang:
+				return (36.248647, 128.664734, 2.132939, 1.839925)
+			case .southGyeongsang:
+				return (35.259787, 128.664734, 2.255005, 1.921210)
+			case .northJeolla:
+				return (35.716705, 127.144185, 1.610107, 1.379571)
+			case .southJeolla:
+				return (34.819400, 126.893113, 2.338820, 1.981914)
+			case .jeju:
+				return (33.364805, 126.542671, 1.133116, 0.943816)
 		}
 	}
 	
-	fileprivate var longitudeRange: (min: Double, max: Double)? {
-		switch self {
-		case .seoul:
-			return (126.734086, 127.269311)
-		default:
+	
+	init?(koreanName: String) {
+		if let found = Self.allCases.first(where: {
+			$0.koreanName == koreanName
+		}) {
+			self = found
+		}else {
 			return nil
 		}
 	}

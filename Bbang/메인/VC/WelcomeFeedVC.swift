@@ -12,7 +12,6 @@ class WelcomeFeedVC: UIViewController {
 	let cardInfos: [CardInfo] = CardInfo.dummyCards
 	private var cards = [WelcomeFeedCard]()
 	@IBOutlet weak var scrollview: UIScrollView!
-	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var pageControl: ResizedPageControl!
 	private var swipeTimer: Timer?
 	
@@ -25,7 +24,6 @@ class WelcomeFeedVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		scrollview.contentInsetAdjustmentBehavior = .never
-		initTitleLabel()
 		createCards()
 		scrollview.delegate = self
 		initPageController()
@@ -41,13 +39,6 @@ class WelcomeFeedVC: UIViewController {
 		swipeTimer?.invalidate()
 	}
 	
-	fileprivate func initTitleLabel() {
-		titleLabel.text = "빵터짐"
-		titleLabel.font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 5)))
-		titleLabel.textColor = DesignConstant.getUIColor(palette: .onSecondary(for: .high))
-	}
-	
-	
 	fileprivate func createCards() {
 		cardInfos.forEach {
 			let card: WelcomeFeedCard = UIView.fromNib()
@@ -62,8 +53,8 @@ class WelcomeFeedVC: UIViewController {
 	fileprivate func initPageController() {
 		pageControl.numberOfPages = cards.count
 		pageControl.currentPage = 0
-		pageControl.pageIndicatorTintColor = DesignConstant.getUIColor(palette: .onSecondary(for: .medium))
-		pageControl.currentPageIndicatorTintColor = DesignConstant.getUIColor(palette: .primary(saturation: 600))
+		pageControl.pageIndicatorTintColor = DesignConstant.getUIColor(.onSecondary(for: .medium))
+		pageControl.currentPageIndicatorTintColor = DesignConstant.getUIColor(.primary(saturation: 600))
 		pageControl.addTarget(self, action: #selector(tapPageController(_:)), for: .valueChanged)
 	}
 	

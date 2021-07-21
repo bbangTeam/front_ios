@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct DesignConstant {
+class DesignConstant {
+	var interface: UIUserInterfaceStyle = .light
+	static let shared = DesignConstant()
 	
 	static func getUIFont(_ font: BbangFont) -> UIFont {
 		guard let size = font.style.size ,
@@ -18,12 +20,21 @@ struct DesignConstant {
 		return found
 	}
 	
-	static func getUIColor(palette: Palette) -> UIColor {
+	
+	static func getUIColor(_ palette: Palette) -> UIColor {
 		guard let hexValue = palette.hexValue else {
 			assertionFailure("\(palette) is not in Palette")
 			return UIColor()
 		}
 		return UIColor(hexValue: hexValue).withAlphaComponent(palette.alpha)
+	}
+	static func getUIColor(light: Palette, dark: Palette) -> UIColor {
+		guard let hexValue = Self.shared.interface == .dark ? dark.hexValue: light.hexValue else {
+				assertionFailure("\(Self.shared.interface == .dark ? dark: light) is not in Palette")
+			return UIColor()
+		}
+		let alpha = Self.shared.interface == .dark ? dark.alpha: light.alpha
+		return UIColor(hexValue: hexValue).withAlphaComponent(alpha)
 	}
 	
 	static func getFont(_ font: BbangFont) -> Font {
@@ -34,8 +45,11 @@ struct DesignConstant {
 		return Font.custom(font.name, size: 18)
 	}
 	
-	static func getColor(palette: Palette) -> Color {
-		Color(getUIColor(palette: palette))
+	static func getColor(_ palette: Palette) -> Color {
+		Color(getUIColor(palette))
+	}
+	static func getColor(light: Palette, dark: Palette) -> Color {
+		Color(getUIColor(light: light, dark: dark))
 	}
 	
 	struct BbangFont {

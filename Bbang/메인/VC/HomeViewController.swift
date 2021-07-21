@@ -11,20 +11,21 @@ import Combine
 class HomeViewController: UIViewController {
 	
 	var location: LocationGather!
+	var bakeryInfo: BakeryInfoManager!
 	var server: ServerDataOperator! {
 		didSet {
 			observeServerResponse()
-			_ = server.reqeustWorldCupData()
+			_ = server.requestWorldCupData()
 		}
 	}
-	
+	private var isLoggedIn = false
 	private var bakeryListHC: UIHostingController<HomeBakeryList>!
 	private var tourQuickLookVC: TourVC?
 	private var BSPreviewVC: BSPreviewVC?
 	
 	private var serverResponseObserver: AnyCancellable?
 	private var cityObserver: AnyCancellable?
-	private var worldCupPreviews = [(content: WorldCupContent, preview: WorldCupPreview)]()
+	private var worldCupPreviews = [(content: WorldCupContent, preview: UIView)]()
 	private var worldCupImageObservers = [WorldCupContent: AnyCancellable]()
 	
 	@IBOutlet weak var homeVerticalScrollview: UIScrollView!
@@ -38,14 +39,11 @@ class HomeViewController: UIViewController {
 	@IBOutlet weak var collapseButtonView: UIView!
 	private var isBakeryListCollapsed = true
 	private var bakeryListCollapsedHeight: CGFloat!
-	private var worldCupPreviewSize: CGSize!
-	
-	
 	
 	// MARK:- User intents
 	
 	@objc private func tapWorldCupPreview(_ gesture: UITapGestureRecognizer) {
-		guard let preview = gesture.view as? WorldCupPreview,
+		guard let preview = gesture.view,
 					let content = worldCupPreviews.first(where: {
 						$0.preview == preview
 					})?.content else {
@@ -81,12 +79,35 @@ class HomeViewController: UIViewController {
 			homeVerticalScrollview.layoutIfNeeded()
 		}
 	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		configColorMode()
+		checkLogin()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		if !isLoggedIn {
+			tabBarController?.tabBar.isHidden = true
+			let signInVC: SignInVC = UIStoryboard(storyboard: .Main).instantiateViewController()
+			signInVC.handleLogin = { [self] in
+				loadContent()
+				isLoggedIn = true
+				signInVC.disappear()
+				tabBarController?.tabBar.isHidden = false
+			}
+			addChild(signInVC)
+			view.addSubview(signInVC.view)
+		}
+	}
+	
+	fileprivate func checkLogin() {
+		// TODO: Login
+	}
+	
+	fileprivate func loadContent() {
 		initBakeryListView()
-		worldCupScrollView.delegate = self
-		worldCupPreviewSize = CGSize(width: view.bounds.width * 0.6,
-									 height: worldCupScrollView.frame.height)
 		homeVerticalScrollview.contentInsetAdjustmentBehavior = .never
 		observeCity()
 		location.requestAuthorization()
@@ -96,10 +117,18 @@ class HomeViewController: UIViewController {
 			}
 	}
 	
+	fileprivate func configColorMode(){
+		if traitCollection.userInterfaceStyle == .dark {
+			view.backgroundColor = DesignConstant.getUIColor(.secondary(staturation: 900))
+		}else if traitCollection.userInterfaceStyle == .light {
+			view.backgroundColor = .white
+		}
+	}
+	
 	fileprivate func initBakeryListView() {
-		bakeryListCollapsedHeight = HomeBakeryList.Constant.topBarHeight + (UIScreen.main.bounds.width - HomeBakeryList.Constant.horizontalMargin * 2) * BakeryFeedView.Constant.aspectRatio * 2 + Constant.collapseButtonHeight - 10
+		bakeryListCollapsedHeight = HomeBakeryList.Constant.topBarHeight + (UIScreen.main.bounds.width - HomeBakeryList.Constant.horizontalMargin * 2) * BakeryFeedView.Constant.aspectRatio * 2 + Constant.collapseButtonHeight - 50
 		bakeryListViewHeight.constant = bakeryListCollapsedHeight
-		bakeryListHC = UIHostingController(rootView: HomeBakeryList(bakeries: BakeryInfoManager.Bakery.dummys))
+		bakeryListHC = UIHostingController(rootView: HomeBakeryList(bakeries: BakeryInfoManager.dummys))
 		bakeryListHC.view.frame = .init(
 			origin: bakeryListContainerView.bounds.origin,
 			size: .init(width: bakeryListContainerView.bounds.width,
@@ -128,11 +157,15 @@ class HomeViewController: UIViewController {
 				 let city = Area.allCases.first(where: {
 					$0.koreanName.contains(cityName) || cityName.contains($0.koreanName)
 				 }) {
-				weakSelf?.tourQuickLookVC?.zoom(to: city)
 				_ = weakSelf?.server.requestFamous(
 					nearby: city,
 					lengthDemand: 40,
 					needDetail: false)
+					.observe { _ in
+						DispatchQueue.main.async {
+							weakSelf?.tourQuickLookVC?.zoom(to: city)
+						}
+					}
 			}
 		}
 	}
@@ -185,7 +218,13 @@ class HomeViewController: UIViewController {
 					self.BSPreviewVC?.feeds = newFeeds
 				}
 			}else {
-				assertionFailure("Fail to get data for \($0)")
+				print("Fail to get data for \($0)")
+				#if DEBUG
+					DispatchQueue.main.async {
+						self.BSPreviewVC?.feeds = .init(repeating: .dummy, count: 10)
+					}
+					print("Using dummy data")
+				#endif
 			}
 		}
 	}
@@ -199,12 +238,12 @@ class HomeViewController: UIViewController {
 			if let data = $0.data,
 				 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
 				 let tag = $0.requestTag,
-				 let area = Area(rawValue: tag),
-				 let storeList = json["storeList"] as? [[String: Any]]{
-				let stores = storeList.compactMap {
-					StoreInfo(from: $0)
+				 let area = Area(koreanName: tag),
+				 let bakeryList = json["storeList"] as? [[String: Any]]{
+				let bakeries = bakeryList.compactMap {
+					BakeryInfoManager.Bakery(from: $0)
 				}
-				tourQuickLookVC!.stores[area] = stores
+				tourQuickLookVC?.setBakeryData(bakeries, for: area)
 			}
 		}
 	}
@@ -215,17 +254,21 @@ class HomeViewController: UIViewController {
 			if $0 >= 16 {
 				weakSelf?.worldCupImageObservers[content] = nil
 				weakSelf?.createPreview(with: content)
+				weakSelf?.createPreview(with: content)
 			}
 		}
 	}
 	
 	fileprivate func createPreview(with content: WorldCupContent) {
-		let origin = CGPoint(x: worldCupPreviews.last == nil ? Constant.previewMargin*2: worldCupPreviews.last!.1.frame.maxX + Constant.previewMargin,
+		let origin = CGPoint(x: worldCupPreviews.last == nil ? Constant.previewMargin : worldCupPreviews.last!.1.frame.maxX + Constant.previewMargin * 2 ,
 							 y: worldCupScrollView.bounds.origin.y)
-		let preview: WorldCupPreview = .fromNib()
-		preview.frame = CGRect(origin: origin, size: worldCupPreviewSize)
-		preview.imageView.image = content.images.first?.value
-		preview.title.text = "빵드컵"
+		let size = CGSize(width: worldCupScrollView.bounds.width - Constant.previewMargin * 2,
+						  height: worldCupScrollView.bounds.height)
+		let preview = UIImageView(frame: CGRect(origin: origin, size: size))
+		preview.isUserInteractionEnabled = true
+		preview.contentMode = .scaleAspectFill
+		let bannerImage = UIImage(named: "worldcup_banner")!
+		preview.image = bannerImage
 		preview.addGestureRecognizer(
 			UITapGestureRecognizer(
 				target: self,
@@ -233,7 +276,7 @@ class HomeViewController: UIViewController {
 		worldCupPreviews.append((content, preview))
 		worldCupScrollView.contentSize = CGSize(
 			width: view.bounds.width*CGFloat(worldCupPreviews.count),
-			height: worldCupPreviewSize.height)
+			height: worldCupScrollView.bounds.height)
 		worldCupScrollView.addSubview(preview)
 	}
 	
@@ -250,32 +293,9 @@ class HomeViewController: UIViewController {
 	
 	struct Constant {
 		static let collapseButtonHeight: CGFloat = 50
-		static var previewMargin: CGFloat = 20
+		static var previewMargin: CGFloat = 0
 		static let collapseButtonSize = CGSize(width: 264, height: 34)
 		static let collapseButtonFont = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
-		static let collapseButtonColor = DesignConstant.getUIColor(palette: .secondary(staturation: 400))
+		static let collapseButtonColor = DesignConstant.getUIColor(.secondary(staturation: 400))
 	}
 }
-
-extension HomeViewController: UIScrollViewDelegate {
-	
-	func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-		guard abs(velocity.x) > 0.3 else {
-			return
-		}
-		let estimatedX = targetContentOffset.pointee.x
-		var destinationPage = worldCupPreviews.first!.preview
-		
-		for page in worldCupPreviews {
-			let gap = page.preview.frame.origin.x - estimatedX
-			if velocity.x*gap > 0,
-				 abs(destinationPage.frame.origin.x - estimatedX) > abs(gap) {
-				destinationPage = page.preview
-			}
-		}
-		targetContentOffset.pointee = CGPoint(
-			x:  destinationPage.frame.origin.x - worldCupPreviewSize.width/2,
-			y: destinationPage.frame.origin.y)
-	}
-}
-

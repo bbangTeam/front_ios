@@ -16,7 +16,7 @@ struct MapBakeryList: View {
 		NavigationView {
 			ScrollView{
 				LazyVStack(spacing: 0) {
-					ForEach(BakeryInfoManager.Bakery.dummys) { bakery in
+					ForEach(BakeryInfoManager.dummys) { bakery in
 						NavigationLink(
 							destination: BakeryDetail(bakery: bakery))
 						{
@@ -50,10 +50,11 @@ struct MapBakeryList: View {
 				showReviewSheet = true
 			}) {
 				Image("pen_icon")
+					.renderingMode(.template)
 					.resizable()
 					.frame(width: Constant.reviewButtonSize.width,
 						   height: Constant.reviewButtonSize.height)
-					.foregroundColor(.black)
+					.foregroundColor(Constant.reviewButtonColor)
 			}
 		}
 	}
@@ -75,7 +76,7 @@ struct MapBakeryList: View {
 						.padding(.horizontal, 6)
 						.padding(.vertical, 4)
 						.background(
-							Color(DesignConstant.getUIColor(palette: .secondary(staturation: 100)))
+							DesignConstant.getColor(light: .secondary(staturation: 100), dark: .secondary(staturation: 800))
 						)
 						.cornerRadius(5)
 				}
@@ -89,7 +90,6 @@ struct MapBakeryList: View {
 			ForEach(Range<Int>(1...5)) { index in
 				RatingStar(cornerRadius: 1.5)
 					.size(size)
-					// FIXME: - Fill stars with decimal parts
 					.fill(index <= Int(count) ? Constant.ratingStarColor: Color.gray)
 					.frame(width: size.width,
 								 height: size.height)
@@ -99,12 +99,15 @@ struct MapBakeryList: View {
 	
 	private struct Constant {
 		static let ratingStarSize = CGSize(width: 20, height: 20)
-		static let ratingStarColor = DesignConstant.getColor(palette: .primary(saturation: 600))
+		static let ratingStarColor = DesignConstant.getColor(.primary(saturation: 600))
 		static let reviewButtonSize = CGSize(width: 20, height: 20)
+		static var reviewButtonColor: Color {
+			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.surface): .black
+		}
 		static let titleFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 6)))
-		static let primaryTextColor = DesignConstant.getColor(palette: .secondary(staturation: 900))
+		static let primaryTextColor = DesignConstant.getColor(light: .secondary(staturation: 900), dark: .surface)
 		static let hashTagFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))
-		static let secondaryTextColor = DesignConstant.getColor(palette: .secondary(staturation: 600))
+		static let secondaryTextColor = DesignConstant.getColor(light: .secondary(staturation: 600), dark: .link)
 		static let promoTextFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .caption))
 	}
 }
@@ -112,6 +115,7 @@ struct MapBakeryList: View {
 
 struct MapBakeryList_Previews: PreviewProvider {
 	static var previews: some View {
-		MapBakeryList().environmentObject(BakeryInfoManager(server: ServerDataOperator()))
+		MapBakeryList().environmentObject(BakeryInfoManager(server: ServerDataOperator(), location: LocationGather()))
+			.colorScheme(.dark)
 	}
 }
