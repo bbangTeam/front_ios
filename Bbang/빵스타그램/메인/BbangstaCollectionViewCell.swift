@@ -30,6 +30,10 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     func setupViews() {
         bbangstaScrollView.delegate = self
         menuAlertView.layer.cornerRadius = 4
+        menuAlertView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.05)
+        menuAlertView.layer.shadowOpacity = 1
+        menuAlertView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        menuAlertView.layer.masksToBounds = true
         menuAlertView.isHidden = true
         addContentScrollView()
         setPageControl()
