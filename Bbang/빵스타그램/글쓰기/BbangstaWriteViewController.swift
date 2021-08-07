@@ -30,6 +30,10 @@ class BbangstaWriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        breadReviewTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 200, right: 5)
+        breadReviewTextView.text = "가게와 빵에 대한 솔직한 리뷰를 남겨주세요. 허위 리뷰를 작성 시 이용에 제한이 있을 수 있습니다."
+        breadReviewTextView.textColor = .lightGray
+        
         textFieldSetupLayout()
         collectionSetupLayout()
        
@@ -40,16 +44,26 @@ class BbangstaWriteViewController: UIViewController {
     }
     
     @IBAction func writeButtonAction(_ sender: UIButton) {
-        print("\(photoCollectionView.frame.size.height)dddd")
+        
     }
     
 
 }
-//MARK: - TextField
-extension BbangstaWriteViewController: UITextFieldDelegate {
+//MARK: - TextField, TextView
+extension BbangstaWriteViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldSetupLayout() {
         locationTextField.attributedPlaceholder = NSAttributedString(string: "내 위치 자동입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+        
+        locationTextField.delegate = self
+        storeTextField.delegate = self
+        breadNameTextField.delegate = self
+        breadReviewTextView.delegate = self
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        breadReviewTextView.text = ""
+        breadReviewTextView.textColor = .black
     }
     
 }
