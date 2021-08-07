@@ -43,9 +43,9 @@ class BbangtourReviewViewController: UIViewController {
             
             if let starImage = view.viewWithTag(index) as? UIImageView {
                 if index <= Int(roundValue) {
-                    starImage.tintColor = #colorLiteral(red: 0.9960784314, green: 0.5568627451, blue: 0.1568627451, alpha: 1)
+                    starImage.image = UIImage(named: "star_fill")
                 } else {
-                    starImage.tintColor = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
+                    starImage.image = UIImage(named: "star")
                 }
             }
         }

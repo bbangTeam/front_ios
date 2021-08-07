@@ -25,6 +25,7 @@ class BbangtourViewController: UIViewController {
     @IBOutlet var bbangtourView: UIView!
     @IBOutlet var bbangtourViewHeight: NSLayoutConstraint!
     
+
     var buttonLists: [UIButton] = []
     var lineLists: [UILabel] = []
     
@@ -37,6 +38,8 @@ class BbangtourViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bbangtourScrollView.delegate = self
         
         setButtonList()
         setLineList()
@@ -108,4 +111,21 @@ class BbangtourViewController: UIViewController {
 
     }
 
+}
+
+//MARK: - ScrollView
+extension BbangtourViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView == bbangtourScrollView {
+            if pageViewController.currentIndex == 0 { // 지역1
+                adjustPageHeight(numberOfCell: 6)
+            } else {
+                adjustPageHeight(numberOfCell: 4)
+            }
+        }
+    }
+    
+    func adjustPageHeight(numberOfCell: Int) {
+        bbangtourViewHeight.constant = CGFloat(184 * numberOfCell)
+    }
 }
