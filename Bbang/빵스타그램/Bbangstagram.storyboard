@@ -72,7 +72,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="***님 외 20명이 좋아합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-RL-OmA">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -215,9 +215,86 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-MH-hjz">
+                                                    <rect key="frame" x="274" y="10" width="96" height="102"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-In-k3y">
+                                                            <rect key="frame" x="0.0" y="0.0" width="96" height="102"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2s7-PI-pR0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="31.5"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tZ-1O-wSp">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="96" height="22.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <state key="normal" title="수정하기">
+                                                                                <color key="titleColor" red="0.1803921568627451" green="0.19607843137254902" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </state>
+                                                                        </button>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vp4-35-gcV">
+                                                                            <rect key="frame" x="0.0" y="30.5" width="96" height="1"/>
+                                                                            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="1" id="SOS-QD-HRs"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8cG-dJ-etp">
+                                                                    <rect key="frame" x="0.0" y="35.5" width="96" height="31"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8i7-Sc-F1R">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="96" height="22"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <state key="normal" title="삭제하기">
+                                                                                <color key="titleColor" red="0.18039215689999999" green="0.1960784314" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </state>
+                                                                        </button>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mR0-DG-9GO">
+                                                                            <rect key="frame" x="0.0" y="30" width="96" height="1"/>
+                                                                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="1" id="5ts-WZ-Fbi"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kgd-f5-yVK">
+                                                                    <rect key="frame" x="0.0" y="70.5" width="96" height="31.5"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYG-MC-oKB">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="96" height="22.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <state key="normal" title="신고하기">
+                                                                                <color key="titleColor" red="0.18039215689999999" green="0.1960784314" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </state>
+                                                                        </button>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQm-eb-LvW">
+                                                                            <rect key="frame" x="0.0" y="30.5" width="96" height="1"/>
+                                                                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="1" id="Oks-G4-JDr"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="w9d-In-k3y" firstAttribute="leading" secondItem="ebi-MH-hjz" secondAttribute="leading" id="9cc-Ti-MPC"/>
+                                                        <constraint firstAttribute="height" constant="102" id="CRM-t8-jfu"/>
+                                                        <constraint firstAttribute="trailing" secondItem="w9d-In-k3y" secondAttribute="trailing" id="Gty-WV-g3l"/>
+                                                        <constraint firstAttribute="bottom" secondItem="w9d-In-k3y" secondAttribute="bottom" id="IAZ-lt-Dku"/>
+                                                        <constraint firstItem="w9d-In-k3y" firstAttribute="top" secondItem="ebi-MH-hjz" secondAttribute="top" id="PsU-BE-yp2"/>
+                                                        <constraint firstAttribute="width" constant="96" id="cTb-6G-r1l"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="IiG-Gg-R84" firstAttribute="leading" secondItem="y6X-D6-BuE" secondAttribute="trailing" constant="10" id="64T-J8-c3i"/>
+                                                <constraint firstItem="ebi-MH-hjz" firstAttribute="top" secondItem="jY7-EG-apz" secondAttribute="top" constant="10" id="7Ro-EP-idh"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ms9-Pl-jWU" secondAttribute="bottom" constant="40" id="7Vx-8y-Toa"/>
                                                 <constraint firstItem="N4k-fU-olL" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" id="9VE-TU-qhC"/>
                                                 <constraint firstItem="VMA-Sv-pXc" firstAttribute="top" secondItem="N4k-fU-olL" secondAttribute="bottom" constant="9" id="HMk-Fh-cUj"/>
@@ -237,6 +314,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="YBm-mX-HXs" secondAttribute="trailing" constant="16" id="fzK-hZ-t2S"/>
                                                 <constraint firstItem="Ms9-Pl-jWU" firstAttribute="top" secondItem="VMA-Sv-pXc" secondAttribute="bottom" constant="4" id="hjK-9r-y16"/>
                                                 <constraint firstItem="RNy-ok-BRl" firstAttribute="bottom" secondItem="N4k-fU-olL" secondAttribute="bottom" constant="-18.649999999999999" id="iac-Wn-fnf"/>
+                                                <constraint firstItem="DYb-nq-tNx" firstAttribute="leading" secondItem="ebi-MH-hjz" secondAttribute="trailing" constant="8" id="kxV-Uj-339"/>
                                                 <constraint firstItem="Wv5-aJ-ifb" firstAttribute="leading" secondItem="RNy-ok-BRl" secondAttribute="trailing" constant="12" id="oEu-k0-MjU"/>
                                                 <constraint firstItem="VMA-Sv-pXc" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="16" id="pjX-oV-6fw"/>
                                                 <constraint firstItem="N4k-fU-olL" firstAttribute="top" secondItem="2N8-zX-nvP" secondAttribute="bottom" constant="8" id="poQ-l3-bzQ"/>
@@ -249,6 +327,8 @@
                                             <outlet property="allNumberLabel" destination="coW-XY-Qfv" id="RLJ-KH-np4"/>
                                             <outlet property="bbangstaScrollView" destination="N4k-fU-olL" id="kbn-WZ-nQ4"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
+                                            <outlet property="menuAlertView" destination="ebi-MH-hjz" id="9xy-Co-Sra"/>
+                                            <outlet property="menuButton" destination="DYb-nq-tNx" id="bLI-53-Hk1"/>
                                             <outlet property="numberLabel" destination="X7p-WH-71X" id="sxv-hl-a2z"/>
                                             <outlet property="numberView" destination="YBm-mX-HXs" id="F06-BF-bLk"/>
                                             <outlet property="pageControl" destination="wyb-Ka-dX3" id="uYm-Ev-3PQ"/>
@@ -270,8 +350,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="빵터짐" id="UTR-E9-oKF">
-                        <barButtonItem key="leftBarButtonItem" title="Write" id="jfW-nT-iTd">
-                            <color key="tintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <barButtonItem key="rightBarButtonItem" title="글작성" id="jfW-nT-iTd">
+                            <color key="tintColor" red="0.094117647058823528" green="0.56470588235294117" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="oih-Ms-DOu" kind="presentation" modalPresentationStyle="fullScreen" id="1YO-Cx-4WN"/>
                             </connections>

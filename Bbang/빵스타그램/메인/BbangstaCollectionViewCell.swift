@@ -15,6 +15,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userIdLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var menuButton: UIButton!
     
     @IBOutlet var bbangstaScrollView: UIScrollView!
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
@@ -24,8 +25,12 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var allNumberLabel: UILabel!
     
+    @IBOutlet var menuAlertView: UIView!
+    
     func setupViews() {
         bbangstaScrollView.delegate = self
+        menuAlertView.layer.cornerRadius = 4
+        menuAlertView.isHidden = true
         addContentScrollView()
         setPageControl()
     }
@@ -35,6 +40,13 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
        
     }
     @IBAction func bbangstaMenuButtonAction(_ sender: UIButton) {
+        menuButton.isSelected = !menuButton.isSelected
+        
+        if menuButton.isSelected {
+            menuAlertView.isHidden = false
+        } else {
+            menuAlertView.isHidden = true
+        }
         
     }
     
