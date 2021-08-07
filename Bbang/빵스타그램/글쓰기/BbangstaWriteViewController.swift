@@ -30,6 +30,34 @@ class BbangstaWriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textFieldSetupLayout()
+        collectionSetupLayout()
+       
+    }
+    
+    @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func writeButtonAction(_ sender: UIButton) {
+        print("\(photoCollectionView.frame.size.height)dddd")
+    }
+    
+
+}
+//MARK: - TextField
+extension BbangstaWriteViewController: UITextFieldDelegate {
+    
+    func textFieldSetupLayout() {
+        locationTextField.attributedPlaceholder = NSAttributedString(string: "내 위치 자동입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+    }
+    
+}
+
+//MARK: - CollectionView
+extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionSetupLayout() {
         breadTagCollectionView.delegate = self
         breadTagCollectionView.dataSource = self
         photoCollectionView.delegate = self
@@ -53,19 +81,8 @@ class BbangstaWriteViewController: UIViewController {
         let breadTagCollectionViewFlowLayout = UICollectionViewFlowLayout()
         breadTagCollectionView.collectionViewLayout = breadTagCollectionViewFlowLayout
         breadTagCollectionViewFlowLayout.scrollDirection = .horizontal
-        
-        
     }
     
-    @IBAction func writeButtonAction(_ sender: UIButton) {
-        print("\(photoCollectionView.frame.size.height)dddd")
-    }
-    
-
-}
-
-//MARK: - CollectionView
-extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView.tag {
