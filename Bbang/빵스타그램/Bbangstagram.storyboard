@@ -316,8 +316,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="y14-pp-vLj">
-                                <rect key="frame" x="16" y="112" width="381" height="196"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="y14-pp-vLj">
+                                <rect key="frame" x="16" y="104" width="381" height="180"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내 위치 자동입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-GB-bHm">
                                         <rect key="frame" x="0.0" y="0.0" width="381" height="44"/>
@@ -328,7 +328,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="매장검색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-dp-gED">
-                                        <rect key="frame" x="0.0" y="76" width="381" height="44"/>
+                                        <rect key="frame" x="0.0" y="68" width="381" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="KIj-44-3Ce"/>
                                         </constraints>
@@ -336,7 +336,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="빵이름을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-sz-fnz">
-                                        <rect key="frame" x="0.0" y="152" width="381" height="44"/>
+                                        <rect key="frame" x="0.0" y="136" width="381" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="eas-Mg-BBU"/>
                                         </constraints>
@@ -359,7 +359,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="가게와 빵에 대한 솔직한 리뷰를 남겨주세요. 허위 리뷰를 작성 시 이용에 제한이 있을 수 있습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4WN-79-0SA">
-                                <rect key="frame" x="16.5" y="396" width="381" height="164"/>
+                                <rect key="frame" x="16.5" y="372" width="381" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -367,6 +367,7 @@
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="photoCollectionView" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zzl-k1-jOv">
                                 <rect key="frame" x="17" y="688" width="397" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="CB4-8t-Us0"/>
                                 </constraints>
@@ -467,7 +468,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="breadTagCollectionView" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oxH-64-b0F">
-                                <rect key="frame" x="19" y="332" width="395" height="40"/>
+                                <rect key="frame" x="19" y="308" width="395" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="i14-OC-m4Y"/>
@@ -531,7 +532,7 @@
                             <constraint firstItem="MJW-c6-X2w" firstAttribute="leading" secondItem="1Ru-PT-aeT" secondAttribute="leading" id="4N9-QT-9Gk"/>
                             <constraint firstItem="zzl-k1-jOv" firstAttribute="leading" secondItem="1Ru-PT-aeT" secondAttribute="leading" constant="17" id="4PO-nD-ev0"/>
                             <constraint firstItem="zzl-k1-jOv" firstAttribute="top" secondItem="9SN-UV-NDG" secondAttribute="bottom" constant="24" id="4wh-Cm-itk"/>
-                            <constraint firstItem="y14-pp-vLj" firstAttribute="top" secondItem="MJW-c6-X2w" secondAttribute="bottom" constant="24" id="Bdu-nf-yzr"/>
+                            <constraint firstItem="y14-pp-vLj" firstAttribute="top" secondItem="MJW-c6-X2w" secondAttribute="bottom" constant="16" id="Bdu-nf-yzr"/>
                             <constraint firstItem="zzl-k1-jOv" firstAttribute="trailing" secondItem="1Ru-PT-aeT" secondAttribute="trailing" id="CvB-nB-OnZ"/>
                             <constraint firstItem="uxl-IC-cbG" firstAttribute="top" secondItem="tvG-so-Bgt" secondAttribute="bottom" constant="8" id="D7A-1G-J5y"/>
                             <constraint firstItem="tvG-so-Bgt" firstAttribute="top" secondItem="9SN-UV-NDG" secondAttribute="top" constant="10" id="INk-0a-2a7"/>
@@ -887,8 +888,8 @@
         <image name="bbangsta_menu" width="16" height="4"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="comment_heart" width="12" height="11"/>
-        <image name="heart" width="20" height="18.5"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart" width="20" height="18.5"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="message" width="20" height="18"/>
         <image name="photoXmark" width="8" height="8"/>
