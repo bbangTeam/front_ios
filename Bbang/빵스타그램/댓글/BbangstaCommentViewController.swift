@@ -13,7 +13,9 @@ class BbangstaCommentViewController: UIViewController {
     var commentLists: [CommentList] = []
     
     var id = "6121e6c7f127835d6c6dfe08"
+    var content = ""
     var page = 0
+    
     var textArray = [
                         "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
                         "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
@@ -36,30 +38,21 @@ class BbangstaCommentViewController: UIViewController {
         dataManager.bbangstaCommentList(id: id, page: page, delegate: self)
         
         print(id)
+        
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.bbangstaCommentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.bbangstaCommentTableView.removeObserver(self, forKeyPath: "contentSize")
-//    }
-    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "contentSize" {
-//            if let newvalue = change?[.newKey]{
-//                let newsize = newvalue as! CGSize
-//                self.bbangstaCommentTableViewHeight.constant = newsize.height
-//            }
-//        }
-//    }
     
     @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: .none)
     }
+    @IBAction func commentButtonAction(_ sender: UIButton) {
+        let input: BbangstaCommentWriteRequest = BbangstaCommentWriteRequest(id: id, type: "breadstagram", content: commentTextField.text!)
+        dataManager.bbangstaCommentWrite(input, delegate: self)
+        commentTextField.text = ""
+    }
+
     
 }
+
 //MARK: - TableView
 
 extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSource {
@@ -79,8 +72,6 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
         tableView.rowHeight = UITableView.automaticDimension
-        //bbangstaCommentTableView.estimatedRowHeight = 500
-        
        
         return cell
     }
@@ -103,7 +94,11 @@ extension BbangstaCommentViewController {
         print(commentLists)
     }
     
+    func bbangstaCommentWrite(_ result: BbangstaCommentWriteResponse) {
+       print("댓글 입력 성공")
+    }
+    
     func failedToRequest(message: String) {
-        
+      print(message)
     }
 }

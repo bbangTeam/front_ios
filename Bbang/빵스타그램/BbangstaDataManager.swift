@@ -82,6 +82,21 @@ class BbangstaDataManager {
     }
     
     // 댓글 작성
+    func bbangstaCommentWrite(_ parameters: BbangstaCommentWriteRequest, delegate: BbangstaCommentViewController) {
+        let url = "\(Constant.BASE_URL)comment/write"
+        
+        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: KeyCenter.header)
+            .validate()
+            .responseDecodable(of: BbangstaCommentWriteResponse.self) { response in
+                switch response.result {
+                case .success(let response):
+                    delegate.bbangstaCommentWrite(response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
+                }
+            }
+    }
     
     // 댓글 갯수 확인
     func bbangstaCommentNumber(id: String, delegate: BbangstaCollectionViewCell) {

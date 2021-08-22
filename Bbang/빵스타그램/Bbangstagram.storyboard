@@ -796,6 +796,9 @@
                                     <constraint firstAttribute="width" constant="23" id="w3q-1W-6jr"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="write_Comment"/>
+                                <connections>
+                                    <action selector="commentButtonAction:" destination="ciR-Q5-rII" eventType="touchUpInside" id="fis-Ha-RFj"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" restorationIdentifier="Line" translatesAutoresizingMaskIntoConstraints="NO" id="FJy-Pm-Px3" userLabel="Line">
                                 <rect key="frame" x="0.0" y="801" width="414" height="1"/>

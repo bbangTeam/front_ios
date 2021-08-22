@@ -54,7 +54,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         cell.breadNameLabel.text = bbangstaList.breadName
         cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
-        
+
         cell.storeId = bbangstaList.storeId!
         cell.id = bbangstaList.id!
         

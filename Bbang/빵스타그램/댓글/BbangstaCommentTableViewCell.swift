@@ -29,6 +29,9 @@ class BbangstaCommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupViews() {
+        
+    }
     
     @IBAction func reCommentButtonAction(_ sender: UIButton) {
 
@@ -37,7 +40,6 @@ class BbangstaCommentTableViewCell: UITableViewCell {
 }
 
 //MARK: - API
-
 func failedToRequest(message: String) {
     
 }

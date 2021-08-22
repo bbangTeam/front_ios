@@ -302,9 +302,9 @@
 			isa = PBXGroup;
 			children = (
 				A574B91426D23DB200083D8D /* BbangstaCommentResponse.swift */,
+				A574B91A26D23FCD00083D8D /* BbangstaCommentNumberResponse.swift */,
 				A574B91826D23F1200083D8D /* BbangstaCommentWriteRequest.swift */,
 				A574B91626D23ED900083D8D /* BbangstaCommentWriteResponse.swift */,
-				A574B91A26D23FCD00083D8D /* BbangstaCommentNumberResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";

@@ -18,8 +18,9 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart"), #imageLiteral(resourceName: "tagXmark")]
     var imageViews = [UIImageView]()
     
-    var id = "6121e6c7f127835d6c6dfe08"
+    var id = ""
     var storeId = "60b8c723fa467c1b60f71adc"
+    var count = 0
     
     var delegate: commentDelegate?
     
@@ -132,7 +133,7 @@ extension BbangstaCollectionViewCell {
         print(reuslt.result)
     }
     func bbangstaCommentNumber(result: BbangstaCommentNumberResponse) {
-        
+        count = result.count!
     }
    
     func failedToRequest(message: String) {
