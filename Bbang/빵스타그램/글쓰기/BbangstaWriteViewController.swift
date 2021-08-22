@@ -59,7 +59,23 @@ extension BbangstaWriteViewController: UITextFieldDelegate, UITextViewDelegate {
         storeTextField.delegate = self
         breadNameTextField.delegate = self
         breadReviewTextView.delegate = self
+        
+        breadReviewTextView.layer.borderWidth = 1
+        breadReviewTextView.layer.borderColor = #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)
+        breadReviewTextView.layer.cornerRadius = 8
+        
+        borderLayout(sender: locationTextField)
+        borderLayout(sender: storeTextField)
+        borderLayout(sender: breadNameTextField)
+        
     }
+    
+    func borderLayout(sender: UITextField) {
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)
+        sender.layer.cornerRadius = 8
+    }
+
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         breadReviewTextView.text = ""
@@ -137,7 +153,7 @@ extension BbangstaWriteViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 
-//MARK: CollectionView FlowLayout
+//MARK: - CollectionView FlowLayout
 extension BbangstaWriteViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

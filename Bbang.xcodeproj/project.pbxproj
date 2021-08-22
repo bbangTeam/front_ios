@@ -46,6 +46,7 @@
 		A574B91726D23ED900083D8D /* BbangstaCommentWriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B91626D23ED900083D8D /* BbangstaCommentWriteResponse.swift */; };
 		A574B91926D23F1200083D8D /* BbangstaCommentWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B91826D23F1200083D8D /* BbangstaCommentWriteRequest.swift */; };
 		A574B91B26D23FCD00083D8D /* BbangstaCommentNumberResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B91A26D23FCD00083D8D /* BbangstaCommentNumberResponse.swift */; };
+		A574B91D26D274BA00083D8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A574B91C26D274BA00083D8D /* GoogleService-Info.plist */; };
 		A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */; };
 		A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */; };
 		A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */; };
@@ -93,6 +94,7 @@
 		A574B91626D23ED900083D8D /* BbangstaCommentWriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCommentWriteResponse.swift; sourceTree = "<group>"; };
 		A574B91826D23F1200083D8D /* BbangstaCommentWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCommentWriteRequest.swift; sourceTree = "<group>"; };
 		A574B91A26D23FCD00083D8D /* BbangstaCommentNumberResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCommentNumberResponse.swift; sourceTree = "<group>"; };
+		A574B91C26D274BA00083D8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
 		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -140,18 +142,19 @@
 				A5277EA4265E1A6000D4122A /* Main.storyboard */,
 				A5277EA7265E1A6200D4122A /* Assets.xcassets */,
 				A5277EA9265E1A6200D4122A /* LaunchScreen.storyboard */,
+				A574B91C26D274BA00083D8D /* GoogleService-Info.plist */,
 				A5277EAC265E1A6200D4122A /* Info.plist */,
-				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
-				A5277EB7265E1A9E00D4122A /* 메인 */,
-				A5277EB6265E1A9700D4122A /* 빵지순례 */,
-				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
-				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
-				A5277EB3265E1A7800D4122A /* 설정 */,
+				A5277EB8265E1AA100D4122A /* 로그인 화면 */,
+				A5277EB7265E1A9E00D4122A /* 메인 */,
+				A5277EB6265E1A9700D4122A /* 빵지순례 */,
+				A5277EB5265E1A9000D4122A /* 빵스타그램 */,
+				A5277EB4265E1A7C00D4122A /* 주변빵집검색 */,
+				A5277EB3265E1A7800D4122A /* 설정 */,
 			);
 			path = Bbang;
 			sourceTree = "<group>";
 		};
-		A5277EB3265E1A7800D4122A /* 설정 */ = {
+		A5277EB3265E1A7800D4122A /* 설정 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ED7265E1ED400D4122A /* Bbangset.storyboard */,
@@ -161,7 +164,7 @@
 			path = "설정";
 			sourceTree = "<group>";
 		};
-		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
+		A5277EB4265E1A7C00D4122A /* 주변빵집검색 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277ED1265E1E6100D4122A /* Bbangsearch.storyboard */,
@@ -171,23 +174,23 @@
 			path = "주변빵집검색";
 			sourceTree = "<group>";
 		};
-		A5277EB5265E1A9000D4122A /* 빵스타그램 */ = {
+		A5277EB5265E1A9000D4122A /* 빵스타그램 */ = {
 			isa = PBXGroup;
 			children = (
 				A574B90626D2284600083D8D /* BbangstaDataManager.swift */,
 				A5277ECB265E1DF500D4122A /* Bbangstagram.storyboard */,
-				A54ED961267F0B5F001E5BD1 /* 메인 */,
-				A54C9B9C2691B70700735774 /* 글쓰기 */,
-				A54ED962267F0B7C001E5BD1 /* 댓글 */,
+				A54ED961267F0B5F001E5BD1 /* 메인 */,
+				A54C9B9C2691B70700735774 /* 글쓰기 */,
+				A54ED962267F0B7C001E5BD1 /* 댓글 */,
 			);
 			name = "빵스타그램";
 			path = "빵스타그램";
 			sourceTree = "<group>";
 		};
-		A5277EB6265E1A9700D4122A /* 빵지순례 */ = {
+		A5277EB6265E1A9700D4122A /* 빵지순례 */ = {
 			isa = PBXGroup;
 			children = (
-				A546919326888B090055C674 /* 지역 */,
+				A546919326888B090055C674 /* 지역 */,
 				A5277EC1265E1D4100D4122A /* Bbangtour.storyboard */,
 				A5277EC4265E1D5200D4122A /* BbangtourViewController.swift */,
 				A54E79A82674C45C002DEC7C /* BbangtourTableViewCell.swift */,
@@ -200,7 +203,7 @@
 			path = "빵지순례";
 			sourceTree = "<group>";
 		};
-		A5277EB7265E1A9E00D4122A /* 메인 */ = {
+		A5277EB7265E1A9E00D4122A /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
 				A5277EBB265E1C4900D4122A /* Bbangmain.storyboard */,
@@ -210,7 +213,7 @@
 			path = "메인";
 			sourceTree = "<group>";
 		};
-		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
+		A5277EB8265E1AA100D4122A /* 로그인 화면 */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -218,7 +221,7 @@
 			path = "로그인 화면";
 			sourceTree = "<group>";
 		};
-		A546919326888B090055C674 /* 지역 */ = {
+		A546919326888B090055C674 /* 지역 */ = {
 			isa = PBXGroup;
 			children = (
 				A546918A268887C10055C674 /* SeoulTabViewController.swift */,
@@ -228,7 +231,7 @@
 			path = "지역";
 			sourceTree = "<group>";
 		};
-		A54C9B9C2691B70700735774 /* 글쓰기 */ = {
+		A54C9B9C2691B70700735774 /* 글쓰기 */ = {
 			isa = PBXGroup;
 			children = (
 				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
@@ -239,7 +242,7 @@
 			path = "글쓰기";
 			sourceTree = "<group>";
 		};
-		A54ED961267F0B5F001E5BD1 /* 메인 */ = {
+		A54ED961267F0B5F001E5BD1 /* 메인 */ = {
 			isa = PBXGroup;
 			children = (
 				A574B90826D2285900083D8D /* Entity */,
@@ -250,7 +253,7 @@
 			path = "메인";
 			sourceTree = "<group>";
 		};
-		A54ED962267F0B7C001E5BD1 /* 댓글 */ = {
+		A54ED962267F0B7C001E5BD1 /* 댓글 */ = {
 			isa = PBXGroup;
 			children = (
 				A574B91126D23D8100083D8D /* Entity */,
@@ -387,6 +390,7 @@
 			files = (
 				A5277ED8265E1ED400D4122A /* Bbangset.storyboard in Resources */,
 				A5277EC2265E1D4100D4122A /* Bbangtour.storyboard in Resources */,
+				A574B91D26D274BA00083D8D /* GoogleService-Info.plist in Resources */,
 				A5277EAB265E1A6200D4122A /* LaunchScreen.storyboard in Resources */,
 				A5277EA8265E1A6200D4122A /* Assets.xcassets in Resources */,
 				A5277EBC265E1C4900D4122A /* Bbangmain.storyboard in Resources */,
@@ -404,19 +408,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bbang/Pods-Bbang-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		84CF8245F63F7A41A811AAFD /* [CP] Check Pods Manifest.lock */ = {
