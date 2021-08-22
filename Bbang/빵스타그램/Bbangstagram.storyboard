@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -326,13 +326,17 @@
                                         <connections>
                                             <outlet property="allNumberLabel" destination="coW-XY-Qfv" id="RLJ-KH-np4"/>
                                             <outlet property="bbangstaScrollView" destination="N4k-fU-olL" id="kbn-WZ-nQ4"/>
+                                            <outlet property="breadNameLabel" destination="WbO-FL-TVt" id="Tpj-il-i5v"/>
+                                            <outlet property="contentLabel" destination="wOg-sr-Myc" id="bnX-aS-mZI"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
+                                            <outlet property="locationLabel" destination="IiG-Gg-R84" id="O3l-fD-skL"/>
                                             <outlet property="menuAlertView" destination="ebi-MH-hjz" id="9xy-Co-Sra"/>
                                             <outlet property="menuButton" destination="DYb-nq-tNx" id="bLI-53-Hk1"/>
                                             <outlet property="numberLabel" destination="X7p-WH-71X" id="sxv-hl-a2z"/>
                                             <outlet property="numberView" destination="YBm-mX-HXs" id="F06-BF-bLk"/>
                                             <outlet property="pageControl" destination="wyb-Ka-dX3" id="uYm-Ev-3PQ"/>
                                             <outlet property="scrollViewHeight" destination="lHY-4C-5Ia" id="NTl-hk-fZI"/>
+                                            <outlet property="storeLabel" destination="gwb-S0-cye" id="f9t-0v-FVc"/>
                                             <outlet property="userIdLabel" destination="148-xw-4hI" id="FNV-Ok-uno"/>
                                             <outlet property="userImageView" destination="2N8-zX-nvP" id="QgJ-h6-UEW"/>
                                         </connections>
@@ -688,7 +692,7 @@
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BbangstaCommentTableViewCell" rowHeight="545" id="A5G-EA-VRf" customClass="BbangstaCommentTableViewCell" customModule="Bbang" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="545"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="545"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A5G-EA-VRf" id="Te0-Lt-PIh">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="545"/>
@@ -773,7 +777,7 @@
                                                     </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" restorationIdentifier="BbangstaReCommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BbangstaReCommentTableViewCell" rowHeight="168" id="eKd-qI-hvc" customClass="BbangstaReCommentTableViewCell" customModule="Bbang" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="28" width="358" height="168"/>
+                                                            <rect key="frame" x="0.0" y="24.5" width="358" height="168"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eKd-qI-hvc" id="Z9g-q6-cI9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="168"/>

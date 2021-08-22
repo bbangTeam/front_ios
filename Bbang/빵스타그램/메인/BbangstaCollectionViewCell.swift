@@ -9,6 +9,8 @@ import UIKit
 
 class BbangstaCollectionViewCell: UICollectionViewCell {
     
+    lazy var dataManager = BbangstaDataManager()
+    
     var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart"), #imageLiteral(resourceName: "tagXmark")]
     var imageViews = [UIImageView]()
     
@@ -16,6 +18,11 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var userIdLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var menuButton: UIButton!
+    
+    @IBOutlet var storeLabel: UILabel!
+    @IBOutlet var breadNameLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var contentLabel: UILabel!
     
     @IBOutlet var bbangstaScrollView: UIScrollView!
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
@@ -29,12 +36,18 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     func setupViews() {
         bbangstaScrollView.delegate = self
+        
+        userImageView.layer.cornerRadius = userImageView.frame.size.height/2
+        scrollViewHeight.constant = self.contentView.frame.size.width
+        numberView.layer.cornerRadius = 15
+        
         menuAlertView.layer.cornerRadius = 4
         menuAlertView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.05)
         menuAlertView.layer.shadowOpacity = 1
         menuAlertView.layer.shadowOffset = CGSize(width: 0, height: 2)
         menuAlertView.layer.masksToBounds = true
         menuAlertView.isHidden = true
+        
         addContentScrollView()
         setPageControl()
     }
@@ -82,5 +95,15 @@ extension BbangstaCollectionViewCell: UIScrollViewDelegate {
     func setPageControlSelectedPage(currentPage: Int) {
         pageControl.currentPage = currentPage
         numberLabel.text = "\(currentPage + 1)"
+    }
+}
+
+//MARK: - API
+extension BbangstaCollectionViewCell {
+    func bbangstaImageList(result: BbangstaListResponse) {
+        
+    }
+    func failedToRequest(message: String) {
+        print(message)
     }
 }

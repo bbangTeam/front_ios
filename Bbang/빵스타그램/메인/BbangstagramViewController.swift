@@ -9,8 +9,13 @@ import UIKit
 
 class BbangstagramViewController: UIViewController {
     
+    lazy var dataManager = BbangstaDataManager()
+    var bbangstaLists: [BreadstagramList] = []
+    
+    var fetchingMore = false
+    var stop = false
+    var page = 0
  
-
     @IBOutlet var bbangstaCollectionView: UICollectionView!
     @IBOutlet var bbangstaCollectionViewWidth: NSLayoutConstraint!
 
@@ -22,6 +27,8 @@ class BbangstagramViewController: UIViewController {
         bbangstaCollectionView.dataSource = self
         
         bbangstaCollectionViewWidth.constant = view.frame.size.width
+        
+        dataManager.bbangstaList(page: self.page, delegate: self)
         
     
     }
@@ -42,13 +49,45 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         
         cell.setupViews()
         
-        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.height/2
-        cell.scrollViewHeight.constant = view.frame.size.width
-        cell.numberView.layer.cornerRadius = 15
+        let bbangstaList = bbangstaLists[indexPath.row]
+        
+        cell.userIdLabel.text = bbangstaList.id
+        cell.storeLabel.text = bbangstaList.breadStoreName
+        cell.breadNameLabel.text = bbangstaList.breadName
+        cell.locationLabel.text = "#\(bbangstaList.cityName)"
+        cell.contentLabel.text = bbangstaList.content
         
         
         return cell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY >= contentHeight - scrollView.frame.size.height {
+            print("늘렸다")
+            if !fetchingMore
+            {
+                beingBatchFetch()
+            }
+        }
+    }
+
+    func beingBatchFetch() {
+        if stop == false {
+            fetchingMore = true
+            self.page += 1
+            print("page: \(page)")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                self.dataManager.bbangstaList(page: self.page, delegate: self)
+            })
+        } else {
+            print("마지막 페이지 입니다. / page: \(page)")
+        }
+    }
+
     
     
 }
@@ -65,4 +104,21 @@ extension BbangstagramViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+}
+
+//MARK: - API
+extension BbangstagramViewController {
+    func bbangstaList(result: BbangstaListResponse) {
+        bbangstaLists = result.breadstagramList!
+        bbangstaCollectionView.reloadData()
+    }
+    
+    func addBbangstaList(result: BbangstaListResponse) {
+        bbangstaLists.append(contentsOf: result.breadstagramList!)
+        self.fetchingMore = false
+        self.bbangstaCollectionView.reloadData()
+    }
+    func failedToRequest(message: String) {
+        print(message)
+    }
 }
