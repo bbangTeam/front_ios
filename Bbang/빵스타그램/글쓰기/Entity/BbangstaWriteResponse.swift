@@ -5,4 +5,8 @@
 //  Created by 소영 on 2021/08/22.
 //
 
-import Foundation
+struct BbangstaWriteResponse: Decodable {
+    var result: String
+    var code: Int
+    var id: String
+}
