@@ -34,6 +34,8 @@ class BbangstaCommentViewController: UIViewController {
         commentTextField.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         
         dataManager.bbangstaCommentList(id: id, page: page, delegate: self)
+        
+        print(id)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {

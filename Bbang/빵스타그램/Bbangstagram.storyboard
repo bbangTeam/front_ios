@@ -88,7 +88,6 @@
                                                             <state key="normal" title="댓글 21개  모두 보기"/>
                                                             <connections>
                                                                 <action selector="bbangstaCommentButtonAction:" destination="qIY-Q1-tmK" eventType="touchUpInside" id="vzY-37-ZZ8"/>
-                                                                <segue destination="ciR-Q5-rII" kind="presentation" modalPresentationStyle="fullScreen" id="Nuh-iR-EYc"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -666,7 +665,7 @@
         <!--Bbangsta Comment View Controller-->
         <scene sceneID="5h7-Ak-Fpc">
             <objects>
-                <viewController storyboardIdentifier="BbangstaCommentViewController" id="ciR-Q5-rII" customClass="BbangstaCommentViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BbangstaCommentViewController" modalPresentationStyle="fullScreen" id="ciR-Q5-rII" customClass="BbangstaCommentViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HwS-sS-AVL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

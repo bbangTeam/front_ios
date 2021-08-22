@@ -7,14 +7,21 @@
 
 import UIKit
 
+protocol commentDelegate: AnyObject {
+    func didSelectedCommentButton(data: String)
+}
+
 class BbangstaCollectionViewCell: UICollectionViewCell {
     
     lazy var dataManager = BbangstaDataManager()
     
     var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart"), #imageLiteral(resourceName: "tagXmark")]
     var imageViews = [UIImageView]()
+    
     var id = "6121e6c7f127835d6c6dfe08"
     var storeId = "60b8c723fa467c1b60f71adc"
+    
+    var delegate: commentDelegate?
     
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userIdLabel: UILabel!
@@ -58,6 +65,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
         
     }
     
+    
     @IBAction func likeButtonAction(_ sender: UIButton) {
         likeButton.isSelected = !likeButton.isSelected
         
@@ -71,7 +79,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func bbangstaCommentButtonAction(_ sender: UIButton) {
-       
+        delegate?.didSelectedCommentButton(data: id)
     }
     @IBAction func bbangstaMenuButtonAction(_ sender: UIButton) {
         menuButton.isSelected = !menuButton.isSelected

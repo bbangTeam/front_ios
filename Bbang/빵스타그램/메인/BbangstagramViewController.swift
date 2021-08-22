@@ -37,8 +37,7 @@ class BbangstagramViewController: UIViewController {
 
 //MARK: - CollectionView
 
-extension BbangstagramViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+extension BbangstagramViewController: UICollectionViewDelegate, UICollectionViewDataSource, commentDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bbangstaLists.count
     }
@@ -50,14 +49,26 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         
         let bbangstaList = bbangstaLists[indexPath.row]
         
-        cell.userIdLabel.text = bbangstaList.id
+        //cell.userIdLabel.text = bbangstaList.id
         cell.storeLabel.text = bbangstaList.breadStoreName
         cell.breadNameLabel.text = bbangstaList.breadName
         cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
+        
         cell.storeId = bbangstaList.storeId!
+        cell.id = bbangstaList.id!
+        
+        cell.delegate = self
         
         return cell
+    }
+    
+    func didSelectedCommentButton(data: String) {
+        let commentVC = self.storyboard?.instantiateViewController(identifier: "BbangstaCommentViewController") as! BbangstaCommentViewController
+        
+        commentVC.id = data
+        
+        self.present(commentVC, animated: true, completion: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
