@@ -68,20 +68,19 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
-//        tableView.rowHeight = UITableView.automaticDimension
-//        bbangstaCommentTableView.estimatedRowHeight = 500
+        tableView.rowHeight = UITableView.automaticDimension
+        bbangstaCommentTableView.estimatedRowHeight = 500
         
-        cell.setupViews()
        
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }
