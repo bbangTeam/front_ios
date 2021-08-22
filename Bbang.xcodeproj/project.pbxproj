@@ -40,6 +40,8 @@
 		A574B90526D2283900083D8D /* KeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90226D2283900083D8D /* KeyCenter.swift */; };
 		A574B90726D2284600083D8D /* BbangstaDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90626D2284600083D8D /* BbangstaDataManager.swift */; };
 		A574B90A26D2285900083D8D /* BbangstaListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90926D2285900083D8D /* BbangstaListResponse.swift */; };
+		A574B90C26D22FCA00083D8D /* BbangstaLikeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90B26D22FCA00083D8D /* BbangstaLikeResponse.swift */; };
+		A574B90E26D22FF800083D8D /* BbangstaLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90D26D22FF800083D8D /* BbangstaLikeRequest.swift */; };
 		A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */; };
 		A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */; };
 		A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */; };
@@ -81,6 +83,8 @@
 		A574B90226D2283900083D8D /* KeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCenter.swift; sourceTree = "<group>"; };
 		A574B90626D2284600083D8D /* BbangstaDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BbangstaDataManager.swift; sourceTree = "<group>"; };
 		A574B90926D2285900083D8D /* BbangstaListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BbangstaListResponse.swift; sourceTree = "<group>"; };
+		A574B90B26D22FCA00083D8D /* BbangstaLikeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaLikeResponse.swift; sourceTree = "<group>"; };
+		A574B90D26D22FF800083D8D /* BbangstaLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaLikeRequest.swift; sourceTree = "<group>"; };
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
 		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				A574B90926D2285900083D8D /* BbangstaListResponse.swift */,
+				A574B90D26D22FF800083D8D /* BbangstaLikeRequest.swift */,
+				A574B90B26D22FCA00083D8D /* BbangstaLikeResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -424,11 +430,13 @@
 				A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */,
 				A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
+				A574B90E26D22FF800083D8D /* BbangstaLikeRequest.swift in Sources */,
 				A554C8AF267E49AC00CDA47F /* BbangstaCommentViewController.swift in Sources */,
 				A556B1FB2663A35700AC2471 /* BbangstaWriteViewController.swift in Sources */,
 				A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */,
 				A54E79A92674C45C002DEC7C /* BbangtourTableViewCell.swift in Sources */,
 				A5277EDB265E1EDE00D4122A /* BbangsetViewController.swift in Sources */,
+				A574B90C26D22FCA00083D8D /* BbangstaLikeResponse.swift in Sources */,
 				A574B90426D2283900083D8D /* UITabBar.swift in Sources */,
 				A574B90326D2283900083D8D /* Constant.swift in Sources */,
 				A554C8AC267E495600CDA47F /* BbangstaCommentTableViewCell.swift in Sources */,

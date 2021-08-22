@@ -46,4 +46,21 @@ class BbangstaDataManager {
                 }
             }
     }
+    
+    // 빵스타그램 좋아요
+    func bbangstaLike(_ isLiked: Bool, storeId: String, delegate: BbangstaCollectionViewCell) {
+        let url = "\(Constant.BASE_URL)breadstagram/like?like=\(isLiked)&id=\(storeId)"
+        
+        AF.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: KeyCenter.header)
+            .validate()
+            .responseDecodable(of: BbangstaListResponse.self) { response in
+                switch response.result {
+                case .success(let response):
+                    delegate.bbangstaLike(response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
+                }
+            }
+    }
 }

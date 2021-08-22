@@ -41,7 +41,7 @@ class BbangstagramViewController: UIViewController {
 extension BbangstagramViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return bbangstaLists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,11 +51,12 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         
         let bbangstaList = bbangstaLists[indexPath.row]
         
-        cell.userIdLabel.text = bbangstaList.id
+        cell.userIdLabel.text = bbangstaList.storeId
         cell.storeLabel.text = bbangstaList.breadStoreName
         cell.breadNameLabel.text = bbangstaList.breadName
-        cell.locationLabel.text = "#\(bbangstaList.cityName)"
+        cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
+        cell.storeId = bbangstaList.storeId!
         
         
         return cell
