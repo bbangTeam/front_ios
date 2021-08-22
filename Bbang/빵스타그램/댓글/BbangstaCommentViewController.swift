@@ -16,13 +16,6 @@ class BbangstaCommentViewController: UIViewController {
     var content = ""
     var page = 0
     
-    var textArray = [
-                        "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
-                        "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
-                        "아아아아아"
-                                    ]
-
-    
     @IBOutlet var bbangstaCommentTableView: UITableView!
     
     @IBOutlet var commentTextField: UITextField!
@@ -37,9 +30,22 @@ class BbangstaCommentViewController: UIViewController {
         
         dataManager.bbangstaCommentList(id: id, page: page, delegate: self)
         
-        print(id)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: .CommentReloadData, object: nil)
     }
+    
+    override func viewWillLayoutSubviews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: .CommentReloadData, object: nil)
+       
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .CommentReloadData, object: nil)
+    }
+    
+    @objc func reloadData(_ notification: Notification) {
+        dataManager.bbangstaCommentList(id: id, page: page, delegate: self)
+    }
+    
     
     @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: .none)
@@ -48,6 +54,8 @@ class BbangstaCommentViewController: UIViewController {
         let input: BbangstaCommentWriteRequest = BbangstaCommentWriteRequest(id: id, type: "breadstagram", content: commentTextField.text!)
         dataManager.bbangstaCommentWrite(input, delegate: self)
         commentTextField.text = ""
+        
+        NotificationCenter.default.post(name: .CommentReloadData, object: nil)
     }
 
     
@@ -57,17 +65,15 @@ class BbangstaCommentViewController: UIViewController {
 
 extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return textArray.count
+        return commentLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BbangstaCommentTableViewCell", for: indexPath) as! BbangstaCommentTableViewCell
         
-        cell.commentLabel.text = textArray[indexPath.row]
-        
-        //let commentLists = commentLists[indexPath.row]
-        //cell.commentLabel.text = commentLists.content
-        //cell.userIdLabel.text = commentLists.nickname
+        let commentLists = commentLists[indexPath.row]
+        cell.commentLabel.text = commentLists.content
+        cell.userIdLabel.text = commentLists.nickname
         
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
@@ -101,4 +107,8 @@ extension BbangstaCommentViewController {
     func failedToRequest(message: String) {
       print(message)
     }
+}
+//MARK: - Notification
+extension Notification.Name {
+    static let CommentReloadData = Notification.Name("CommentReloadData")
 }

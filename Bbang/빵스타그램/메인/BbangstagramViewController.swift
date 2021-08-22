@@ -69,6 +69,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         commentVC.id = data
         
         self.present(commentVC, animated: true, completion: nil)
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
