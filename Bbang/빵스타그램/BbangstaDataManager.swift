@@ -114,4 +114,21 @@ class BbangstaDataManager {
                 }
             }
     }
+    
+    // 글 작성
+    func bbangstaWrite(_ parameters: BbangstaWriteRequest, delegate: BbangstaWriteViewController) {
+        let url = "\(Constant.BASE_URL)breadstagram/write"
+        
+        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: KeyCenter.header)
+            .validate()
+            .responseDecodable(of: BbangstaWriteResponse.self) { response in
+                switch response.result {
+                case .success(let response):
+                    delegate.bbangstaWrite(response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
+                }
+            }
+    }
 }

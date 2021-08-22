@@ -9,8 +9,12 @@ import UIKit
 
 class BbangstaWriteViewController: UIViewController {
     
+    lazy var dataManager = BbangstaDataManager()
+    
     var textArray = ["빵", "소보루", "식빵", "이름이아주아주긴빵ddddddd"]
     var imageArray = [1,2,3,4,5,6,7,8,9,10]
+    
+    var imageList: [ImageLists] = [ImageLists(id: "", num: 0, imageUrl: "")]
     
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var storeTextField: UITextField!
@@ -44,7 +48,10 @@ class BbangstaWriteViewController: UIViewController {
     }
     
     @IBAction func writeButtonAction(_ sender: UIButton) {
+       
+        let input: BbangstaWriteRequest = BbangstaWriteRequest(id: "idddd", cityName: "서울", storeName: "빵가게", breadName: "크림빵", content: "크림빵 맛있어", imageList: imageList)
         
+        dataManager.bbangstaWrite(input, delegate: self)
     }
     
 
@@ -180,3 +187,15 @@ extension BbangstaWriteViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+//MARK: - API
+extension BbangstaWriteViewController {
+    func bbangstaWrite(_ result: BbangstaWriteResponse) {
+        print(result)
+    }
+
+    func failedToRequest(message: String) {
+        print(message)
+    }
+}
+
