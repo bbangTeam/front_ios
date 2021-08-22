@@ -9,14 +9,19 @@ import UIKit
 
 class BbangstaCommentViewController: UIViewController {
     
+    lazy var dataManager = BbangstaDataManager()
+    var commentLists: [CommentList] = []
+    
+    var id = "6121e6c7f127835d6c6dfe08"
+    var page = 0
     var textArray = [
                         "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
                         "댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤댓글내용입니다. 이하 더미텍스트입니다. 댓글내용입니다. 이하 더미텍스트입니다.  제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.❤❤❤",
                         "아아아아아"
                                     ]
 
+    
     @IBOutlet var bbangstaCommentTableView: UITableView!
-    //@IBOutlet var bbangstaCommentTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet var commentTextField: UITextField!
     
@@ -28,8 +33,7 @@ class BbangstaCommentViewController: UIViewController {
         
         commentTextField.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         
-        //bbangstaCommentTableViewHeight.constant = 1000
-        
+        dataManager.bbangstaCommentList(id: id, page: page, delegate: self)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -66,10 +70,14 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.commentLabel.text = textArray[indexPath.row]
         
+        //let commentLists = commentLists[indexPath.row]
+        //cell.commentLabel.text = commentLists.content
+        //cell.userIdLabel.text = commentLists.nickname
+        
         cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
         
         tableView.rowHeight = UITableView.automaticDimension
-        bbangstaCommentTableView.estimatedRowHeight = 500
+        //bbangstaCommentTableView.estimatedRowHeight = 500
         
        
         return cell
@@ -83,4 +91,17 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         return UITableView.automaticDimension
     }
     
+}
+
+//MARK: - API
+extension BbangstaCommentViewController {
+    func bbangstaCommentList(result: BbangstaCommentResponse) {
+        commentLists = result.commentList!
+        bbangstaCommentTableView.reloadData()
+        print(commentLists)
+    }
+    
+    func failedToRequest(message: String) {
+        
+    }
 }

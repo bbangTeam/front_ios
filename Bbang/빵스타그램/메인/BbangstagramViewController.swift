@@ -29,7 +29,6 @@ class BbangstagramViewController: UIViewController {
         bbangstaCollectionViewWidth.constant = view.frame.size.width
         
         dataManager.bbangstaList(page: self.page, delegate: self)
-        
     
     }
 
@@ -51,13 +50,12 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         
         let bbangstaList = bbangstaLists[indexPath.row]
         
-        cell.userIdLabel.text = bbangstaList.storeId
+        cell.userIdLabel.text = bbangstaList.id
         cell.storeLabel.text = bbangstaList.breadStoreName
         cell.breadNameLabel.text = bbangstaList.breadName
         cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
         cell.storeId = bbangstaList.storeId!
-        
         
         return cell
     }
@@ -119,6 +117,7 @@ extension BbangstagramViewController {
         self.fetchingMore = false
         self.bbangstaCollectionView.reloadData()
     }
+   
     func failedToRequest(message: String) {
         print(message)
     }

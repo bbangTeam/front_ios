@@ -13,6 +13,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     var images: [UIImage] = [#imageLiteral(resourceName: "message"), #imageLiteral(resourceName: "heart"), #imageLiteral(resourceName: "tagXmark")]
     var imageViews = [UIImageView]()
+    var id = "6121e6c7f127835d6c6dfe08"
     var storeId = "60b8c723fa467c1b60f71adc"
     
     @IBOutlet var userImageView: UIImageView!
@@ -24,6 +25,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var breadNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var contentLabel: UILabel!
+    @IBOutlet var commentButton: UIButton!
     
     @IBOutlet var bbangstaScrollView: UIScrollView!
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
@@ -53,6 +55,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
         
         addContentScrollView()
         setPageControl()
+        
     }
     
     @IBAction func likeButtonAction(_ sender: UIButton) {
@@ -120,6 +123,10 @@ extension BbangstaCollectionViewCell {
     func bbangstaLike(_ reuslt: BbangstaListResponse) {
         print(reuslt.result)
     }
+    func bbangstaCommentNumber(result: BbangstaCommentNumberResponse) {
+        
+    }
+   
     func failedToRequest(message: String) {
         print(message)
     }

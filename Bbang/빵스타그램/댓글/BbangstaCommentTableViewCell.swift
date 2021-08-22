@@ -36,3 +36,8 @@ class BbangstaCommentTableViewCell: UITableViewCell {
 
 }
 
+//MARK: - API
+
+func failedToRequest(message: String) {
+    
+}

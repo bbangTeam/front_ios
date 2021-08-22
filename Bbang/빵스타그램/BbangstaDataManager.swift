@@ -63,4 +63,40 @@ class BbangstaDataManager {
                 }
             }
     }
+    
+    // 댓글 목록 조회
+    func bbangstaCommentList(id: String, page: Int, delegate: BbangstaCommentViewController) {
+        let url = "\(Constant.BASE_URL)comment/list?id=\(id)&pageNum=\(page)&pageSize=5"
+        
+        AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: KeyCenter.header)
+            .validate()
+            .responseDecodable(of: BbangstaCommentResponse.self) { response in
+                switch response.result {
+                case .success(let response):
+                    delegate.bbangstaCommentList(result: response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
+                }
+            }
+    }
+    
+    // 댓글 작성
+    
+    // 댓글 갯수 확인
+    func bbangstaCommentNumber(id: String, delegate: BbangstaCollectionViewCell) {
+        let url = "\(Constant.BASE_URL)comment/count?id=\(id)"
+        
+        AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: KeyCenter.header)
+            .validate()
+            .responseDecodable(of: BbangstaCommentNumberResponse.self) { response in
+                switch response.result {
+                case .success(let response):
+                    delegate.bbangstaCommentNumber(result: response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
+                }
+            }
+    }
 }

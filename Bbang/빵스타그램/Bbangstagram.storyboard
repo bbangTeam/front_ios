@@ -330,6 +330,7 @@
                                             <outlet property="allNumberLabel" destination="coW-XY-Qfv" id="RLJ-KH-np4"/>
                                             <outlet property="bbangstaScrollView" destination="N4k-fU-olL" id="kbn-WZ-nQ4"/>
                                             <outlet property="breadNameLabel" destination="WbO-FL-TVt" id="Tpj-il-i5v"/>
+                                            <outlet property="commentButton" destination="1S9-x5-DGd" id="pe6-tS-nvU"/>
                                             <outlet property="contentLabel" destination="wOg-sr-Myc" id="bnX-aS-mZI"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
                                             <outlet property="likeButton" destination="RNy-ok-BRl" id="AkS-mD-M4F"/>
