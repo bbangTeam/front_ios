@@ -91,7 +91,7 @@ extension DecendantsViews where Self: UIView {
 				forEachView(self, f: f)
 		}
 
-		fileprivate func forEachView(_ view: UIView, f: (UIView) -> Void) {
+		private func forEachView(_ view: UIView, f: (UIView) -> Void) {
 				view.subviews.forEach {
 						f($0)
 

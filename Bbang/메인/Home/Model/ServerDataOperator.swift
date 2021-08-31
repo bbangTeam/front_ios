@@ -7,49 +7,77 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 class ServerDataOperator: ObservableObject {
 	
 	typealias StatusCode = Int
 	
 	private(set) var responses = [APICategory: Set<Response>]()
+	private var accessToken: String? = Constants.tokenForTest
+	
+	func setAccessToken(_ token: String) {
+		accessToken = token
+	}
 	
 	func checkServerStatus() {
 		sendReqeust(.healthCheck, authToken: nil)
 			.observe { result in
-				if case let .failure(error) = result {
+				if case let .success(response) = result,
+				   let data = response.data {
+					print("Server status \n" + String(data: data, encoding: .utf8)!)
+				}
+				else if case let .failure(error) = result {
 					print("Fail to check server: \(error.localizedDescription)")
 				}
 			}
 	}
 	
-	//MARK:- WorldCup
+	//MARK: - Sign up
+	func checkNicknameDuplicated(_ nickname: String) -> Promise<Bool> {
+		guard let token = accessToken else {
+			return Promise<Bool>.rejected(with: ServerError.notAuthenticated)
+		}
+		sendReqeust(.checkNicknameDuplicated(nickname), authToken: token)
+			.observe { result in
+				if case let .success(response) = result,
+				   let data = response.data {
+					print(String(data: data, encoding: .utf8)!)
+				}else {
+					print("Fail to check nickname")
+				}
+			}
+		return Promise<Bool>.init(value: false)
+	}
+	
+	
+	//MARK: - WorldCup
 	func requestWorldCupData() -> Promise<Bool> {
-		sendReqeust(.worldCupData, authToken: Constants.tokenForTest)
+		sendReqeust(.worldCupData, authToken: accessToken)
 			.chained { [weak weakSelf = self] in
 				weakSelf?.storeResponse($0, in: .worldCup) ?? Promise<Bool>(value: false)
 			}
 	}
 
 	func sendWorldCupWinner(_ winnerId: String) -> Promise<Response> {
-		sendReqeust(.worldCupWinner(id: winnerId), authToken: Constants.tokenForTest)
+		sendReqeust(.worldCupWinner(id: winnerId), authToken: accessToken)
 	}
 
 	func getWorldCupRaking() -> Promise<Response> {
-		sendReqeust(.worldCupRaking, authToken: Constants.tokenForTest)
+		sendReqeust(.worldCupRaking, authToken: accessToken)
 	}
 	
-	//MARK:- Bbangstargram
+	//MARK: - Bbangstargram
 	func requestFeed(at pageNumber: Int, by pageSize: Int) -> Promise<Bool> {
-		sendReqeust(.bbangStargramList(pageNumber: pageNumber, pageSize: pageSize), authToken: Constants.tokenForTest)
+		sendReqeust(.bbangStargramList(pageNumber: pageNumber, pageSize: pageSize), authToken: accessToken)
 			.chained { [weak weakSelf = self] in
 				weakSelf?.storeResponse($0, in: .bbangStarNewsFeed) ?? Promise<Bool>(value: false)
 			}
 	}
 	
-	//MARK:- Famous bakery
-	fileprivate func requestAreaList() -> Promise<[[String: Any]]> {
-		sendReqeust(.areaList, authToken: Constants.tokenForTest)
+	//MARK: - Famous bakery
+	private func requestAreaList() -> Promise<[[String: Any]]> {
+		sendReqeust(.areaList, authToken: accessToken)
 			.chained { response -> Promise<[[String: Any]]> in
 				guard let data = response.data,
 					  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
@@ -72,11 +100,23 @@ class ServerDataOperator: ObservableObject {
 				}
 				return strongSelf.sendReqeust(.famous(areaName: areaName,
 													  areaId: areaId,
-									needDetail: needDetail,
-									demandNumber: lengthDemand), authToken: Constants.tokenForTest)
+													  needDetail: needDetail,
+													  demandNumber: lengthDemand),
+											  authToken: strongSelf.accessToken)
 					.chained { [weak weakSelf = self] in
 						weakSelf?.storeResponse($0, in: .famous) ?? Promise<Bool>(value: false)
 					}
+			}
+	}
+	
+	// MARK: - Map search
+	func requestBakeryNear(location: CLLocationCoordinate2D, distance: ClosedRange<Int> = 0...4000) -> Promise<Bool> {
+		sendReqeust(.bakeryNearLocation(latitude: location.latitude,
+										longitude: location.longitude,
+										distanceRange: distance),
+					authToken: accessToken)
+			.chained { [weak weakSelf = self] in
+				weakSelf?.storeResponse($0, in: .bakeryNearLocation) ?? Promise<Bool>(value: false)
 			}
 	}
 	
@@ -85,7 +125,10 @@ class ServerDataOperator: ObservableObject {
 	}
 	
 	
-	fileprivate func sendReqeust(_ request: Constants.Reqeust, authToken: String?) -> Promise<Response> {
+	private func sendReqeust(_ request: Constants.Request, authToken: String?) -> Promise<Response> {
+		guard .healthCheck == request || authToken != nil else {
+			return Promise.rejected(with: ServerError.notAuthenticated)
+		}
 		guard var urlComponents = URLComponents(string: Constants.host + request.path) else {
 			assertionFailure("Error creating url component for \(request)")
 			return Promise.rejected(with: ServerError.badRequest)
@@ -111,9 +154,9 @@ class ServerDataOperator: ObservableObject {
 		}
 		var urlRequest = URLRequest(url: url)
 		urlRequest.httpMethod = request.method.rawValue
-		urlRequest.setValue(request.contentType.rawValue, forHTTPHeaderField: "Content-Type")
+//		urlRequest.setValue(request.contentType.rawValue, forHTTPHeaderField: "Content-Type")
 		urlRequest.setValue(authToken, forHTTPHeaderField: "Authorization")
-		urlRequest.setValue(request.contentLength == nil ? nil: String(request.contentLength!), forHTTPHeaderField: "Content-Length")
+//		urlRequest.setValue(request.contentLength == nil ? nil: String(request.contentLength!), forHTTPHeaderField: "Content-Length")
 		urlRequest.httpBody = httpBody
 		
 		let date = Date()
@@ -137,7 +180,7 @@ class ServerDataOperator: ObservableObject {
 		return promise
 	}
 	
-	fileprivate func storeResponse(_ response: Response, in category: APICategory) -> Promise<Bool>{
+	private func storeResponse(_ response: Response, in category: APICategory) -> Promise<Bool>{
 		responses[category]!.insert(response)
 		objectWillChange.send()
 		return Promise<Bool>(value: true)
@@ -153,6 +196,7 @@ class ServerDataOperator: ObservableObject {
 		case worldCup
 		case famous
 		case bbangStarNewsFeed
+		case bakeryNearLocation
 	}
 	
 	struct Response: Hashable {
@@ -169,11 +213,12 @@ class ServerDataOperator: ObservableObject {
 		}
 	}
 	
-	struct Constants {
+	private struct Constants {
 		static let host = "http://125.240.27.115:7000"
-		static let tokenForTest = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjI4NDI4MjAzLCJ1c2VySWQiOiI2MGUxOGU1YzM2ZDgxOTYyNGQxNzk1ZWUifQ.lKGfvcbJB9Uv3OhR9GjM-QaNmrqngnd_zIpkvNyYVaCThOhMcC_PqQX_7NYTp90UjPMQ4idoltgjRPA-VzR-mw"
+		static let tokenForTest = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjMxMDI1MDE3LCJ1c2VySWQiOiI2MGU4MzMzN2Q5ZmU3NDU2ODUzNzViYTQifQ.zA8Jtznm5gdUMvaQA-nQbtV0ZWc_6owcxGWFYWrOHxa8YA8LslvlQslbVXw1s8eSZokwpxTCQ1XTB9qGwf1L9w"
 		
-		enum Reqeust {
+		enum Request: Equatable {
+			case checkNicknameDuplicated(String)
 			case areaList
 			case bbangStargramList(pageNumber: Int, pageSize: Int)
 			case famous(areaName: String, areaId: String, needDetail: Bool, demandNumber: Int)
@@ -181,9 +226,12 @@ class ServerDataOperator: ObservableObject {
 			case worldCupData
 			case worldCupRaking
 			case worldCupWinner(id: String)
+			case bakeryNearLocation(latitude: Double, longitude: Double, distanceRange: ClosedRange<Int>)
 			
 			var path: String {
 				switch self {
+					case .checkNicknameDuplicated(_):
+						return "/api/user/nickname"
 					case .areaList:
 						return "/api/pilgrimage/area/list"
 					case .healthCheck:
@@ -198,13 +246,14 @@ class ServerDataOperator: ObservableObject {
 						return "/api/breadstagram/list"
 					case .famous:
 						return "/api/pilgrimage/list"
-					
+					case .bakeryNearLocation(_, _, _):
+						return "/api/store/list"
 				}
 			}
 			
 			var method: Method {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking, .bbangStargramList(_, _), .famous, .areaList:
+					case .checkNicknameDuplicated(_), .healthCheck, .worldCupData, .worldCupRaking, .bbangStargramList(_, _), .famous, .areaList, .bakeryNearLocation(_, _, _):
 						return .get
 					case .worldCupWinner(_):
 						return .post
@@ -213,14 +262,16 @@ class ServerDataOperator: ObservableObject {
 			
 			var contentType: ContentType  {
 				switch self {
-					case .healthCheck, .worldCupData, .worldCupRaking,  .worldCupWinner(_), .bbangStargramList(_, _), .famous, .areaList:
+					default:
 						return .json
 				}
 			}
 			var parameters: [String: String]? {
 				switch self {
-					case .areaList, .healthCheck, .worldCupData, .worldCupRaking:
-						return nil
+					case .checkNicknameDuplicated(let nickname):
+						return [
+							"nickname": nickname
+						]
 					case .worldCupWinner(let winnerId):
 						return [
 							"id": winnerId
@@ -235,15 +286,24 @@ class ServerDataOperator: ObservableObject {
 							"id": areaId ,
 							"option": needDetail ? "all": "none"
 						]
+					case .bakeryNearLocation(let latitude, let logitude, let distanceRange):
+						return [
+							"longitude": String(logitude),
+							"latitude": String(latitude),
+							"minDistance": String(distanceRange.lowerBound),
+							"maxDistance": String(distanceRange.upperBound)
+						]
+					default:
+						return nil
 				}
 			}
 			
 			var contentLength: Int? {
 				switch self {
-					case .areaList, .healthCheck, .worldCupData, .worldCupRaking, .worldCupWinner(_), .bbangStargramList(_, _):
-						return nil
 					case .famous(_, _, _, let demandNumber):
 						return demandNumber
+					default:
+						return nil
 				}
 			}
 			/// Identify request when handle response
@@ -251,6 +311,16 @@ class ServerDataOperator: ObservableObject {
 				switch self {
 				case .famous(let areaName, _, _, _):
 					return areaName
+					case .bakeryNearLocation(let latitude, let longitude, _):
+						let coordinate = [
+							"latitude": latitude,
+							"longitude": longitude
+						]
+						if let json = try? JSONEncoder().encode(coordinate) {
+							return String(data: json, encoding: .utf8)
+						}else {
+							return nil
+						}
 				default:
 					return nil
 				}
@@ -272,5 +342,6 @@ class ServerDataOperator: ObservableObject {
 		case notFound
 		case unSpecified (String)
 		case parseFail
+		case notAuthenticated
 	}
 }

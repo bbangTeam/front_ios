@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 
 class HomeViewController: UIViewController {
 	
@@ -22,9 +23,10 @@ class HomeViewController: UIViewController {
 	private var bakeryListHC: UIHostingController<HomeBakeryList>!
 	private var tourQuickLookVC: TourVC?
 	private var BSPreviewVC: BSPreviewVC?
-	
+	private var bakeryInfoObserver: AnyCancellable?
 	private var serverResponseObserver: AnyCancellable?
 	private var cityObserver: AnyCancellable?
+	private var locationObserver: AnyCancellable?
 	private var worldCupPreviews = [(content: WorldCupContent, preview: UIView)]()
 	private var worldCupImageObservers = [WorldCupContent: AnyCancellable]()
 	
@@ -40,7 +42,7 @@ class HomeViewController: UIViewController {
 	private var isBakeryListCollapsed = true
 	private var bakeryListCollapsedHeight: CGFloat!
 	
-	// MARK:- User intents
+	// MARK: - User intents
 	
 	@objc private func tapWorldCupPreview(_ gesture: UITapGestureRecognizer) {
 		guard let preview = gesture.view,
@@ -70,7 +72,7 @@ class HomeViewController: UIViewController {
 					   usingSpringWithDamping: 0.7,
 					   initialSpringVelocity: 1,
 					   options: [.curveEaseInOut]) { [self] in
-			bakeryListViewHeight.constant = isBakeryListCollapsed ? bakeryListCollapsedHeight: bakeryListHC.view.bounds.height + Constant.collapseButtonHeight
+			bakeryListViewHeight.constant = isBakeryListCollapsed ? bakeryListCollapsedHeight: UIScreen.main.bounds.height * 2 + Constant.collapseButtonHeight
 			if isBakeryListCollapsed {
 				homeVerticalScrollview.contentOffset =
 					CGPoint(x: bakeryListContainerView.frame.origin.x,
@@ -82,15 +84,16 @@ class HomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		server.checkServerStatus()
 		configColorMode()
-		checkLogin()
+		presentSignInIfNeeded()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	private func presentSignInIfNeeded() {
 		if !isLoggedIn {
 			tabBarController?.tabBar.isHidden = true
-			let signInVC: SignInVC = UIStoryboard(storyboard: .Main).instantiateViewController()
+			let signInVC: AuthVC = UIStoryboard(storyboard: .Home).instantiateViewController()
+			signInVC.server = server
 			signInVC.handleLogin = { [self] in
 				loadContent()
 				isLoggedIn = true
@@ -102,14 +105,11 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func checkLogin() {
-		// TODO: Login
-	}
-	
-	fileprivate func loadContent() {
+	private func loadContent() {
 		initBakeryListView()
+		observeBakeryInfo()
 		homeVerticalScrollview.contentInsetAdjustmentBehavior = .never
-		observeCity()
+		observeLocationGather()
 		location.requestAuthorization()
 		server.requestFeed(at: 1, by: 10)
 			.observe { result in
@@ -117,7 +117,7 @@ class HomeViewController: UIViewController {
 			}
 	}
 	
-	fileprivate func configColorMode(){
+	private func configColorMode(){
 		if traitCollection.userInterfaceStyle == .dark {
 			view.backgroundColor = DesignConstant.getUIColor(.secondary(staturation: 900))
 		}else if traitCollection.userInterfaceStyle == .light {
@@ -125,10 +125,10 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func initBakeryListView() {
+	private func initBakeryListView() {
 		bakeryListCollapsedHeight = HomeBakeryList.Constant.topBarHeight + (UIScreen.main.bounds.width - HomeBakeryList.Constant.horizontalMargin * 2) * BakeryFeedView.Constant.aspectRatio * 2 + Constant.collapseButtonHeight - 50
 		bakeryListViewHeight.constant = bakeryListCollapsedHeight
-		bakeryListHC = UIHostingController(rootView: HomeBakeryList(bakeries: BakeryInfoManager.dummys))
+		bakeryListHC = UIHostingController(rootView: HomeBakeryList(bakeries: []))
 		bakeryListHC.view.frame = .init(
 			origin: bakeryListContainerView.bounds.origin,
 			size: .init(width: bakeryListContainerView.bounds.width,
@@ -139,7 +139,7 @@ class HomeViewController: UIViewController {
 		initCollapseButton()
 	}
 	
-	fileprivate func initCollapseButton() {
+	private func initCollapseButton() {
 		listCollapseButton.frame.size = Constant.collapseButtonSize
 		listCollapseButton.snp.makeConstraints {
 			$0.size.equalTo(Constant.collapseButtonSize)
@@ -151,7 +151,12 @@ class HomeViewController: UIViewController {
 		listCollapseButton.layer.cornerRadius = 4
 	}
 	
-	fileprivate func observeCity() {
+	private func observeLocationGather() {
+		locationObserver = location.$lastLocation.sink { [weak weakSelf = self] in
+			if let location = $0 {
+				weakSelf?.bakeryInfo.requestBakeryIfNeeded(near: location.coordinate)
+			}
+		}
 		cityObserver = location.$cityname.sink { [weak weakSelf = self] in
 			if let cityName = $0,
 				 let city = Area.allCases.first(where: {
@@ -170,7 +175,47 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func observeServerResponse() {
+	private func observeBakeryInfo() {
+		bakeryInfoObserver = bakeryInfo.$currentShowingCoordinateKey.sink { [weak self] _ in
+			guard let strongSelf = self,
+				  let currentLocation = strongSelf.location.lastLocation else {
+				return
+			}
+			var minDistance: Double?
+			var coordinateToShow: CLLocationCoordinate2D?
+			
+			strongSelf.bakeryInfo.bakeriesNearLocation.keys.forEach {
+				let bakeryLocation = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
+				let distance = currentLocation.distance(from: bakeryLocation)
+				if minDistance == nil ||
+					distance < minDistance! {
+					minDistance = distance
+					coordinateToShow = $0
+				}
+			}
+			guard coordinateToShow != nil else {
+				return
+			}
+			let numberOfBakeries = min(strongSelf.bakeryInfo.bakeriesNearLocation[coordinateToShow!]!.count, 6)
+			let bakeriesToShow = Array( strongSelf.bakeryInfo.bakeriesNearLocation[coordinateToShow!]!.sorted {
+				if $0.distance == nil {
+					return false
+				}else if $1.distance == nil {
+					return true
+				}else {
+					let lhsDistance = $0.distance!
+					let rhsDistance = $1.distance!
+					return lhsDistance < rhsDistance
+				}
+			}[0...numberOfBakeries - 1])
+			DispatchQueue.main.async {
+				strongSelf.bakeryListHC.rootView.bakeries = bakeriesToShow
+				strongSelf.bakeryListHC.view.sizeToFit()
+			}
+		}
+	}
+	
+	private func observeServerResponse() {
 		serverResponseObserver = server.objectWillChange.sink{ [self] in
 			if server.responses[.worldCup] != nil,
 			   !server.responses[.worldCup]!.isEmpty{
@@ -185,10 +230,9 @@ class HomeViewController: UIViewController {
 				extractNewsFeed()
 			}
 		}
-		
 	}
 	
-	fileprivate func extractWorlcupDate() {
+	private func extractWorlcupDate() {
 		server.responses[.worldCup]!.forEach {
 			server.removeResponse($0, in: .worldCup)
 			if let data = $0.data ,
@@ -199,7 +243,7 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func extractNewsFeed() {
+	private func extractNewsFeed() {
 		server.responses[.bbangStarNewsFeed]!.forEach { server.removeResponse($0, in: .bbangStarNewsFeed)
 			if let data = $0.data ,
 			   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] ,
@@ -229,7 +273,7 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func extractFamousData() {
+	private func extractFamousData() {
 		guard tourQuickLookVC != nil else {
 			return
 		}
@@ -240,15 +284,16 @@ class HomeViewController: UIViewController {
 				 let tag = $0.requestTag,
 				 let area = Area(koreanName: tag),
 				 let bakeryList = json["storeList"] as? [[String: Any]]{
+				
 				let bakeries = bakeryList.compactMap {
-					BakeryInfoManager.Bakery(from: $0)
+					BakeryInfoManager.Bakery(from: $0, baseLocation: location.lastLocation)
 				}
 				tourQuickLookVC?.setBakeryData(bakeries, for: area)
 			}
 		}
 	}
 	
-	fileprivate func waitWorldCupImages(for content: WorldCupContent) {
+	private func waitWorldCupImages(for content: WorldCupContent) {
 		worldCupImageObservers[content] = content.$fetcedImageCount.sink {
 			[weak weakSelf = self] in
 			if $0 >= 16 {
@@ -259,7 +304,7 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func createPreview(with content: WorldCupContent) {
+	private func createPreview(with content: WorldCupContent) {
 		let origin = CGPoint(x: worldCupPreviews.last == nil ? Constant.previewMargin : worldCupPreviews.last!.1.frame.maxX + Constant.previewMargin * 2 ,
 							 y: worldCupScrollView.bounds.origin.y)
 		let size = CGSize(width: worldCupScrollView.bounds.width - Constant.previewMargin * 2,
@@ -291,7 +336,7 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
-	struct Constant {
+	private struct Constant {
 		static let collapseButtonHeight: CGFloat = 50
 		static var previewMargin: CGFloat = 0
 		static let collapseButtonSize = CGSize(width: 264, height: 34)

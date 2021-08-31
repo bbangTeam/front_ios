@@ -50,6 +50,13 @@
             ReferencedContainer = "container:Bbang.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_DT_MODE"
+            value = "${DEBUG_ACTIVITY_MODE}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "../../Bbang/&#x110c;&#x116e;&#x1107;&#x1167;&#x11ab;&#x1108;&#x1161;&#x11bc;&#x110c;&#x1175;&#x11b8;&#x1100;&#x1165;&#x11b7;&#x1109;&#x1162;&#x11a8;/Map Search/DummyLocation.gpx"
          referenceType = "0">

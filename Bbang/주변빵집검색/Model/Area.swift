@@ -47,13 +47,13 @@ enum Area: String, CaseIterable {
 		}
 	}
 	
-	func calcOffset(for location: CLLocationCoordinate2D, in bound: CGSize) -> CGSize {
-		let x = bound.height * CGFloat((location.longitude - geometry.longitude) / (geometry.deltaLongitude * 2))
-		let y = bound.width * CGFloat((location.latitude - geometry.latitude) / (geometry.deltaLatitdue * 2))
+	func calcOffset(for coordinate: CLLocationCoordinate2D, in bound: CGSize) -> CGSize {
+		let x = bound.height * CGFloat((coordinate.longitude - geometry.longitude) / (geometry.deltaLongitude * 2))
+		let y = bound.width * CGFloat((coordinate.latitude - geometry.latitude) / (geometry.deltaLatitdue * 2))
 		return CGSize(width: x, height: y)
 	}
 	
-	fileprivate var geometry: (latitude: Double, longitude: Double, deltaLatitdue: Double, deltaLongitude: Double) {
+	private var geometry: (latitude: Double, longitude: Double, deltaLatitdue: Double, deltaLongitude: Double) {
 		switch self {
 			case .seoul:
 				return (37.540705, 126.956764, 0.551279, 0.483654)

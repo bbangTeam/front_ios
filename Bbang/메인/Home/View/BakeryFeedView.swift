@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct BakeryFeedView: View {
 	let bakery: BakeryInfoManager.Bakery
@@ -27,8 +28,16 @@ struct BakeryFeedView: View {
 	}
 	
 	private var imageView: some View {
-		Image("bakery_dummy")
-			.resizable()
+			Group {
+				if let url = bakery.imageUrl {
+					WebImage(url: url)
+						.resizable()
+				}else {
+					Image("bakery_dummy")
+						.resizable()
+				}
+			}
+			.frame(width: 120, height: 120)
 			.aspectRatio(Constant.imageRatio, contentMode: .fill)
 			.cornerRadius(Constant.imageCornerRadius)
 	}
@@ -80,7 +89,7 @@ struct BakeryFeedView: View {
 	}
 	
 	private var distanceView: some View {
-		Text(bakery.distance)
+		Text(bakery.distanceString)
 			.foregroundColor(Constant.distanceColor)
 			.font(Constant.detailFont)
 	}

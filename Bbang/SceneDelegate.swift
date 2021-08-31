@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let _ = (scene as? UIWindowScene) else { return }
 		
 		// MARK: Dark mode
-		window?.overrideUserInterfaceStyle = .dark
+		window?.overrideUserInterfaceStyle = .light
 		
 		let server = ServerDataOperator()
 		let locationGather = LocationGather()
@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				homeVC.bakeryInfo = bakeryInfomanager
 				mapSearchVC.location = locationGather
 				mapSearchVC.server = server
-				mapSearchVC.bakeryInfo = bakeryInfomanager
+				mapSearchVC.infoManager = bakeryInfomanager
 			}else {
 				assertionFailure("Fail to find view controllers in tab bar")
 			}

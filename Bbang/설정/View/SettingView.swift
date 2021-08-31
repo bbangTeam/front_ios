@@ -30,7 +30,7 @@ struct SettingView: View {
 			.navigationBarHidden(true)
 		}
     }
-	fileprivate var settingButton: some View {
+	private var settingButton: some View {
 		NavigationLink(destination: Text("Setting"))
 		{
 			Image(systemName: "gearshape")
@@ -44,7 +44,7 @@ struct SettingView: View {
 		}
 	}
 	
-	struct Constant {
+	private struct Constant {
 		static let dividerBoder = CGFloat(8)
 		static let settingIconSize = CGSize(width: 19, height: 19)
 		static var settingButtonColor: Color {

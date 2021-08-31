@@ -283,6 +283,60 @@
             </objects>
             <point key="canvasLocation" x="841" y="642"/>
         </scene>
+        <!--AuthVC-->
+        <scene sceneID="aBQ-kn-2Wz">
+            <objects>
+                <viewController storyboardIdentifier="AuthVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0mP-14-m7F" customClass="AuthVC" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIo-Rt-55E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-cQ-OgW">
+                                <rect key="frame" x="110" y="229" width="194" height="159"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xid-cQ-OgW" secondAttribute="height" multiplier="155: 127" id="XZJ-FR-LQt"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="EU2-Ll-pjm">
+                                <rect key="frame" x="32" y="461" width="350" height="346"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ENs-zV-NdM">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-gv-ZCR">
+                                        <rect key="frame" x="0.0" y="89.5" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wLI-Gg-JbS">
+                                        <rect key="frame" x="0.0" y="179" width="350" height="77.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y2q-7k-SwD">
+                                        <rect key="frame" x="0.0" y="268.5" width="350" height="77.5"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JDC-uj-7sE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xid-cQ-OgW" firstAttribute="top" secondItem="JDC-uj-7sE" secondAttribute="top" constant="185" id="RhY-AO-LPp"/>
+                            <constraint firstItem="JDC-uj-7sE" firstAttribute="trailing" secondItem="Xid-cQ-OgW" secondAttribute="trailing" constant="110" id="W8s-Q1-sq9"/>
+                            <constraint firstItem="EU2-Ll-pjm" firstAttribute="trailing" secondItem="JDC-uj-7sE" secondAttribute="trailing" constant="-32" id="bYq-MO-e6A"/>
+                            <constraint firstItem="EU2-Ll-pjm" firstAttribute="top" secondItem="Xid-cQ-OgW" secondAttribute="bottom" constant="73" id="jHj-O3-eLx"/>
+                            <constraint firstItem="EU2-Ll-pjm" firstAttribute="leading" secondItem="JDC-uj-7sE" secondAttribute="leading" constant="32" id="lds-8n-NbB"/>
+                            <constraint firstItem="JDC-uj-7sE" firstAttribute="bottom" secondItem="EU2-Ll-pjm" secondAttribute="bottom" constant="55" id="nLX-e6-ceK"/>
+                            <constraint firstItem="Xid-cQ-OgW" firstAttribute="centerX" secondItem="lIo-Rt-55E" secondAttribute="centerX" id="ppf-Xt-HI2"/>
+                            <constraint firstItem="Xid-cQ-OgW" firstAttribute="leading" secondItem="JDC-uj-7sE" secondAttribute="leading" constant="110" id="yPM-1Z-Pce"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButtonStack" destination="EU2-Ll-pjm" id="HNY-5I-Ouz"/>
+                        <outlet property="logoView" destination="Xid-cQ-OgW" id="Gdp-t8-kaD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RTP-8q-moJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1203" y="1"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left.circle" catalog="system" width="128" height="121"/>

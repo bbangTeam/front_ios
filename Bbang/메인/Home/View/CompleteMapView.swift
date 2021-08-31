@@ -93,7 +93,7 @@ class CompleteMapView: UIView{
 	}
 }
 
-fileprivate struct SimpleMapPath {
+private struct SimpleMapPath {
 
 	static func getBezierPath(for area: Area) -> UIBezierPath {
 		switch area {
@@ -132,7 +132,7 @@ fileprivate struct SimpleMapPath {
 		}
 	}
 
-	fileprivate static var sejong: UIBezierPath {
+	private static var sejong: UIBezierPath {
 		
 		let kR50Path = UIBezierPath()
 		kR50Path.move(to: CGPoint(x: 175.79, y: 231.45))
@@ -181,7 +181,7 @@ fileprivate struct SimpleMapPath {
 		return kR50Path
 	}
 
-	fileprivate static var jeju: UIBezierPath{
+	private static var jeju: UIBezierPath{
 		let kR49Path = UIBezierPath()
 		kR49Path.move(to: CGPoint(x: 148.17, y: 591.77))
 		kR49Path.addLine(to: CGPoint(x: 148.85, y: 592.55))
@@ -276,7 +276,7 @@ fileprivate struct SimpleMapPath {
 		return kR49Path
 	}
 	
-	fileprivate static var southGyeongsang: UIBezierPath {
+	private static var southGyeongsang: UIBezierPath {
 		
 		let kR48Path = UIBezierPath()
 		kR48Path.move(to: CGPoint(x: 239.87, y: 325.31))
@@ -994,7 +994,7 @@ fileprivate struct SimpleMapPath {
 		return kR48Path
 	}
 	
-	fileprivate static var northGyeongsang: UIBezierPath {
+	private static var northGyeongsang: UIBezierPath {
 		let kR47Path = UIBezierPath()
 		kR47Path.move(to: CGPoint(x: 611.34, y: 163.28))
 		kR47Path.addLine(to: CGPoint(x: 611.4, y: 163.54))
@@ -1421,7 +1421,7 @@ fileprivate struct SimpleMapPath {
 		return kR47Path
 	}
 	
-	fileprivate static var southJeolla: UIBezierPath {
+	private static var southJeolla: UIBezierPath {
 		let kR46Path = UIBezierPath()
 		kR46Path.move(to: CGPoint(x: 66.49, y: 505.91))
 		kR46Path.addLine(to: CGPoint(x: 66.86, y: 507.11))
@@ -2916,7 +2916,7 @@ fileprivate struct SimpleMapPath {
 		return kR46Path
 	}
 	
-	fileprivate static var northJeolla: UIBezierPath {
+	private static var northJeolla: UIBezierPath {
 		let kR45Path = UIBezierPath()
 		kR45Path.move(to: CGPoint(x: 128.49, y: 307.06))
 		kR45Path.addLine(to: CGPoint(x: 129.79, y: 306.5))
@@ -3179,7 +3179,7 @@ fileprivate struct SimpleMapPath {
 		return kR45Path
 	}
 	
-	fileprivate static var southChungcheong: UIBezierPath {
+	private static var southChungcheong: UIBezierPath {
 		let kR44Path = UIBezierPath()
 		kR44Path.move(to: CGPoint(x: 92.06, y: 269.24))
 		kR44Path.addLine(to: CGPoint(x: 93.01, y: 269.95))
@@ -3576,7 +3576,7 @@ fileprivate struct SimpleMapPath {
 		return kR44Path
 	}
 	
-	fileprivate static var northChungcheong: UIBezierPath {
+	private static var northChungcheong: UIBezierPath {
 		let kR43Path = UIBezierPath()
 		kR43Path.move(to: CGPoint(x: 213.49, y: 306.62))
 		kR43Path.addLine(to: CGPoint(x: 211.31, y: 300.39))
@@ -3887,7 +3887,7 @@ fileprivate struct SimpleMapPath {
 		return kR43Path
 	}
 	
-	fileprivate static var gangwon: UIBezierPath {
+	private static var gangwon: UIBezierPath {
 		let kR42Path = UIBezierPath()
 		kR42Path.move(to: CGPoint(x: 280.64, y: 0.4))
 		kR42Path.addLine(to: CGPoint(x: 282.05, y: 3.2))
@@ -4147,7 +4147,7 @@ fileprivate struct SimpleMapPath {
 		return kR42Path
 	}
 	
-	fileprivate static var gyeonggi: UIBezierPath {
+	private static var gyeonggi: UIBezierPath {
 		let kR41Path = UIBezierPath()
 		kR41Path.move(to: CGPoint(x: 79.04, y: 102.82))
 		kR41Path.addLine(to: CGPoint(x: 77.23, y: 100.74))
@@ -4589,7 +4589,7 @@ fileprivate struct SimpleMapPath {
 		return kR41Path
 	}
 	
-	fileprivate static var ulsan: UIBezierPath {
+	private static var ulsan: UIBezierPath {
 		let kR31Path = UIBezierPath()
 		kR31Path.move(to: CGPoint(x: 360.3, y: 346.05))
 		kR31Path.addLine(to: CGPoint(x: 362.1, y: 347.52))
@@ -4694,7 +4694,7 @@ fileprivate struct SimpleMapPath {
 		return kR31Path
 	}
 	
-	fileprivate static var daejeon: UIBezierPath {
+	private static var daejeon: UIBezierPath {
 		let kR30Path = UIBezierPath()
 		kR30Path.move(to: CGPoint(x: 190.75, y: 255.23))
 		kR30Path.addLine(to: CGPoint(x: 192, y: 260.52))
@@ -4750,7 +4750,7 @@ fileprivate struct SimpleMapPath {
 		return kR30Path
 	}
 	
-	fileprivate static var gwangju: UIBezierPath {
+	private static var gwangju: UIBezierPath {
 		let kR29Path = UIBezierPath()
 		kR29Path.move(to: CGPoint(x: 148.75, y: 396.86))
 		kR29Path.addLine(to: CGPoint(x: 146.92, y: 395.99))
@@ -4785,7 +4785,7 @@ fileprivate struct SimpleMapPath {
 		return kR29Path
 	}
 	
-	fileprivate static var incheon: UIBezierPath {
+	private static var incheon: UIBezierPath {
 		let kR28Path = UIBezierPath()
 		kR28Path.move(to: CGPoint(x: 113.16, y: 124.22))
 		kR28Path.addLine(to: CGPoint(x: 117.3, y: 121.51))
@@ -4899,7 +4899,7 @@ fileprivate struct SimpleMapPath {
 		return kR28Path
 	}
 	
-	fileprivate static var daegu: UIBezierPath {
+	private static var daegu: UIBezierPath {
 		let kR27Path = UIBezierPath()
 		kR27Path.move(to: CGPoint(x: 297.09, y: 350.47))
 		kR27Path.addLine(to: CGPoint(x: 295.77, y: 354.73))
@@ -4957,7 +4957,7 @@ fileprivate struct SimpleMapPath {
 		return kR27Path
 	}
 	
-	fileprivate static var busan: UIBezierPath {let kR26Path = UIBezierPath()
+	private static var busan: UIBezierPath {let kR26Path = UIBezierPath()
 		kR26Path.move(to: CGPoint(x: 361.1, y: 381.78))
 		kR26Path.addLine(to: CGPoint(x: 361.14, y: 382.54))
 		kR26Path.addLine(to: CGPoint(x: 365.11, y: 382.54))
@@ -5058,7 +5058,7 @@ fileprivate struct SimpleMapPath {
 		return kR26Path
 	}
 	
-	fileprivate static var seoul: UIBezierPath {
+	private static var seoul: UIBezierPath {
 		let kR11Path = UIBezierPath()
 		kR11Path.move(to: CGPoint(x: 133.18, y: 127.75))
 		kR11Path.addLine(to: CGPoint(x: 133.18, y: 127.75))

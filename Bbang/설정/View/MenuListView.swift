@@ -22,7 +22,7 @@ struct MenuListView: View {
 		.padding(.horizontal, 16)
     }
 	
-	fileprivate func drawMenu(for menu: Menu) -> some View {
+	private func drawMenu(for menu: Menu) -> some View {
 		NavigationLink(destination: Text(menu.rawValue)) {
 			
 			HStack(spacing: 11) {
@@ -39,7 +39,7 @@ struct MenuListView: View {
 		}
 	}
 	
-	struct Constant {
+	private struct Constant {
 		static let iconSize = CGSize(width: 14, height: 13)
 		static let font = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 6)))
 		static let color = DesignConstant.getColor(light: .secondary(staturation: 900), dark: .surface)

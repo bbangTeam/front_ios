@@ -155,7 +155,7 @@ struct ReviewWritingView: View {
 		}
 	}
 		
-	struct Constant {
+	private struct Constant {
 		static let starInteval: CGFloat = 2
 		static let starSize: CGFloat = 48
 		static let labelFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))

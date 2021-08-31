@@ -62,7 +62,7 @@ class SlideCardCell: UICollectionViewCell {
 		}
 	}
 	
-	fileprivate func initLayers() {
+	private func initLayers() {
 		backContainerView.layer.masksToBounds = true
 		backContainerView.layer.cornerRadius = 5
 
@@ -91,24 +91,24 @@ class SlideCardCell: UICollectionViewCell {
 		connectOutletFromDecoder(aDecoder)
 	}
 	
-	fileprivate func connectOutletFromDecoder(_ coder: NSCoder) {
-			if case let shadowView as UIView = coder.decodeObject(forKey: Constants.shadowView) {
+	private func connectOutletFromDecoder(_ coder: NSCoder) {
+			if case let shadowView as UIView = coder.decodeObject(forKey: Constant.shadowView) {
 					self.shadowView = shadowView
 			}
 
-			if case let backView as UIView = coder.decodeObject(forKey: Constants.backContainer) {
+			if case let backView as UIView = coder.decodeObject(forKey: Constant.backContainer) {
 					backContainerView = backView
 			}
 
-			if case let frontView as UIView = coder.decodeObject(forKey: Constants.frontContainer) {
+			if case let frontView as UIView = coder.decodeObject(forKey: Constant.frontContainer) {
 					frontContainerView = frontView
 			}
 
-			if case let constraint as NSLayoutConstraint = coder.decodeObject(forKey: Constants.frontContainerY) {
+			if case let constraint as NSLayoutConstraint = coder.decodeObject(forKey: Constant.frontContainerY) {
 					frontConstraintY = constraint
 			}
 
-			if case let constraint as NSLayoutConstraint = coder.decodeObject(forKey: Constants.backContainerY) {
+			if case let constraint as NSLayoutConstraint = coder.decodeObject(forKey: Constant.backContainerY) {
 					backConstraintY = constraint
 			}
 	}
@@ -169,7 +169,7 @@ class SlideCardCell: UICollectionViewCell {
 	}
 	
 	
-	struct Constants {
+	private struct Constant {
 		 static let backContainer = "backContainerViewKey"
 		 static let shadowView = "shadowViewKey"
 		 static let frontContainer = "frontContainerKey"

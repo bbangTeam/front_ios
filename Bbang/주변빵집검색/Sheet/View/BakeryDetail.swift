@@ -6,24 +6,46 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct BakeryDetail: View {
-	@EnvironmentObject var searchController: BakeryInfoManager
-	let bakery: BakeryInfoManager.Bakery
+	@EnvironmentObject var infoManager: BakeryInfoManager
+	
+	var bakery: BakeryInfoManager.Bakery? {
+		infoManager.focusedBakery
+	}
 	
 	var body: some View {
-		VStack {
-			Text(bakery.name)
-			Image("bakery_dummy")
-			Spacer()
+		if bakery != nil {
+			VStack {
+				Text(bakery!.name)
+				getImage(for: bakery!)
+				Spacer()
+			}
+			.onDisappear {
+				infoManager.focusedBakery = nil
+			}
 		}
+	}
+	
+	private func getImage(for bakery: BakeryInfoManager.Bakery) -> some View {
+		Group {
+			if let url = bakery.imageUrl {
+				WebImage(url: url)
+					.resizable()
+			}else {
+				Image("bakery_dummy")
+					.resizable()
+			}
+		}
+		.aspectRatio(1, contentMode: .fit)
+		.frame(width: 120, height: 120)
 	}
 }
 
 struct BakeryDetail_Previews: PreviewProvider {
 	
 	static var previews: some View {
-		BakeryDetail(bakery: BakeryInfoManager.dummys[0])  
-			.environmentObject(BakeryInfoManager(server: ServerDataOperator(), location: LocationGather()))
+		BakeryDetail()
 	}
 }

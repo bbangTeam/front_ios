@@ -22,13 +22,13 @@ class WorldCupVC: UIViewController {
 	private var blurView: UIVisualEffectView!
 	private var stageObserver: AnyCancellable?
 	private var winnerObserver: AnyCancellable?
-	fileprivate var navigationArea: CGRect {
+	private var navigationArea: CGRect {
 		CGRect(origin: CGPoint(x: view.bounds.origin.x,
 																 y: view.bounds.height*0.15),
 								 size: CGSize(width: view.bounds.width,
 															height: view.bounds.height*0.1))
 	}
-	fileprivate var contentArea: CGRect {
+	private var contentArea: CGRect {
 		CGRect(origin: CGPoint(x: view.bounds.origin.x,
 													 y: view.bounds.height*0.2),
 					 size: CGSize(width: view.bounds.width,
@@ -36,7 +36,7 @@ class WorldCupVC: UIViewController {
 	}
 		
 	// MARK:- User intents
-	@objc fileprivate func tapCloseButton() {
+	@objc private func tapCloseButton() {
 		dismiss(animated: true)
 	}
 	
@@ -59,7 +59,7 @@ class WorldCupVC: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 	}
 	
-	fileprivate func observeBubbleScene() {
+	private func observeBubbleScene() {
 		stageObserver = bubbleScene.$stage.sink(receiveValue: { [weak weakSelf = self] stage in
 			let stageString: String
 			if stage == 4 {
@@ -81,7 +81,7 @@ class WorldCupVC: UIViewController {
 		})
 	}
 	
-	fileprivate func showWinnerView(for winner: BubbleScene.BubbleData) {
+	private func showWinnerView(for winner: BubbleScene.BubbleData) {
 		navigationBar.topItem?.title = "\(winner.title)"
 		let winnerView: WorldcupWinnerView = UIView.fromNib()
 		winnerView.frame = contentArea
@@ -116,7 +116,7 @@ class WorldCupVC: UIViewController {
 			}
 	}
 	
-	fileprivate func initBlurView() {
+	private func initBlurView() {
 		blurView = UIVisualEffectView(frame: view.bounds)
 		blurView.effect = UIBlurEffect(style: .systemUltraThinMaterial)
 		blurView.alpha = 0.6
@@ -124,7 +124,7 @@ class WorldCupVC: UIViewController {
 		view.addSubview(blurView)
 	}
 	
-	fileprivate func initNavigationBar() {
+	private func initNavigationBar() {
 		navigationBar = UINavigationBar(frame: navigationArea)
 		let navigationItem = UINavigationItem(title: worldCupTitle)
 		navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -133,7 +133,7 @@ class WorldCupVC: UIViewController {
 		view.addSubview(navigationBar)
 	}
 	
-	fileprivate func initBubbleView() {
+	private func initBubbleView() {
 		spriteView = SKView( frame: contentArea)
 		view.addSubview(spriteView)
 		spriteView.isUserInteractionEnabled = true

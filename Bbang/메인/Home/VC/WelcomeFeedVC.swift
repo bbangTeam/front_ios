@@ -16,7 +16,7 @@ class WelcomeFeedVC: UIViewController {
 	private var swipeTimer: Timer?
 	
 	//MARK:- User intents
-	@objc fileprivate func tapPageController(_ sender: ResizedPageControl) {
+	@objc private func tapPageController(_ sender: ResizedPageControl) {
 		let page = cards[sender.currentPage]
 		scrollview.scrollRectToVisible(page.frame, animated: true)
 	}
@@ -39,7 +39,7 @@ class WelcomeFeedVC: UIViewController {
 		swipeTimer?.invalidate()
 	}
 	
-	fileprivate func createCards() {
+	private func createCards() {
 		cardInfos.forEach {
 			let card: WelcomeFeedCard = UIView.fromNib()
 			card.titleLabel.text = $0.title
@@ -50,7 +50,7 @@ class WelcomeFeedVC: UIViewController {
 		}
 	}
 	
-	fileprivate func initPageController() {
+	private func initPageController() {
 		pageControl.numberOfPages = cards.count
 		pageControl.currentPage = 0
 		pageControl.pageIndicatorTintColor = DesignConstant.getUIColor(.onSecondary(for: .medium))

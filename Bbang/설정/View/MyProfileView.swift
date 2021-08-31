@@ -11,9 +11,7 @@ struct MyProfileView: View {
 	
 	let image: UIImage
 	let myInfo: UserInfo
-	let numberOfPost: (label: String, count: Int)
-	let numberOfComment: (label: String, count: Int)
-	let numberOfLike: (label: String, count: Int)
+	private var myActivities: [Activity: Int]
 	
     var body: some View {
 		VStack(spacing: 0) {
@@ -24,7 +22,7 @@ struct MyProfileView: View {
 		.foregroundColor(Constant.fontColor)
     }
 	
-	fileprivate var profileImageView: some View {
+	private var profileImageView: some View {
 		Image(uiImage: image)
 			.resizable()
 			.frame(width: Constant.profileImageSize.width - Constant.profileImageBorderWidth*2,
@@ -42,7 +40,7 @@ struct MyProfileView: View {
 							.fill(Constant.profileImageBorderColor))
 	}
 	
-	fileprivate var loginCircle: some View {
+	private var loginCircle: some View {
 		Circle()
 			.size(CGSize(width: Constant.loginCircleSize.width + Constant.loginCircleBorder,
 						 height: Constant.loginCircleSize.height + Constant.loginCircleBorder))
@@ -55,7 +53,7 @@ struct MyProfileView: View {
 		)
 	}
 	
-	fileprivate var infoView: some View {
+	private var infoView: some View {
 		VStack(spacing: 0) {
 			Text(myInfo.nickname)
 				.lineLimit(1)
@@ -68,29 +66,67 @@ struct MyProfileView: View {
 		}
 	}
 	
-	fileprivate var countView: some View {
+	private var countView: some View {
 		HStack{
-			ForEach([numberOfPost, numberOfComment, numberOfLike], id: \.self.label) { activity in
-				VStack(spacing: 8) {
-					Text(activity.label)
-						.font(Constant.bodyFont)
-					Text(String(activity.count))
-						.font(Constant.subtitleFont)
+			ForEach([Activity.post, .comment, .like], id: \.self) { activity in
+				NavigationLink(
+					destination: activity.navigation ){
+					VStack {
+						Text(activity.labelString)
+							.font(Constant.bodyFont)
+						Text("\(myActivities[activity] ?? 0)")
+							.font(Constant.subtitleFont)
+					}
 				}
 			}
 		}
 		.padding(.top, 32)
 	}
 	
+	
+	
 	init(image: UIImage?, info: UserInfo, counts: (post: Int, comment: Int, like: Int)) {
 		self.image = image ?? UIImage(named: "profile_dummy")!
 		myInfo = info
-		self.numberOfPost = ("내가 쓴 글", counts.post)
-		self.numberOfComment = ("내가 쓴 댓글", counts.comment)
-		self.numberOfLike = ("좋아요", counts.like)
+		myActivities = [
+			.post: counts.post,
+			.comment: counts.comment,
+			.like: counts.like
+		]
 	}
 	
-	struct Constant {
+	enum Activity: Hashable {
+		
+		case post
+		case comment
+		case like
+		
+		var labelString: String {
+			switch self {
+				case .post:
+					return "내가 쓴 글"
+				case .comment:
+					return "내가 쓴 댓글"
+				case .like:
+					return "좋아요"
+			}
+		}
+		var navigation: some View {
+			Group {
+				switch self {
+					case .post:
+						MyPostView(bsPosts: [
+							.dummy,
+							.dummy
+						])
+					default:
+						 Text(labelString)
+				}
+			}
+		}
+	}
+	
+	private struct Constant {
 		static let profileImageSize = CGSize(width: 56, height: 56)
 		static let profileImageBorderWidth = CGFloat(1)
 		static var profileImageBorderColor: Color {

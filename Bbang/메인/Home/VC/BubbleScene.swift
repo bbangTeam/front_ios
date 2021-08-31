@@ -25,7 +25,7 @@ class BubbleScene: SKScene {
 			}
 		}
 	}
-	fileprivate static let bubbleRadius: CGFloat = 30
+	private static let bubbleRadius: CGFloat = 30
 	
 	// MARK:- User intents
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,7 +45,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func touchRaisedBubble(_ touchedBubble: BubbleNode) {
+	private func touchRaisedBubble(_ touchedBubble: BubbleNode) {
 		guard let notTouchedBubble = currentRaisedBubbles.first(where: {
 			$0 != touchedBubble
 		}) else {
@@ -73,7 +73,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func goToNextState() {
+	private func goToNextState() {
 		winnerBubbles.forEach {
 			$0.setScale(1)
 			$0.alpha = 1
@@ -88,7 +88,7 @@ class BubbleScene: SKScene {
 		stage = bubbles.count
 	}
 	
-	fileprivate func drop(_ bubble: BubbleNode, completion: @escaping () -> Void) {
+	private func drop(_ bubble: BubbleNode, completion: @escaping () -> Void) {
 		let destination = CGPoint(x: frame.midX,
 															y: frame.minY)
 		let dropAction = SKAction.move(to: destination, duration: bubble.timeToTransition/2)
@@ -98,7 +98,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func choose(_ bubble: BubbleNode, completion: @escaping () -> Void) {
+	private func choose(_ bubble: BubbleNode, completion: @escaping () -> Void) {
 		guard currentRaisedBubbles.contains(bubble) else {
 			assertionFailure("Try to chosse bubble not raised \(bubble)")
 			return
@@ -120,7 +120,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func raiseRandomBubbles() {
+	private func raiseRandomBubbles() {
 		let first = bubbles.randomElement()!
 		var second: BubbleNode
 		repeat {
@@ -157,7 +157,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func dimmBubbles() {
+	private func dimmBubbles() {
 		bubbles.forEach { bubble in
 			bubble.run(SKAction.fadeAlpha(to: 0.2, duration: bubble.timeToTransition))
 		}
@@ -177,7 +177,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func initField() {
+	private func initField() {
 		field.region = SKRegion(radius: 10000)
 		field.minimumRadius = 10000
 		field.strength = 6000
@@ -186,7 +186,7 @@ class BubbleScene: SKScene {
 		addChild(field)
 	}
 	
-	fileprivate func initLabels() {
+	private func initLabels() {
 		startButton.position = CGPoint(x: frame.midX, y: frame.midY - 100)
 		leftTitle.position = CGPoint(x: frame.width * 0.25, y: frame.midY - 200)
 		rightTitle.position = CGPoint(x: frame.width * 0.75, y: frame.midY - 200)
@@ -220,7 +220,7 @@ class BubbleScene: SKScene {
 		}
 	}
 	
-	fileprivate func endScene() {
+	private func endScene() {
 		removeFromParent()
 		view?.isHidden = true
 	}

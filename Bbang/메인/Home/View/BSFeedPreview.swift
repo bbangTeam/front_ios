@@ -54,7 +54,7 @@ struct BSFeedPreview: View {
 			.foregroundColor(Constant.hashTagFontColor)
 	}
 	
-	struct Constant {
+	private struct Constant {
 		static let imageSize: CGFloat = 140
 		static let bakeryFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .subtitle(scale: 1)))
 		static let breadFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .body(scale: 2)))

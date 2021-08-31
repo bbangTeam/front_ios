@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeBakeryList: View {
 	
-	let bakeries: [BakeryInfoManager.Bakery]
+	var bakeries: [BakeryInfoManager.Bakery]
 	
     var body: some View {
 		VStack(spacing: 0) {

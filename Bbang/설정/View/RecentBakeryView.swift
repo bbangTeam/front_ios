@@ -28,7 +28,7 @@ struct RecentBakeryView: View {
 		.padding(.leading, 16)
 	}
 	
-	fileprivate var titleBar: some View {
+	private var titleBar: some View {
 		HStack {
 			Text("최근 본 빵집")
 				.font(Constant.titleFont)
@@ -44,7 +44,7 @@ struct RecentBakeryView: View {
 		}
 	}
 	
-	fileprivate func drawBakeryPreview(for bakery: BakeryInfoManager.Bakery) -> some View {
+	private func drawBakeryPreview(for bakery: BakeryInfoManager.Bakery) -> some View {
 		VStack(spacing: 0) {
 			Image("bakery_dummy")
 				.resizable()
@@ -55,7 +55,7 @@ struct RecentBakeryView: View {
 		}
 	}
 	
-	fileprivate func drawBakeryInfo(for bakery: BakeryInfoManager.Bakery) -> some View {
+	private func drawBakeryInfo(for bakery: BakeryInfoManager.Bakery) -> some View {
 		VStack {
 			Text(bakery.name)
 				.font(Constant.titleFont)
@@ -67,14 +67,14 @@ struct RecentBakeryView: View {
 					.padding(.horizontal, 6)
 					.background(Constant.areaBackgroundColor)
 					.cornerRadius(2)
-				Text(bakery.distance)
+				Text(bakery.distanceString)
 					.foregroundColor(Constant.distanceColor)
 			}
 			.font(Constant.captionFont)
 		}
 	}
 	
-	struct Constant {
+	private struct Constant {
 		static let imageSize = CGSize(width: 96, height: 96)
 		static let titleFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .subtitle(scale: 1)))
 		static let titleColor = DesignConstant.getColor(light: .secondary(staturation: 900), dark: .surface)

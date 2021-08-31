@@ -65,7 +65,7 @@ class TourVC: UIViewController, PushToOtherTap {
 	private func drawBakeries() {
 		let areaSize = CGSize(width: areaImageView.bounds.size.width * 1.1, height: areaImageView.bounds.height * 1.1)
 		bakeries[map.selectedArea!]!.forEach{ info in
-			let offset = map.selectedArea!.calcOffset(for: info.location, in: areaSize)
+			let offset = map.selectedArea!.calcOffset(for: info.coordinate, in: areaSize)
 			let center = CGPoint(
 				x: areaImageView.frame.midX + offset.width,
 				y: areaImageView.frame.midY - areaImageView.bounds.height * 0.1 + offset.height)
@@ -95,14 +95,14 @@ class TourVC: UIViewController, PushToOtherTap {
 		map.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapMap(sender:))))
 	}
 	
-	fileprivate func initLabels() {
+	private func initLabels() {
 		titleLabel.font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 2)))
 		subtitleLabel.font = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .subtitle(scale: 1)))
 		titleLabel.textColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface) : .black
 		subtitleLabel.textColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface) : .black
 	}
 	
-	fileprivate func initScrollview() {
+	private func initScrollview() {
 		scrollview.delegate = self
 		scrollview.addSubview(map)
 		scrollview.maximumZoomScale = 3.0
@@ -130,7 +130,7 @@ extension TourVC: UIScrollViewDelegate {
 		}
 	}
 	
-	fileprivate func changeView(from toHide: UIView, to toShow: UIView, completion: @escaping () -> Void = {}) {
+	private func changeView(from toHide: UIView, to toShow: UIView, completion: @escaping () -> Void = {}) {
 		let duration: TimeInterval = 0.5
 		let hideAnimator = UIViewPropertyAnimator(
 			duration: duration,

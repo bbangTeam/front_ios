@@ -9,7 +9,7 @@ import UIKit
 
 class ResizedPageControl: UIPageControl {
 
-	fileprivate func sizeOfDot(at index: Int) -> CGSize {
+	private func sizeOfDot(at index: Int) -> CGSize {
 		if index == currentPage {
 			return CGSize(width: 8, height: 8)
 		}else {

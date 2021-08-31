@@ -13,7 +13,7 @@ struct HomeBSPreview<DataSourceT>: View where DataSourceT: BSPreviewDataSouce {
 	
 	private var tapFeed: (BSFeed) -> Void
 	
-	let constant = Constant()
+	private let constant = Constant()
     var body: some View {
 		VStack {
 			topBar
@@ -50,7 +50,7 @@ struct HomeBSPreview<DataSourceT>: View where DataSourceT: BSPreviewDataSouce {
 		}
 	}
 	
-	struct Constant {
+	fileprivate struct Constant {
 		let titleFont = DesignConstant.getFont(.init(family: .NotoSansCJKkr, style: .headline(scale: 6)))
 		var titleColor: Color {
 			DesignConstant.shared.interface == .dark ? DesignConstant.getColor(.surface): .black

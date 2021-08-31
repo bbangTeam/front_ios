@@ -6,31 +6,35 @@
 //
 
 import SwiftUI
+import SDWebImage
+import SDWebImageSwiftUI
 
 struct MapBakeryList: View {
 	
 	@EnvironmentObject var infoManager: BakeryInfoManager
 	@State private var showReviewSheet = false
+	@State private var navigateBakery = false
 	
 	var body: some View {
 		NavigationView {
 			ScrollView{
+				navigationLink
 				LazyVStack(spacing: 0) {
-					ForEach(BakeryInfoManager.dummys) { bakery in
-						NavigationLink(
-							destination: BakeryDetail(bakery: bakery))
-						{
-							VStack {
-								drawTitle(for: bakery)
-									.padding(.top, 17)
-									.sheet(isPresented: $showReviewSheet) {
-										ReviewWritingView(bakery: bakery)
-									}
-								drawDetail(for: bakery)
-									.padding(.top, 9)
-									.padding(.bottom, 16)
-							}
-							.padding(.horizontal, 16)
+					ForEach(infoManager.bakeriesOnMap) { bakery in
+						VStack {
+							drawTitle(for: bakery)
+								.padding(.top, 17)
+								.sheet(isPresented: $showReviewSheet) {
+									ReviewWritingView(bakery: bakery)
+								}
+							drawDetail(for: bakery)
+								.padding(.top, 9)
+								.padding(.bottom, 16)
+						}
+						.padding(.horizontal, 16)
+						.onTapGesture {
+							infoManager.focusedBakery = bakery
+							navigateBakery = true
 						}
 						Divider()
 					}
@@ -38,6 +42,19 @@ struct MapBakeryList: View {
 				.navigationBarHidden(true)
 			}
 		}
+	}
+	
+	private var navigationLink: some View {
+		NavigationLink("Navigation",
+					   isActive: $navigateBakery
+		) {
+			BakeryDetail()
+				.environmentObject(infoManager)
+		}
+		.onReceive(infoManager.$focusedBakery) {
+			navigateBakery = $0 != nil
+		}
+		.hidden()
 	}
 	
 	private func drawTitle(for bakery: BakeryInfoManager.Bakery) -> some View {
@@ -61,7 +78,7 @@ struct MapBakeryList: View {
 	
 	private func drawDetail(for bakery: BakeryInfoManager.Bakery) -> some View {
 		HStack {
-			Image("bakery_dummy")
+			getImage(for: bakery)
 			VStack (alignment: .leading, spacing: 8){
 				drawStar(count: bakery.rating,
 								 size: Constant.ratingStarSize)
@@ -83,6 +100,20 @@ struct MapBakeryList: View {
 			}
 			Spacer()
 		}
+	}
+	
+	private func getImage(for bakery: BakeryInfoManager.Bakery) -> some View {
+		Group {
+			if let url = bakery.imageUrl {
+				WebImage(url: url)
+					.resizable()
+			}else {
+				Image("bakery_dummy")
+					.resizable()
+			}
+		}
+		.aspectRatio(1, contentMode: .fit)
+		.frame(width: 120, height: 120)
 	}
 	
 	private func drawStar(count: Double, size: CGSize) -> some View {

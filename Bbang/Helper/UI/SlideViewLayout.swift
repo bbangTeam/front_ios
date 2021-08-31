@@ -10,7 +10,7 @@ import SnapKit
 
 class SlideViewLayout: UICollectionViewFlowLayout {
 	
-	fileprivate var storedCollectionViewSize: CGSize = CGSize.zero
+	private var storedCollectionViewSize: CGSize = CGSize.zero
 	
 	var scalingMinimumLimit: CGFloat = 200
 	var minimumScaleFactor: CGFloat = 0.9

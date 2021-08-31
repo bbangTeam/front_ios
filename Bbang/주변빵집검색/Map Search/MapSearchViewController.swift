@@ -7,22 +7,44 @@
 
 import UIKit
 import MapKit
+import Combine
+import SDWebImage
 
 class MapSearchViewController: UIViewController {
 
 	var server: ServerDataOperator!
 	var location: LocationGather!
-	var bakeryInfo: BakeryInfoManager!
+	var infoManager: BakeryInfoManager!
+	private var focusedBakeryObserver: AnyCancellable?
 	private var bottomVC: BottomSheetVC!
 	var sheetVC: Collapsable {
 		bottomVC
 	}
 	@IBOutlet private weak var mapView: MKMapView!
-	private var userCoordinates: CLLocationCoordinate2D? {
+	private var userCoordinate: CLLocationCoordinate2D? {
 		didSet {
-			showUserLocation()
+			if userCoordinate != nil {
+				showUserLocation()
+				infoManager.respondToMovingMap(for: userCoordinate!)
+			}
 		}
 	}
+	private var lastUpdatedCoordinate: CLLocationCoordinate2D?
+	
+	private var displayedAnnotations: [MKAnnotation]? {
+		willSet {
+			if let existAnnotations = displayedAnnotations {
+				mapView.removeAnnotations(existAnnotations)
+			}
+		}
+		didSet {
+			if let newAnnotattions = displayedAnnotations {
+				mapView.addAnnotations(newAnnotattions)
+			}
+		}
+	}
+	
+	private var bakeryImageView: UIImageView!
 	var mainVCAnimator: UIViewPropertyAnimator?
 	var sheetPauseFraction: CGFloat = 0
 	private var searchController: UISearchController!
@@ -61,13 +83,14 @@ class MapSearchViewController: UIViewController {
 		bottomVC.sheetHandle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapSheetHandle(_:))))
 		bottomVC.sheetHandle.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragSheetHandle(_:))))
 		self.extendedLayoutIncludesOpaqueBars = true
+		initBakeryImageView()
+		observeFocusedBakery()
 	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		bottomVC.searchResultView.isUserInteractionEnabled = !bottomVC.isCollapsed
 		mapView.frame.size.height = view.bounds.height - (bottomVC.isCollapsed ? bottomVC.collapsedHeight: bottomVC.expandedHeight)
-		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +101,8 @@ class MapSearchViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		if let lastLocation = location.lastLocation {
-			userCoordinates = lastLocation.coordinate
+			userCoordinate = lastLocation.coordinate
+			loadAnnotations(near: lastLocation.coordinate)
 		}
 		modifySearchBar()
 	}
@@ -90,21 +114,21 @@ class MapSearchViewController: UIViewController {
 		}
 	}
 	
-	fileprivate func initMapView() {
+	private func initMapView() {
 		mapView.isZoomEnabled = true
 		mapView.isScrollEnabled = true
-		mapView.delegate = self
 		let seoul = MKCoordinateRegion(
 			center: LocationGather.seoulLocation,
 			span: .init(latitudeDelta: 0.5, longitudeDelta: 0.5))
 		mapView.setRegion(seoul, animated: false)
 		mapView.showsUserLocation = true
-		mapView.register(StoreAnnotationView.self, forAnnotationViewWithReuseIdentifier: String(describing: StoreAnnotationView.self))
+		mapView.register(BakeryAnnotationView.self, forAnnotationViewWithReuseIdentifier: String(describing: BakeryAnnotationView.self))
+		mapView.delegate = self
 	}
 	
-	fileprivate func initBottomSheet() {
+	private func initBottomSheet() {
 		let sheetHeights: (expanded: CGFloat, collapsed: CGFloat) = (view.bounds.height - minimumMapHeight - navigationBarHeight, view.bounds.height * 0.15)
-		let bottomVC = BottomSheetVC(heights: sheetHeights, mapSearchController: bakeryInfo) { [weak self] isCollapsed in
+		let bottomVC = BottomSheetVC(heights: sheetHeights, infoManager: infoManager) { [weak self] isCollapsed in
 			guard let strongSelf = self else {
 				return
 			}
@@ -124,7 +148,7 @@ class MapSearchViewController: UIViewController {
 		self.bottomVC = bottomVC
 	}
 	
-	fileprivate func initNavigationBar() {
+	private func initNavigationBar() {
 		let safeAreaHeight = view.getInsetHeight(for: .top)
 		let navigationBar = UINavigationBar(
 			frame: CGRect(
@@ -138,7 +162,7 @@ class MapSearchViewController: UIViewController {
 		view.addSubview(navigationBar)
 	}
 	
-	fileprivate func initSearchBar(in navigationBar: UINavigationBar) {
+	private func initSearchBar(in navigationBar: UINavigationBar) {
 		searchController = UISearchController(searchResultsController: nil)
 		navigationBar.addSubview(searchController.searchBar)
 		navigationBar.backgroundColor = Constant.searcbarBackgroundColor
@@ -155,7 +179,7 @@ class MapSearchViewController: UIViewController {
 		initSearchBarButton()
 	}
 	
-	fileprivate func initSearchBarButton() {
+	private func initSearchBarButton() {
 		let searchImage = UIImage(systemName: "magnifyingglass")!
 		searchButton.setImage(searchImage, for: .normal)
 		searchButton.tintColor = Constant.searchbarButtonColor
@@ -181,7 +205,7 @@ class MapSearchViewController: UIViewController {
 		cancelButton.isEnabled = false
 	}
 	
-	fileprivate func modifySearchBar() {
+	private func modifySearchBar() {
 		searchController.searchBar.backgroundColor = Constant.searcbarBackgroundColor
 		if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
 			textfield.borderStyle = .none
@@ -203,10 +227,43 @@ class MapSearchViewController: UIViewController {
 			textfield.font = font
 		}
 	}
+	
+	private func initBakeryImageView() {
+		bakeryImageView = UIImageView()
+		bakeryImageView.isHidden = true
+		view.insertSubview(bakeryImageView, belowSubview: bottomVC.view)
+		bakeryImageView.snp.makeConstraints {
+			$0.edges.equalTo(mapView.snp.edges)
+		}
+	}
+	
+	private func observeFocusedBakery() {
+		focusedBakeryObserver = infoManager.$focusedBakery.sink { [weak self] in
+			guard let strongSelf = self else {
+				return
+			}
+			if let bakery = $0 {
+				strongSelf.showBakeryImage(bakery: bakery)
+			}else {
+				strongSelf.hideBakeryImage()
+			}
+		}
+	}
+	
+	private func showBakeryImage(bakery: BakeryInfoManager.Bakery) {
+		bakeryImageView.sd_setImage(with: bakery.imageUrl) { [weak weakSelf = self] image, error, _, url in
+			if image != nil {
+				weakSelf?.bakeryImageView.isHidden = false
+			}else {
+				print("Fail to load bakery image from \(url?.absoluteString ?? "no url") \n error: \(error?.localizedDescription ?? "no error")")
+			}
+		}
+	}
+	
 	var blurEffect: UIBlurEffect? = nil
 	var blurView: UIVisualEffectView? = nil
 	
-	struct Constant {
+	private struct Constant {
 		static var searchbarButtonColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.surface): .black
 		static let searchbarFont = DesignConstant.getUIFont(.init(family: .NotoSansCJKkr, style: .body(scale: 1)))
 		static var searcbarBackgroundColor = DesignConstant.shared.interface == .dark ? DesignConstant.getUIColor(.secondary(staturation: 900)): .white
@@ -219,32 +276,153 @@ class MapSearchViewController: UIViewController {
 
 extension MapSearchViewController: MKMapViewDelegate {
 	
-	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-		if annotation.isKind(of: MKUserLocation.self) {
-			return nil
+	func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+		guard hideOrShowAnnotations() else {
+			if !bottomVC.isCollapsed {
+				moveSheet()
+			}
+			return
 		}
-		let reuseId = String(describing: StoreAnnotationView.self)
-		let annotation = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)  ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-		if let storeAnnotation = annotation as? StoreAnnotationView {
-			storeAnnotation.image = UIImage(named: storeAnnotation.imageName)
-			storeAnnotation.bounds.size = storeAnnotation.imageSize
+		if let lastCoordinate = lastUpdatedCoordinate {
+			let lastCenter = CLLocation(latitude: lastCoordinate.latitude, longitude: lastCoordinate.longitude)
+			let newCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+			if lastCenter.distance(from: newCenter) > 500 {
+				let isCollapsed = bottomVC.isCollapsed
+				if !isCollapsed {
+					infoManager.respondToMovingMap(for: mapView.centerCoordinate)
+				}
+				if lastCenter.distance(from: newCenter) > 2000 {
+					loadAnnotations(near: newCenter.coordinate)
+					if !isCollapsed {
+						moveSheet()
+					}
+					lastUpdatedCoordinate = newCenter.coordinate
+				}
+			}
+		}
+	}
+	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		let reuseId = String(describing: BakeryAnnotationView.self)
+		if annotation.isKind(of: MKUserLocation.self) {
+			if #available(iOS 14.0, *), annotation is MKUserLocation {
+				
+				let reuseIdentifier = "userLocation"
+				if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) {
+					return existingView
+				}
+				let view = MKUserLocationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+				view.zPriority = .max
+				view.isEnabled = false
+				return view
+			}else {
+				return nil
+			}
 		}
 		
-		return annotation
+		guard let bakeryAnnotation = (mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)) as? BakeryAnnotationView else {
+			return nil
+		}
+		let image = UIImage(named: bakeryAnnotation.imageName)!
+		bakeryAnnotation.image = image
+		bakeryAnnotation.bounds.size = bakeryAnnotation.imageSize
+		bakeryAnnotation.canShowCallout = true
+		bakeryAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+		return bakeryAnnotation
+	}
+	
+	func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+		if let bakeryAnnotaion = view.annotation as? BakeryAnnotation {
+			infoManager.focusedBakery = bakeryAnnotaion.bakery
+		}
+		if bottomVC.isCollapsed{
+			moveSheet()
+		}
 	}
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		if userCoordinates == nil {
-			userCoordinates = userLocation.coordinate
+		if userCoordinate == nil {
+			userCoordinate = userLocation.coordinate
+		}
+	}
+	
+	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+		views.enumerated().forEach {
+			$1.zPriority = .init(rawValue: Float($0))
+		}
+	}
+	
+	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		//		if let bakeryAnnotaion = view.annotation as? BakeryAnnotation {
+		//			infoManager.focusedBakery = bakeryAnnotaion.bakery
+		//		}
+		//		if bottomVC.isCollapsed{
+		//			moveSheet()
+		//		}
+	}
+	
+	/// Hide or show annotations base on zoom
+	/// - Returns: True if show annotation false if hide
+	private func hideOrShowAnnotations() -> Bool {
+		let spanSize = (latitude: mapView.region.span.latitudeDelta, longitude: mapView.region.span.longitudeDelta)
+		
+		let isClose = spanSize.latitude < 0.1 || spanSize.longitude < 0.1
+		if isClose,
+		   mapView.annotations.count <= 1 { // User location annotation
+			loadAnnotations(near: mapView.centerCoordinate)
+		}
+		else if !isClose,
+				mapView.annotations.count > 1 {
+			mapView.removeAnnotations(mapView.annotations)
+		}
+		return isClose
+	}
+	
+	private func loadAnnotations(near coordinate: CLLocationCoordinate2D?) {
+		guard let coordinate = coordinate ?? userCoordinate else {
+			return
+		}
+		let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+		var minDistance: Double?
+		var coordinateKeyToShow: CLLocationCoordinate2D?
+		infoManager.bakeriesNearLocation.keys.forEach {
+			let requestBaseLocation = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
+			let distance = location.distance(from: requestBaseLocation)
+			if minDistance == nil ||
+				minDistance! > distance {
+				minDistance = distance
+				coordinateKeyToShow = requestBaseLocation.coordinate
+			}
+		}
+		guard let key = coordinateKeyToShow else {
+			return
+		}
+		displayedAnnotations = infoManager.bakeriesNearLocation[key]!.compactMap {
+			BakeryAnnotation(bakery: $0)
+		}
+	}
+	
+	private func hideBakeryImage() {
+		bakeryImageView.isHidden = true
+		bakeryImageView.image = nil
+	}
+	
+	func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+		infoManager.focusedBakery = nil
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [self] in
+			if !bottomVC.isCollapsed,
+			   infoManager.focusedBakery == nil {
+				moveSheet()
+			}
 		}
 	}
 	
 	private func showUserLocation(animated: Bool = true) {
-		guard userCoordinates != nil else { return }
 		mapView.setRegion(
-			MKCoordinateRegion(center: userCoordinates!,
+			MKCoordinateRegion(center: userCoordinate!,
 							   span: LocationGather.streetBounds),
 			animated: animated)
+		lastUpdatedCoordinate = userCoordinate!
 	}
 }
 
@@ -271,7 +449,7 @@ extension MapSearchViewController: UISearchBarDelegate {
 		}
 		cancelButton.isEnabled = false
 		if let searchString = searchBar.text {
-			bakeryInfo.search(for: searchString)
+			infoManager.search(for: searchString)
 		}
 	}
 }

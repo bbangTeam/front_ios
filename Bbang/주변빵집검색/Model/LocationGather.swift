@@ -39,7 +39,7 @@ class LocationGather: NSObject {
 		}
 	}
 	
-	fileprivate func getCityInfomation() {
+	private func getCityInfomation() {
 		guard let location = lastLocation else {
 			return
 		}
