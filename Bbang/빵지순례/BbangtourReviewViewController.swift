@@ -9,7 +9,6 @@ import UIKit
 
 class BbangtourReviewViewController: UIViewController {
     
-    
     @IBOutlet var bbangNameTextField: UITextField!
     @IBOutlet var bbangReviewTextView: UITextView!
     @IBOutlet var writeButton: UIButton!

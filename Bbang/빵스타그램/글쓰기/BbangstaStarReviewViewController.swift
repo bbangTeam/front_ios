@@ -27,6 +27,21 @@ class BbangstaStarReviewViewController: UIViewController {
         
     }
     
+    @IBAction func sliderAction(_ sender: StarSlider) {
+        let roundValue = round(sender.value)
+        
+        for index in 0 ... 5 {
+            
+            if let starImage = view.viewWithTag(index) as? UIImageView {
+                if index <= Int(roundValue) {
+                    starImage.image = UIImage(named: "star_fill")
+                } else {
+                    starImage.image = UIImage(named: "star")
+                }
+            }
+        }
+    }
+    
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
         dismiss(animated: false, completion: nil)

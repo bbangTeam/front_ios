@@ -466,6 +466,15 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="u0J-6Q-tfz" customClass="StarSlider" customModule="Bbang" customModuleProvider="target">
+                                <rect key="frame" x="73" y="418" width="268" height="31"/>
+                                <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="sliderAction:" destination="TP1-9k-QOL" eventType="valueChanged" id="WpJ-G0-FQo"/>
+                                </connections>
+                            </slider>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sX-eg-io8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -488,9 +497,13 @@
                             <constraint firstItem="nwl-qi-RQn" firstAttribute="trailing" secondItem="i7T-hJ-9Fk" secondAttribute="trailing" constant="16" id="CVY-vB-wZz"/>
                             <constraint firstItem="nwl-qi-RQn" firstAttribute="trailing" secondItem="6sX-eg-io8" secondAttribute="trailing" id="JLU-pH-qvZ"/>
                             <constraint firstItem="DHv-tb-EW7" firstAttribute="centerX" secondItem="xdH-q0-mLJ" secondAttribute="centerX" id="Uwd-fR-q04"/>
+                            <constraint firstItem="u0J-6Q-tfz" firstAttribute="leading" secondItem="nwl-qi-RQn" secondAttribute="leading" constant="75" id="X74-tc-nCi"/>
+                            <constraint firstItem="u0J-6Q-tfz" firstAttribute="centerX" secondItem="xdH-q0-mLJ" secondAttribute="centerX" id="aOl-87-uAH"/>
                             <constraint firstItem="nwl-qi-RQn" firstAttribute="bottom" secondItem="i7T-hJ-9Fk" secondAttribute="bottom" constant="8" id="cgC-U3-GQC"/>
                             <constraint firstItem="6sX-eg-io8" firstAttribute="leading" secondItem="xdH-q0-mLJ" secondAttribute="leading" id="fXQ-ES-fjl"/>
                             <constraint firstItem="DHv-tb-EW7" firstAttribute="centerY" secondItem="xdH-q0-mLJ" secondAttribute="centerY" id="jo8-Nj-PFr"/>
+                            <constraint firstItem="u0J-6Q-tfz" firstAttribute="top" secondItem="6sX-eg-io8" secondAttribute="bottom" constant="330" id="tKc-Ww-SwR"/>
+                            <constraint firstItem="nwl-qi-RQn" firstAttribute="trailing" secondItem="u0J-6Q-tfz" secondAttribute="trailing" constant="75" id="u8I-Ug-2lT"/>
                             <constraint firstItem="6sX-eg-io8" firstAttribute="top" secondItem="nwl-qi-RQn" secondAttribute="top" id="vcb-gw-Fma"/>
                             <constraint firstItem="i7T-hJ-9Fk" firstAttribute="leading" secondItem="nwl-qi-RQn" secondAttribute="leading" constant="16" id="vvR-qI-qi5"/>
                         </constraints>
