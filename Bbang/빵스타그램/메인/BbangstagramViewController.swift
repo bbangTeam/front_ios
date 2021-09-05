@@ -49,12 +49,22 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         
         let bbangstaList = bbangstaLists[indexPath.row]
         
-        //cell.userIdLabel.text = bbangstaList.id
+        cell.userIdLabel.text = bbangstaList.nickname
         cell.storeLabel.text = bbangstaList.breadStoreName
-        cell.breadNameLabel.text = bbangstaList.breadName
+        //cell.breadNameLabel.text = bbangstaList.breadName
         cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
-
+        cell.likeNumberLabel.text = "***님 외 \(bbangstaList.likeCount!)명이 좋아합니다."
+        
+        if bbangstaList.like == true {
+            cell.likeButton.isSelected = true
+            print(bbangstaList.like)
+        } else {
+            cell.likeButton.isSelected = false
+            cell.likeButton.isSelected = false
+            print(bbangstaList.like)
+        }
+        
         cell.storeId = bbangstaList.storeId!
         cell.id = bbangstaList.id!
         

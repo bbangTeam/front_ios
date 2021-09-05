@@ -333,6 +333,7 @@
                                             <outlet property="contentLabel" destination="wOg-sr-Myc" id="bnX-aS-mZI"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
                                             <outlet property="likeButton" destination="RNy-ok-BRl" id="AkS-mD-M4F"/>
+                                            <outlet property="likeNumberLabel" destination="hjb-RL-OmA" id="Jby-Ra-x1i"/>
                                             <outlet property="locationLabel" destination="IiG-Gg-R84" id="O3l-fD-skL"/>
                                             <outlet property="menuAlertView" destination="ebi-MH-hjz" id="9xy-Co-Sra"/>
                                             <outlet property="menuButton" destination="DYb-nq-tNx" id="bLI-53-Hk1"/>
@@ -360,9 +361,6 @@
                     <navigationItem key="navigationItem" title="빵스타그램" id="UTR-E9-oKF">
                         <barButtonItem key="rightBarButtonItem" title="글작성" id="jfW-nT-iTd">
                             <color key="tintColor" red="0.094117647058823528" green="0.56470588235294117" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="oih-Ms-DOu" kind="presentation" modalPresentationStyle="fullScreen" id="1YO-Cx-4WN"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -374,6 +372,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU8-Mm-CgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431.8840579710145" y="71.651785714285708"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1SM-eA-GFd">
+            <objects>
+                <viewController id="TP1-9k-QOL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xdH-q0-mLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nwl-qi-RQn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j0H-zd-00R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-No-WhH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="-343"/>
         </scene>
         <!--빵스타 - 글쓰기-->
         <scene sceneID="E3i-Nu-AhU">
@@ -660,7 +674,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6q-LK-oaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253.6231884057972" y="-356.25"/>
+            <point key="canvasLocation" x="2272" y="-352"/>
         </scene>
         <!--Bbangsta Comment View Controller-->
         <scene sceneID="5h7-Ak-Fpc">
@@ -740,7 +754,11 @@
                                                         <constraint firstAttribute="width" constant="12" id="cJV-Et-zUJ"/>
                                                         <constraint firstAttribute="height" constant="11" id="zE5-u7-DAV"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" image="comment_heart"/>
+                                                    <connections>
+                                                        <action selector="heartButtonAction:" destination="A5G-EA-VRf" eventType="touchUpInside" id="tjb-tP-RaZ"/>
+                                                    </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="fWr-oL-C4A">
                                                     <rect key="frame" x="56" y="130.5" width="132" height="27"/>
@@ -874,8 +892,8 @@
         <image name="bbangsta_menu" width="16" height="4"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="comment_heart" width="12" height="11"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart" width="20" height="18.5"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="message" width="20" height="18"/>
         <image name="photoXmark" width="8" height="8"/>

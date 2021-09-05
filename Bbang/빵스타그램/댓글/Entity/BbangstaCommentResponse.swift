@@ -14,4 +14,10 @@ struct BbangstaCommentResponse: Decodable {
 struct CommentList: Decodable {
     var nickname: String
     var content: String
+    var likeCount: Int
+    var reCommentCount: Int
+    var clickCount: Int
+    var createDate: String
+    var modifyDate: String
+    var like: Bool
 }

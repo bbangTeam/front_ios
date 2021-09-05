@@ -30,7 +30,16 @@ class BbangstaCommentTableViewCell: UITableViewCell {
     }
     
     func setupViews() {
+        userProfileImageView.layer.cornerRadius = userProfileImageView.layer.frame.height/2
+    }
+    @IBAction func heartButtonAction(_ sender: UIButton) {
+        heartButton.isSelected.toggle()
         
+        if heartButton.isSelected {
+            print("좋아요")
+        } else {
+            print("좋아요 취소")
+        }
     }
     
     @IBAction func reCommentButtonAction(_ sender: UIButton) {

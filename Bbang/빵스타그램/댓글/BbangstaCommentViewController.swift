@@ -74,8 +74,16 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
         let commentLists = commentLists[indexPath.row]
         cell.commentLabel.text = commentLists.content
         cell.userIdLabel.text = commentLists.nickname
+        cell.goodLabel.text = "좋아요 \(commentLists.likeCount)개"
+        cell.reCommentButton.setTitle("댓글 \(commentLists.reCommentCount)개", for: .normal)
         
-        cell.userProfileImageView.layer.cornerRadius = cell.userProfileImageView.layer.frame.height/2
+        if commentLists.like == true {
+            cell.heartButton.isSelected = true
+        } else {
+            cell.heartButton.isSelected = false
+
+        }
+        cell.setupViews()
         
         tableView.rowHeight = UITableView.automaticDimension
        

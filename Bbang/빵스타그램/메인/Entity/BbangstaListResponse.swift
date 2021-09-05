@@ -16,13 +16,19 @@ struct BreadstagramList: Decodable {
     var storeId: String?
     var cityName: String?
     var breadStoreName: String?
-    var breadName: String?
+    //var breadName: String?
     var content: String?
+    var nickname: String?
+    var likeCount: Int?
+    var clickCount: Int?
+    var modifyDate: String?
+    var createDate: String?
     var imageList: [ImageList]?
+    var star: Float?
+    var like: Bool?
 }
 
 struct ImageList: Decodable {
-    var id: String?
     var num: Int?
     var imageUrl: String?
 }

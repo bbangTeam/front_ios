@@ -32,6 +32,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var storeLabel: UILabel!
     @IBOutlet var breadNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var likeNumberLabel: UILabel!
     @IBOutlet var contentLabel: UILabel!
     @IBOutlet var commentButton: UIButton!
     
@@ -68,7 +69,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func likeButtonAction(_ sender: UIButton) {
-        likeButton.isSelected = !likeButton.isSelected
+        likeButton.isSelected.toggle()
         
         if likeButton.isSelected {
             dataManager.bbangstaLike(true, storeId: storeId, delegate: self)
@@ -83,7 +84,7 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
         delegate?.didSelectedCommentButton(data: id)
     }
     @IBAction func bbangstaMenuButtonAction(_ sender: UIButton) {
-        menuButton.isSelected = !menuButton.isSelected
+        menuButton.isSelected.toggle()
         
         if menuButton.isSelected {
             menuAlertView.isHidden = false
