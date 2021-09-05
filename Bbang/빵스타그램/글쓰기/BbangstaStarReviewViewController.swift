@@ -28,12 +28,16 @@ class BbangstaStarReviewViewController: UIViewController {
     }
     
     
-    
+    @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: false, completion: nil)
+    }
     
     @IBAction func okButtonAction(_ sender: UIButton) {
     }
     
     @IBAction func goReviewButtonAction(_ sender: UIButton) {
+        let reviewVC = self.storyboard?.instantiateViewController(identifier: "BbangstaWriteViewController")
+        self.present(reviewVC!, animated: false, completion: nil)
     }
     
 

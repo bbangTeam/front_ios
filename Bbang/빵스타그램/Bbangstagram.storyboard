@@ -466,15 +466,32 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sX-eg-io8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="빵스타그램" id="41k-bM-egd">
+                                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="GxN-dO-7ST">
+                                            <color key="tintColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="backButtonAction:" destination="TP1-9k-QOL" id="i3B-nx-Uq5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nwl-qi-RQn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i7T-hJ-9Fk" firstAttribute="centerX" secondItem="xdH-q0-mLJ" secondAttribute="centerX" id="4Ie-vw-mai"/>
                             <constraint firstItem="nwl-qi-RQn" firstAttribute="trailing" secondItem="i7T-hJ-9Fk" secondAttribute="trailing" constant="16" id="CVY-vB-wZz"/>
+                            <constraint firstItem="nwl-qi-RQn" firstAttribute="trailing" secondItem="6sX-eg-io8" secondAttribute="trailing" id="JLU-pH-qvZ"/>
                             <constraint firstItem="DHv-tb-EW7" firstAttribute="centerX" secondItem="xdH-q0-mLJ" secondAttribute="centerX" id="Uwd-fR-q04"/>
                             <constraint firstItem="nwl-qi-RQn" firstAttribute="bottom" secondItem="i7T-hJ-9Fk" secondAttribute="bottom" constant="8" id="cgC-U3-GQC"/>
+                            <constraint firstItem="6sX-eg-io8" firstAttribute="leading" secondItem="xdH-q0-mLJ" secondAttribute="leading" id="fXQ-ES-fjl"/>
                             <constraint firstItem="DHv-tb-EW7" firstAttribute="centerY" secondItem="xdH-q0-mLJ" secondAttribute="centerY" id="jo8-Nj-PFr"/>
+                            <constraint firstItem="6sX-eg-io8" firstAttribute="top" secondItem="nwl-qi-RQn" secondAttribute="top" id="vcb-gw-Fma"/>
                             <constraint firstItem="i7T-hJ-9Fk" firstAttribute="leading" secondItem="nwl-qi-RQn" secondAttribute="leading" constant="16" id="vvR-qI-qi5"/>
                         </constraints>
                     </view>
@@ -491,7 +508,7 @@
         <!--빵스타 - 글쓰기-->
         <scene sceneID="E3i-Nu-AhU">
             <objects>
-                <viewController storyboardIdentifier="BbangstaWriteViewController" title="빵스타 - 글쓰기" id="oih-Ms-DOu" customClass="BbangstaWriteViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BbangstaWriteViewController" title="빵스타 - 글쓰기" modalPresentationStyle="fullScreen" id="oih-Ms-DOu" customClass="BbangstaWriteViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mpd-8w-f7f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -773,7 +790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6q-LK-oaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="-352"/>
+            <point key="canvasLocation" x="2103" y="-344"/>
         </scene>
         <!--Bbangsta Comment View Controller-->
         <scene sceneID="5h7-Ak-Fpc">
@@ -963,7 +980,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdD-Yk-AHj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253.6231884057972" y="346.875"/>
+            <point key="canvasLocation" x="1345" y="360"/>
         </scene>
         <!--빵스타그램-->
         <scene sceneID="f2v-dN-8gu">
