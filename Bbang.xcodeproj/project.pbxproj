@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85CD9B6F03AE1A1D3361F21A /* Pods_Bbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AE7BD1AF6AB8EF4FFB35EB /* Pods_Bbang.framework */; };
+		A50EDC2B26E4CF2700D4FB76 /* BbangstaStarReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50EDC2A26E4CF2700D4FB76 /* BbangstaStarReviewViewController.swift */; };
 		A5277E9F265E1A6000D4122A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277E9E265E1A6000D4122A /* AppDelegate.swift */; };
 		A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA0265E1A6000D4122A /* SceneDelegate.swift */; };
 		A5277EA3265E1A6000D4122A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5277EA2265E1A6000D4122A /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		1AD14A33F0E302F39E4D8A1C /* Pods-Bbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bbang/Pods-Bbang.debug.xcconfig"; sourceTree = "<group>"; };
+		A50EDC2A26E4CF2700D4FB76 /* BbangstaStarReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaStarReviewViewController.swift; sourceTree = "<group>"; };
 		A5277E9B265E1A6000D4122A /* Bbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5277E9E265E1A6000D4122A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5277EA0265E1A6000D4122A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */,
 				A54C9B982691919100735774 /* BreadTagCollectionViewCell.swift */,
 				A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */,
+				A50EDC2A26E4CF2700D4FB76 /* BbangstaStarReviewViewController.swift */,
 			);
 			name = "글쓰기";
 			path = "글쓰기";
@@ -465,6 +468,7 @@
 				A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */,
 				A574B91726D23ED900083D8D /* BbangstaCommentWriteResponse.swift in Sources */,
 				A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */,
+				A50EDC2B26E4CF2700D4FB76 /* BbangstaStarReviewViewController.swift in Sources */,
 				A5277EC5265E1D5200D4122A /* BbangtourViewController.swift in Sources */,
 				A574B90E26D22FF800083D8D /* BbangstaLikeRequest.swift in Sources */,
 				A554C8AF267E49AC00CDA47F /* BbangstaCommentViewController.swift in Sources */,

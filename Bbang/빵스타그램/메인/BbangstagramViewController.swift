@@ -31,7 +31,13 @@ class BbangstagramViewController: UIViewController {
         dataManager.bbangstaList(page: self.page, delegate: self)
     
     }
-
+    @IBAction func goReviewButtonAction(_ sender: UIBarButtonItem) {
+        
+        let starReviewVC = self.storyboard?.instantiateViewController(identifier: "BbangstaStarReviewViewController")
+        self.present(starReviewVC!, animated: false, completion: nil)
+        
+    }
+    
     
 }
 
