@@ -66,24 +66,24 @@ class BbangstaCommentViewController: UIViewController {
 extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSource, recommentDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentLists.count
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BbangstaCommentTableViewCell", for: indexPath) as! BbangstaCommentTableViewCell
         
-        let commentLists = commentLists[indexPath.row]
-        cell.commentLabel.text = commentLists.content
-        cell.userIdLabel.text = commentLists.nickname
-        cell.goodLabel.text = "좋아요 \(commentLists.likeCount)개"
-        cell.reCommentButton.setTitle("댓글 \(commentLists.reCommentCount)개", for: .normal)
-        
-        if commentLists.like == true {
-            cell.heartButton.isSelected = true
-        } else {
-            cell.heartButton.isSelected = false
-
-        }
+//        let commentLists = commentLists[indexPath.row]
+//        cell.commentLabel.text = commentLists.content
+//        cell.userIdLabel.text = commentLists.nickname
+//        cell.goodLabel.text = "좋아요 \(commentLists.likeCount)개"
+//        cell.reCommentButton.setTitle("댓글 \(commentLists.reCommentCount)개", for: .normal)
+//
+//        if commentLists.like == true {
+//            cell.heartButton.isSelected = true
+//        } else {
+//            cell.heartButton.isSelected = false
+//
+//        }
         cell.setupViews()
         cell.delegate = self
         

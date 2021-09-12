@@ -25,17 +25,17 @@
                                     <constraint firstAttribute="width" constant="414" id="l0Z-cp-CAh"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gg2-A5-Ouj">
-                                    <size key="itemSize" width="414" height="657"/>
+                                    <size key="itemSize" width="414" height="706"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BbangstaCollectionViewCell" id="qIY-Q1-tmK" customClass="BbangstaCollectionViewCell" customModule="Bbang" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="657"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jY7-EG-apz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="657"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2N8-zX-nvP">
@@ -67,8 +67,23 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyP-KI-EDK">
+                                                    <rect key="frame" x="16" y="461" width="12" height="12"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbR-x2-3DC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="12" id="fZb-4z-jBh"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="eXt-Yd-QW4"/>
+                                                    </constraints>
+                                                </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VMA-Sv-pXc">
-                                                    <rect key="frame" x="16" y="453" width="382" height="118"/>
+                                                    <rect key="frame" x="16" y="489" width="382" height="131"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="***님 외 20명이 좋아합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-RL-OmA">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -83,7 +98,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-x5-DGd">
-                                                            <rect key="frame" x="0.0" y="83.5" width="382" height="34.5"/>
+                                                            <rect key="frame" x="0.0" y="83.5" width="382" height="47.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <state key="normal" title="댓글 21개  모두 보기"/>
                                                             <connections>
@@ -195,7 +210,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ms9-Pl-jWU">
-                                                    <rect key="frame" x="16" y="575" width="382" height="42"/>
+                                                    <rect key="frame" x="16" y="624" width="382" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbC-BD-16R">
                                                             <rect key="frame" x="0.0" y="0.0" width="51" height="42"/>
@@ -299,21 +314,23 @@
                                                 <constraint firstItem="ebi-MH-hjz" firstAttribute="top" secondItem="jY7-EG-apz" secondAttribute="top" constant="36" id="7Ro-EP-idh"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ms9-Pl-jWU" secondAttribute="bottom" constant="40" id="7Vx-8y-Toa"/>
                                                 <constraint firstItem="N4k-fU-olL" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" id="9VE-TU-qhC"/>
-                                                <constraint firstItem="VMA-Sv-pXc" firstAttribute="top" secondItem="N4k-fU-olL" secondAttribute="bottom" constant="9" id="HMk-Fh-cUj"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ms9-Pl-jWU" secondAttribute="trailing" constant="16" id="HQe-17-Onc"/>
                                                 <constraint firstItem="Ms9-Pl-jWU" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="16" id="O4h-LF-wqm"/>
                                                 <constraint firstAttribute="trailing" secondItem="N4k-fU-olL" secondAttribute="trailing" id="Pzu-ao-dDw"/>
                                                 <constraint firstItem="IiG-Gg-R84" firstAttribute="centerY" secondItem="gwb-S0-cye" secondAttribute="centerY" id="Sgd-0y-YnR"/>
                                                 <constraint firstItem="2N8-zX-nvP" firstAttribute="top" secondItem="jY7-EG-apz" secondAttribute="top" constant="24" id="VLY-OJ-R8N"/>
                                                 <constraint firstAttribute="trailing" secondItem="DYb-nq-tNx" secondAttribute="trailing" constant="20" id="Wml-lK-Jm5"/>
+                                                <constraint firstItem="kyP-KI-EDK" firstAttribute="top" secondItem="N4k-fU-olL" secondAttribute="bottom" constant="17" id="Yye-7p-9sw"/>
                                                 <constraint firstItem="RNy-ok-BRl" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="18" id="Z1c-4M-nQs"/>
                                                 <constraint firstItem="2N8-zX-nvP" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="16" id="bu7-Zh-wOu"/>
                                                 <constraint firstItem="6BV-pl-Cgb" firstAttribute="leading" secondItem="2N8-zX-nvP" secondAttribute="trailing" constant="8" id="cOI-Iz-2Gf"/>
+                                                <constraint firstItem="VMA-Sv-pXc" firstAttribute="top" secondItem="kyP-KI-EDK" secondAttribute="bottom" constant="16" id="cvs-Br-1HR"/>
                                                 <constraint firstItem="DYb-nq-tNx" firstAttribute="centerY" secondItem="2N8-zX-nvP" secondAttribute="centerY" id="d9c-Bl-Csk"/>
                                                 <constraint firstItem="Wv5-aJ-ifb" firstAttribute="centerY" secondItem="RNy-ok-BRl" secondAttribute="centerY" id="dJf-wC-Gjg"/>
                                                 <constraint firstItem="6BV-pl-Cgb" firstAttribute="centerY" secondItem="2N8-zX-nvP" secondAttribute="centerY" id="fZm-PA-Mol"/>
                                                 <constraint firstItem="y6X-D6-BuE" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="16" id="frR-KY-9jC"/>
                                                 <constraint firstAttribute="trailing" secondItem="YBm-mX-HXs" secondAttribute="trailing" constant="16" id="fzK-hZ-t2S"/>
+                                                <constraint firstItem="kyP-KI-EDK" firstAttribute="leading" secondItem="jY7-EG-apz" secondAttribute="leading" constant="16" id="hWy-iH-Dif"/>
                                                 <constraint firstItem="Ms9-Pl-jWU" firstAttribute="top" secondItem="VMA-Sv-pXc" secondAttribute="bottom" constant="4" id="hjK-9r-y16"/>
                                                 <constraint firstItem="RNy-ok-BRl" firstAttribute="bottom" secondItem="N4k-fU-olL" secondAttribute="bottom" constant="-18.649999999999999" id="iac-Wn-fnf"/>
                                                 <constraint firstItem="DYb-nq-tNx" firstAttribute="leading" secondItem="ebi-MH-hjz" secondAttribute="trailing" constant="8" id="kxV-Uj-339"/>
@@ -325,6 +342,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="VMA-Sv-pXc" secondAttribute="trailing" constant="16" id="xep-1U-kM1"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="706"/>
                                         <connections>
                                             <outlet property="allNumberLabel" destination="coW-XY-Qfv" id="RLJ-KH-np4"/>
                                             <outlet property="bbangstaScrollView" destination="N4k-fU-olL" id="kbn-WZ-nQ4"/>
@@ -999,7 +1017,7 @@
         <!--Re Comment View Controller-->
         <scene sceneID="RJt-Bg-eky">
             <objects>
-                <viewController storyboardIdentifier="ReCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Udi-HV-Lai" customClass="ReCommentViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReCommentViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Udi-HV-Lai" customClass="ReCommentViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="54S-xT-Y3z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
