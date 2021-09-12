@@ -36,6 +36,7 @@
 		A554C8AF267E49AC00CDA47F /* BbangstaCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554C8AE267E49AC00CDA47F /* BbangstaCommentViewController.swift */; };
 		A556B1FB2663A35700AC2471 /* BbangstaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */; };
 		A561669326625C99007B378C /* BbangstaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */; };
+		A5633CCD26EDBE2A00D79D2D /* ReCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5633CCC26EDBE2A00D79D2D /* ReCommentViewController.swift */; };
 		A574B90326D2283900083D8D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B8FE26D2283900083D8D /* Constant.swift */; };
 		A574B90426D2283900083D8D /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90026D2283900083D8D /* UITabBar.swift */; };
 		A574B90526D2283900083D8D /* KeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B90226D2283900083D8D /* KeyCenter.swift */; };
@@ -51,7 +52,6 @@
 		A574B92026D2773100083D8D /* BbangstaWriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B91F26D2773100083D8D /* BbangstaWriteResponse.swift */; };
 		A574B92226D2776300083D8D /* BbangstaWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574B92126D2776300083D8D /* BbangstaWriteRequest.swift */; };
 		A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */; };
-		A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */; };
 		A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +87,7 @@
 		A554C8AE267E49AC00CDA47F /* BbangstaCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCommentViewController.swift; sourceTree = "<group>"; };
 		A556B1FA2663A35600AC2471 /* BbangstaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaWriteViewController.swift; sourceTree = "<group>"; };
 		A561669226625C99007B378C /* BbangstaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5633CCC26EDBE2A00D79D2D /* ReCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReCommentViewController.swift; sourceTree = "<group>"; };
 		A574B8FE26D2283900083D8D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A574B90026D2283900083D8D /* UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
 		A574B90226D2283900083D8D /* KeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCenter.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		A574B91F26D2773100083D8D /* BbangstaWriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaWriteResponse.swift; sourceTree = "<group>"; };
 		A574B92126D2776300083D8D /* BbangstaWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaWriteRequest.swift; sourceTree = "<group>"; };
 		A59DDBD4268625B3008D4AF9 /* BbangtourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangtourViewController.swift; sourceTree = "<group>"; };
-		A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BbangstaReCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A5C7233F2690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2AE7BD1AF6AB8EF4FFB35EB /* Pods_Bbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28C9FF19A108544BA2F22F8 /* Pods-Bbang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bbang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bbang/Pods-Bbang.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 				A574B91126D23D8100083D8D /* Entity */,
 				A554C8AE267E49AC00CDA47F /* BbangstaCommentViewController.swift */,
 				A554C8AB267E495600CDA47F /* BbangstaCommentTableViewCell.swift */,
-				A5C7233B2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift */,
+				A5633CCC26EDBE2A00D79D2D /* ReCommentViewController.swift */,
 			);
 			name = "댓글";
 			path = "댓글";
@@ -463,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5277ED5265E1E6C00D4122A /* BbangsearchViewController.swift in Sources */,
+				A5633CCD26EDBE2A00D79D2D /* ReCommentViewController.swift in Sources */,
 				A554C8A9267E27D200CDA47F /* BbangtourReviewViewController.swift in Sources */,
 				A5277ECF265E1E0200D4122A /* BbangstagramViewController.swift in Sources */,
 				A5C723402690B96C0006C7D9 /* WritePhotoCollectionViewCell.swift in Sources */,
@@ -495,7 +496,6 @@
 				A59DDBD5268625B3008D4AF9 /* BbangtourViewController.swift in Sources */,
 				A54C9B992691919100735774 /* BreadTagCollectionViewCell.swift in Sources */,
 				A5277EA1265E1A6000D4122A /* SceneDelegate.swift in Sources */,
-				A5C7233C2690A5120006C7D9 /* BbangstaReCommentTableViewCell.swift in Sources */,
 				A574B92026D2773100083D8D /* BbangstaWriteResponse.swift in Sources */,
 				A574B90526D2283900083D8D /* KeyCenter.swift in Sources */,
 			);

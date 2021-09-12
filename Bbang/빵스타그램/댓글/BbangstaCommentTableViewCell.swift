@@ -7,8 +7,14 @@
 
 import UIKit
 
-class BbangstaCommentTableViewCell: UITableViewCell {
+protocol recommentDelegate {
+    func goToRecommentView()
+}
 
+class BbangstaCommentTableViewCell: UITableViewCell {
+    
+    var delegate: recommentDelegate!
+    
     @IBOutlet var userProfileImageView: UIImageView!
     @IBOutlet var userIdLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
@@ -42,9 +48,10 @@ class BbangstaCommentTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func reCommentButtonAction(_ sender: UIButton) {
-
+    @IBAction func recommentButton(_ sender: UIButton) {
+        delegate.goToRecommentView()
     }
+    
 
 }
 

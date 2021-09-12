@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e0i-lk-dio">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -906,7 +906,7 @@
                                                                 <color key="titleColor" red="0.094117647058823528" green="0.56470588235294117" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="reCommentButtonAction:" destination="A5G-EA-VRf" eventType="touchUpInside" id="gJp-xe-NKQ"/>
+                                                                <action selector="recommentButton:" destination="A5G-EA-VRf" eventType="touchUpInside" id="YU4-Os-bCd"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -948,7 +948,7 @@
                                     <action selector="commentButtonAction:" destination="ciR-Q5-rII" eventType="touchUpInside" id="fis-Ha-RFj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" restorationIdentifier="Line" translatesAutoresizingMaskIntoConstraints="NO" id="FJy-Pm-Px3" userLabel="Line">
+                            <view contentMode="scaleToFill" restorationIdentifier="Line" translatesAutoresizingMaskIntoConstraints="NO" id="FJy-Pm-Px3" userLabel="Comment Line">
                                 <rect key="frame" x="0.0" y="801" width="414" height="1"/>
                                 <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="0.059999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -996,10 +996,10 @@
             </objects>
             <point key="canvasLocation" x="1345" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--Re Comment View Controller-->
         <scene sceneID="RJt-Bg-eky">
             <objects>
-                <viewController id="Udi-HV-Lai" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Udi-HV-Lai" customClass="ReCommentViewController" customModule="Bbang" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="54S-xT-Y3z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1012,7 +1012,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="TML-wV-wxv">
                                             <color key="tintColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <action selector="backBarButtonItem:" destination="ciR-Q5-rII" id="Lok-QP-ibk"/>
+                                                <action selector="backButtonAction:" destination="Udi-HV-Lai" id="3hN-IH-hbv"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1089,9 +1089,6 @@
                                                             <state key="normal" title="댓글 12개">
                                                                 <color key="titleColor" red="0.094117647060000004" green="0.56470588239999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="reCommentButtonAction:" destination="PkN-Cd-W5u" eventType="touchUpInside" id="CBc-nF-AW0"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1121,7 +1118,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" restorationIdentifier="Line" translatesAutoresizingMaskIntoConstraints="NO" id="ns3-8o-d0O" userLabel="Line">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns3-8o-d0O" userLabel="Recomment Line">
                                 <rect key="frame" x="0.0" y="801" width="414" height="1"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="0.059999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1145,6 +1142,7 @@
                                 <state key="normal" title="Button" image="write_Comment"/>
                                 <connections>
                                     <action selector="commentButtonAction:" destination="ciR-Q5-rII" eventType="touchUpInside" id="MvP-Pk-5KE"/>
+                                    <action selector="sendButtonAction:" destination="Udi-HV-Lai" eventType="touchUpInside" id="m9t-Et-qnr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-rf-NRf">
@@ -1189,10 +1187,10 @@
                                 <state key="normal" image="comment_heart"/>
                                 <state key="selected" image="favorite_border"/>
                                 <connections>
-                                    <action selector="heartButtonAction:" destination="PkN-Cd-W5u" eventType="touchUpInside" id="jGC-7R-3Np"/>
+                                    <action selector="heartButtonAction:" destination="Udi-HV-Lai" eventType="touchUpInside" id="E6h-4d-zSx"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" restorationIdentifier="Line" translatesAutoresizingMaskIntoConstraints="NO" id="Grj-K3-oDE" userLabel="Line">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grj-K3-oDE" userLabel="Comment Line">
                                 <rect key="frame" x="0.0" y="273.5" width="414" height="10"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1215,7 +1213,7 @@
                                             <color key="titleColor" red="0.094117647060000004" green="0.56470588239999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="reCommentButtonAction:" destination="PkN-Cd-W5u" eventType="touchUpInside" id="tvJ-rJ-Pi9"/>
+                                            <action selector="commentButtonAction:" destination="Udi-HV-Lai" eventType="touchUpInside" id="En2-hW-Ayo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1254,10 +1252,21 @@
                             <constraint firstItem="Ix0-jF-1mV" firstAttribute="top" secondItem="Ppv-vo-5lt" secondAttribute="top" id="yd5-MA-doV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="commentButton" destination="mYQ-eD-Gi1" id="jEl-Fp-NRY"/>
+                        <outlet property="contentLabel" destination="I1l-rf-NRf" id="EDK-WS-EH6"/>
+                        <outlet property="heartButton" destination="216-dH-Cu8" id="kNp-dC-VuS"/>
+                        <outlet property="likeLabel" destination="dNG-Hv-MsK" id="xR0-VT-chG"/>
+                        <outlet property="profileImageView" destination="xcy-4f-Avp" id="Vxr-6w-MWX"/>
+                        <outlet property="reCommentLineView" destination="ns3-8o-d0O" id="hLp-YW-8tg"/>
+                        <outlet property="reCommentTableView" destination="BBg-2i-WOB" id="6il-7s-cOg"/>
+                        <outlet property="reCommentTextField" destination="frw-Xu-FF3" id="Xs5-DA-MU3"/>
+                        <outlet property="userIdLabel" destination="YIG-Sg-CKI" id="Si5-eF-u4i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBG-fN-V2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097.1014492753625" y="351.5625"/>
+            <point key="canvasLocation" x="2103" y="360"/>
         </scene>
         <!--빵스타그램-->
         <scene sceneID="f2v-dN-8gu">
@@ -1286,8 +1295,8 @@
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="comment_heart" width="12" height="11"/>
         <image name="favorite_border" width="24" height="24"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart" width="20" height="18.5"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="message" width="20" height="18"/>
         <image name="photoXmark" width="8" height="8"/>

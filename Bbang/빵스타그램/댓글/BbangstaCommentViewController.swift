@@ -48,7 +48,7 @@ class BbangstaCommentViewController: UIViewController {
     
     
     @IBAction func backBarButtonItem(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: .none)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func commentButtonAction(_ sender: UIButton) {
         let input: BbangstaCommentWriteRequest = BbangstaCommentWriteRequest(id: id, type: "breadstagram", content: commentTextField.text!)
@@ -63,7 +63,8 @@ class BbangstaCommentViewController: UIViewController {
 
 //MARK: - TableView
 
-extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSource {
+extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSource, recommentDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentLists.count
     }
@@ -84,10 +85,17 @@ extension BbangstaCommentViewController: UITableViewDelegate, UITableViewDataSou
 
         }
         cell.setupViews()
+        cell.delegate = self
         
         tableView.rowHeight = UITableView.automaticDimension
        
         return cell
+    }
+    
+    func goToRecommentView() {
+        let reCommentVC = self.storyboard?.instantiateViewController(identifier: "ReCommentViewController")
+        
+        present(reCommentVC!, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
