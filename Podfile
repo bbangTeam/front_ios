@@ -9,5 +9,6 @@ target 'Bbang' do
 pod 'Alamofire'
 pod 'Kingfisher', '~> 6.0'
 pod 'Firebase/Analytics'
+pod "Kingfisher"
 
 end

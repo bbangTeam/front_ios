@@ -86,6 +86,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Firebase/Analytics
+  - Kingfisher
   - Kingfisher (~> 6.0)
 
 SPEC REPOS:
@@ -118,6 +119,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 4a36052e51fca788a6cb4a41ee62364e98ae62ba
+PODFILE CHECKSUM: 985bfa1a22cce0554255abf7af6745fb189b2feb
 
 COCOAPODS: 1.10.2
