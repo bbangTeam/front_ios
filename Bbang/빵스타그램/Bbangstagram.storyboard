@@ -1115,34 +1115,22 @@
                                                         <action selector="heartButtonAction:" destination="PkN-Cd-W5u" eventType="touchUpInside" id="KQI-Mn-E2M"/>
                                                     </connections>
                                                 </button>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-Nr-68c">
-                                                    <rect key="frame" x="56" y="130.5" width="132" height="27"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아요 20개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-2z-jWd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="27"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96z-wT-y2u">
-                                                            <rect key="frame" x="84" y="0.0" width="48" height="27"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <state key="normal" title="댓글 12개">
-                                                                <color key="titleColor" red="0.094117647060000004" green="0.56470588239999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="좋아요 20개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-2z-jWd">
+                                                    <rect key="frame" x="56" y="146.5" width="60" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hbA-rY-ScT" firstAttribute="top" secondItem="3iC-2t-Sjl" secondAttribute="bottom" constant="8" id="D7u-bQ-5Jc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ZaF-Nr-68c" secondAttribute="bottom" constant="6.5" id="E1x-Ez-F7A"/>
-                                                <constraint firstItem="ZaF-Nr-68c" firstAttribute="top" secondItem="hbA-rY-ScT" secondAttribute="bottom" constant="8" id="Qfi-Gp-5Zn"/>
+                                                <constraint firstItem="wVb-2z-jWd" firstAttribute="leading" secondItem="hbA-rY-ScT" secondAttribute="leading" id="J5u-AY-qxM"/>
+                                                <constraint firstAttribute="bottom" secondItem="wVb-2z-jWd" secondAttribute="bottom" constant="6" id="JVA-mx-HIk"/>
                                                 <constraint firstItem="3iC-2t-Sjl" firstAttribute="leading" secondItem="IfO-kt-87b" secondAttribute="leading" constant="16" id="S9d-b3-0RO"/>
                                                 <constraint firstItem="pQ6-Yh-y3D" firstAttribute="trailing" secondItem="hbA-rY-ScT" secondAttribute="trailing" id="W1f-jq-kOQ"/>
-                                                <constraint firstItem="ZaF-Nr-68c" firstAttribute="leading" secondItem="hbA-rY-ScT" secondAttribute="leading" id="aKh-Yp-pc7"/>
                                                 <constraint firstItem="pQ6-Yh-y3D" firstAttribute="centerY" secondItem="3iC-2t-Sjl" secondAttribute="centerY" id="ldB-vP-Qh3"/>
                                                 <constraint firstAttribute="trailing" secondItem="hbA-rY-ScT" secondAttribute="trailing" constant="16" id="lej-a9-Lu9"/>
+                                                <constraint firstItem="wVb-2z-jWd" firstAttribute="top" secondItem="hbA-rY-ScT" secondAttribute="bottom" constant="24" id="qJP-6R-nfi"/>
                                                 <constraint firstItem="hbA-rY-ScT" firstAttribute="leading" secondItem="NVq-ts-lg2" secondAttribute="leading" id="tW3-hK-ne2"/>
                                                 <constraint firstItem="3iC-2t-Sjl" firstAttribute="top" secondItem="IfO-kt-87b" secondAttribute="top" constant="20" id="zjp-Te-PeR"/>
                                             </constraints>
@@ -1151,7 +1139,6 @@
                                             <outlet property="commentLabel" destination="hbA-rY-ScT" id="ofp-Wr-heA"/>
                                             <outlet property="goodLabel" destination="wVb-2z-jWd" id="bl2-A3-SiU"/>
                                             <outlet property="heartButton" destination="pQ6-Yh-y3D" id="59t-9y-izu"/>
-                                            <outlet property="reCommentButton" destination="96z-wT-y2u" id="m6k-tR-ekU"/>
                                             <outlet property="timeLabel" destination="b2x-9s-YB2" id="aMp-Bd-oJ9"/>
                                             <outlet property="userIdLabel" destination="NVq-ts-lg2" id="FIk-QC-bKI"/>
                                             <outlet property="userProfileImageView" destination="IeN-Pe-ELZ" id="iyr-L6-YMI"/>
