@@ -24,6 +24,8 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     var delegate: commentDelegate?
     
+    var starLists: [UIView] = []
+    
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userIdLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -48,6 +50,12 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var menuAlertView: UIView!
     
+    @IBOutlet var oneStarView: UIImageView!
+    @IBOutlet var twoStarView: UIImageView!
+    @IBOutlet var threeStarView: UIImageView!
+    @IBOutlet var fourStarView: UIImageView!
+    @IBOutlet var fiveStarView: UIImageView!
+    
     func setupViews() {
         bbangstaScrollView.delegate = self
         
@@ -61,6 +69,12 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
         menuAlertView.layer.shadowOffset = CGSize(width: 0, height: 2)
         menuAlertView.layer.masksToBounds = true
         menuAlertView.isHidden = true
+        
+        starLists.append(oneStarView)
+        starLists.append(twoStarView)
+        starLists.append(threeStarView)
+        starLists.append(fourStarView)
+        starLists.append(fiveStarView)
         
         addContentScrollView()
         setPageControl()

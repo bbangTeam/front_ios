@@ -62,6 +62,28 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         cell.contentLabel.text = bbangstaList.content
         cell.likeNumberLabel.text = "***님 외 \(bbangstaList.likeCount!)명이 좋아합니다."
         
+        if bbangstaList.star == 0.0 {
+            for i in 0...4 {
+                cell.starLists[i].isHidden = true
+            }
+        } else if bbangstaList.star == 1.0 {
+            for i in 1...4 {
+                cell.starLists[i].isHidden = true
+            }
+        } else if bbangstaList.star == 2.0 {
+            for i in 2...4 {
+                cell.starLists[i].isHidden = true
+            }
+        } else if bbangstaList.star == 3.0 {
+            for i in 3...4 {
+                cell.starLists[i].isHidden = true
+            }
+        } else if bbangstaList.star == 4.0 {
+                for i in 2...4 {
+                    cell.starLists[i].isHidden = true
+                }
+        }
+        
         if bbangstaList.like == true {
             cell.likeButton.isSelected = true
             print(bbangstaList.like)

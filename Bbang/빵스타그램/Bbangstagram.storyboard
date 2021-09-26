@@ -373,6 +373,8 @@
                                             <outlet property="commentButton" destination="1S9-x5-DGd" id="pe6-tS-nvU"/>
                                             <outlet property="contentLabel" destination="wOg-sr-Myc" id="bnX-aS-mZI"/>
                                             <outlet property="dateLabel" destination="hfi-lz-h8Y" id="0TJ-gW-p6y"/>
+                                            <outlet property="fiveStarView" destination="ZLM-iy-Hb0" id="UFa-vY-j1n"/>
+                                            <outlet property="fourStarView" destination="VPA-6z-maH" id="Nnx-Wu-bUT"/>
                                             <outlet property="likeButton" destination="RNy-ok-BRl" id="AkS-mD-M4F"/>
                                             <outlet property="likeNumberLabel" destination="hjb-RL-OmA" id="Jby-Ra-x1i"/>
                                             <outlet property="locationLabel" destination="IiG-Gg-R84" id="O3l-fD-skL"/>
@@ -380,9 +382,12 @@
                                             <outlet property="menuButton" destination="DYb-nq-tNx" id="bLI-53-Hk1"/>
                                             <outlet property="numberLabel" destination="X7p-WH-71X" id="sxv-hl-a2z"/>
                                             <outlet property="numberView" destination="YBm-mX-HXs" id="F06-BF-bLk"/>
+                                            <outlet property="oneStarView" destination="xbR-x2-3DC" id="9Sq-Wv-hAT"/>
                                             <outlet property="pageControl" destination="wyb-Ka-dX3" id="uYm-Ev-3PQ"/>
                                             <outlet property="scrollViewHeight" destination="lHY-4C-5Ia" id="NTl-hk-fZI"/>
                                             <outlet property="storeLabel" destination="gwb-S0-cye" id="f9t-0v-FVc"/>
+                                            <outlet property="threeStarView" destination="IAd-dK-Gnq" id="zx7-iz-oxM"/>
+                                            <outlet property="twoStarView" destination="e6k-tj-WiV" id="xPb-S3-snE"/>
                                             <outlet property="userIdLabel" destination="148-xw-4hI" id="FNV-Ok-uno"/>
                                             <outlet property="userImageView" destination="2N8-zX-nvP" id="QgJ-h6-UEW"/>
                                         </connections>
