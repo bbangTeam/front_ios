@@ -68,13 +68,36 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyP-KI-EDK">
-                                                    <rect key="frame" x="16" y="461" width="12" height="12"/>
+                                                    <rect key="frame" x="16" y="461" width="60" height="12"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbR-x2-3DC">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bbangsta_star" translatesAutoresizingMaskIntoConstraints="NO" id="xbR-x2-3DC">
                                                             <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="12" id="fZb-4z-jBh"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bbangsta_star" translatesAutoresizingMaskIntoConstraints="NO" id="e6k-tj-WiV">
+                                                            <rect key="frame" x="12" y="0.0" width="12" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="12" id="jzc-lC-eQZ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bbangsta_star" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-dK-Gnq">
+                                                            <rect key="frame" x="24" y="0.0" width="12" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="12" id="YQr-0n-n6o"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bbangsta_star" translatesAutoresizingMaskIntoConstraints="NO" id="VPA-6z-maH">
+                                                            <rect key="frame" x="36" y="0.0" width="12" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="12" id="5RN-5K-a5B"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bbangsta_star" translatesAutoresizingMaskIntoConstraints="NO" id="ZLM-iy-Hb0">
+                                                            <rect key="frame" x="48" y="0.0" width="12" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="12" id="Z1P-Hi-5jQ"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -1308,6 +1331,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Bbangsta_star" width="11" height="11"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="bbangsta_menu" width="16" height="4"/>
         <image name="camera" catalog="system" width="128" height="94"/>
