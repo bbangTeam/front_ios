@@ -36,7 +36,12 @@ class BbangstaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var likeNumberLabel: UILabel!
     @IBOutlet var contentLabel: UILabel!
+    
+    @IBOutlet var commentStackView: UIStackView!
     @IBOutlet var commentButton: UIButton!
+    @IBOutlet var commentIdLabel: UILabel!
+    @IBOutlet var commentContentLabel: UILabel!
+    @IBOutlet var stackViewBottom: NSLayoutConstraint!
     
     @IBOutlet var bbangstaScrollView: UIScrollView!
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!

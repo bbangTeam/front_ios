@@ -63,7 +63,12 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         cell.likeNumberLabel.text = "***님 외 \(bbangstaList.likeCount!)명이 좋아합니다."
         cell.commentButton.setTitle("댓글 \(bbangstaList.commentCount!)개 모두 보기", for: .normal)
         
+        if bbangstaList.commentCount == 0 {
+            cell.commentStackView.isHidden = true
+            cell.stackViewBottom.constant = 85
+        }
         
+        // 별점 갯수
         if bbangstaList.star == 0.0 {
             for i in 0...4 {
                 cell.starLists[i].isHidden = true
@@ -86,6 +91,7 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
                 }
         }
         
+        // 좋아요
         if bbangstaList.like == true {
             cell.likeButton.isSelected = true
             print(bbangstaList.like)
