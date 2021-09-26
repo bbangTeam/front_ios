@@ -61,6 +61,8 @@ extension BbangstagramViewController: UICollectionViewDelegate, UICollectionView
         cell.locationLabel.text = "#\(bbangstaList.cityName!)"
         cell.contentLabel.text = bbangstaList.content
         cell.likeNumberLabel.text = "***님 외 \(bbangstaList.likeCount!)명이 좋아합니다."
+        cell.commentButton.setTitle("댓글 \(bbangstaList.commentCount!)개 모두 보기", for: .normal)
+        
         
         if bbangstaList.star == 0.0 {
             for i in 0...4 {

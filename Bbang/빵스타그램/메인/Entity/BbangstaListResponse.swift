@@ -19,6 +19,7 @@ struct BreadstagramList: Decodable {
     //var breadName: String?
     var content: String?
     var nickname: String?
+    var commentCount: Int?
     var likeCount: Int?
     var clickCount: Int?
     var modifyDate: String?
